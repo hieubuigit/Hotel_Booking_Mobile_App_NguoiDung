@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">HotelBookingAppOfUser</string>
+    <string name="tvTenTK">Tên tài khoản</string>
+    <string name="hintNhapTenTK">Nhập tên tài khoản.....</string>
+    <string name="tvEmail">Email</string>
+    <string name="hintNhapEmail">Nhập email.....</string>
+    <string name="tvSDT">Số điện thoại</string>
+    <string name="hintNhapSDT">Nhập số điện thoại.....</string>
+    <string name="tvMK">Mật khẩu</string>
+    <string name="hintMK">Nhập mật khẩu.....</string>
+    <string name="tvXacNhanMK">Xác nhận mật khẩu</string>
+    <string name="hintXacNhanMK">Xác nhận mật khẩu.....</string>
+    <string name="tvCheckBox">Tôi đồng ý mọi điều khoản và dịch vụ</string>
+    <string name="btnDangKy">Đăng ký</string>
+    <string name="btnGG">Đăng nhập với tài khoản Google</string>
+    <string name="btnFB">Đăng nhập với tài khoản Facebook</string>
+    <string name="btnIns">Đăng nhập với tài khoản Instagram</string>
+    <string name="btnDangNhap">Đăng nhập</string>
+    <string name="btnQuenMatKhau">Đặt lại mật khẩu</string>
+    <string name="tvQuenTaiKhoan">Quên tài khoản?</string>
+    <string name="tvTitleDK">Chưa có tài khoản hãy</string>
+    <string name="tvDK">đăng ký</string>
+    <string name="tvQuenMatKhau">Bạn đang gặp sự cố về tài khoản? Hãy nhập tài khoản email đăng ký để được đặt lại mật khẩu.</string>
+    <string name="txtTimKiem">Bạn muốn tìm kiếm gì...</string>
+    <string name="tinhThanh">Tỉnh thành</string>
+    <string name="loaiPhong">Loại phòng</string>
+    <string name="tieuChi">Tiêu chí</string>
+    <string name="btnNha">Tất cả phòng</string>
+    <string name="btnYeuThich">Yêu thích</string>
+    <string name="btnTaiKhoan">Tài khoản</string>
+
+    <string-array name="spTinhThanh1">
+        <item>Tất cả</item>
+    </string-array>
+
 </resources>

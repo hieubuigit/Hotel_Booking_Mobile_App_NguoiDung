@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/liner_ver_total"
+    android:background="@drawable/background_app">
+    <ImageView
+        android:id="@+id/imageViewDangKy"
+        style="@style/imageView"
+        android:src="@drawable/forgotpassword"/>
+
+    <TextView
+        android:id="@+id/textViewCheckBox"
+        style="@style/TextViewCheckBox"
+        android:text="@string/tvQuenMatKhau"></TextView>
+
+    <LinearLayout
+        style="@style/liner_hor_Edit_TV"
+        android:layout_marginTop="50dp">
+        <TextView
+            android:id="@+id/textView"
+            style="@style/TextView"
+            android:text="@string/tvEmail"></TextView>
+
+        <EditText
+            android:id="@+id/editTextEmail_QMK"
+            style="@style/EditText"
+            android:background="@drawable/border_edittext"
+            android:hint="@string/hintNhapEmail"></EditText>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonDangNhap"
+        style="@style/ButtonTypeDangNhap"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/border_button"
+        android:text="@string/btnQuenMatKhau"></Button>
+
+</LinearLayout>

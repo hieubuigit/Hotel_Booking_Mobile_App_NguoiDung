@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/liner_ver_total"
+    android:background="@drawable/background_app">
+    <ImageView
+        android:id="@+id/imageViewDangKy"
+        style="@style/imageView"
+        android:src="@drawable/logo"/>
+
+    <LinearLayout
+        style="@style/liner_hor_Edit_TV">
+        <TextView
+            android:id="@+id/textViewTenTK_DangNhap"
+            style="@style/TextView"
+            android:text="@string/tvTenTK"></TextView>
+
+        <EditText
+            android:id="@+id/editTextTenTK_DangNhap"
+            style="@style/EditText"
+            android:background="@drawable/border_edittext"
+            android:hint="@string/hintNhapTenTK"></EditText>
+    </LinearLayout>
+
+
+    <LinearLayout
+        style="@style/liner_hor_Edit_TV">
+        <TextView
+            android:id="@+id/textViewMatKhau_DangNhap"
+            style="@style/TextView"
+            android:text="@string/tvMK"></TextView>
+
+        <EditText
+            android:id="@+id/editTextMatKhau_DangNhap"
+            style="@style/EditText"
+            android:background="@drawable/border_edittext"
+            android:hint="@string/hintMK"></EditText>
+    </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textViewCheckBox"
+            style="@style/TextViewQuenTK"
+            android:text="@string/tvQuenTaiKhoan"></TextView>
+
+
+    <Button
+        android:id="@+id/buttonDangNhap"
+        style="@style/ButtonDangKy"
+        android:background="@drawable/border_button"
+        android:text="@string/btnDangNhap"></Button>
+    <Button
+        android:id="@+id/buttonGG"
+        style="@style/ButtonTypeDangNhap"
+        android:background="@drawable/border_button"
+        android:text="@string/btnGG"></Button>
+    <Button
+        android:id="@+id/buttonFB"
+        style="@style/ButtonTypeDangNhap"
+        android:background="@drawable/border_button"
+        android:text="@string/btnFB"></Button>
+    <Button
+        android:id="@+id/buttonIns"
+        style="@style/ButtonTypeDangNhap"
+        android:background="@drawable/border_button"
+        android:text="@string/btnIns"></Button>
+    <LinearLayout
+        style="@style/liner_hor_Edit_TV">
+        <TextView
+            android:id="@+id/textView"
+            style="@style/TextViewDangKy"
+            android:text="@string/tvTitleDK"></TextView>
+
+        <TextView
+            android:id="@+id/textViewDangKY"
+            style="@style/TextViewDangKy"
+            android:text="@string/tvDK"
+            android:layout_marginLeft="5dp"
+            android:textColor="#17ead9"></TextView>
+    </LinearLayout>
+</LinearLayout>
