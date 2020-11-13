@@ -1,27 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    LinerLayout-->
-    <style name="liner_ver_total">
+    <!--    Sử dụng chung cho tất cả màn hình-->
+    <style name="liner_ver">
         <item name="android:orientation">vertical</item>
         <item name="android:weightSum">10</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/background_app</item>
     </style>
-    <style name="liner_hor_total">
+
+    <style name="liner_hor">
         <item name="android:orientation">horizontal</item>
-        <item name="android:weightSum">10</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TextView_Nhap">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="font">@font/open_sans_bold</item>
+        <item name="android:textSize">@dimen/font_size_textview</item>
+        <item name="color">@color/black_color_textview</item>
+    </style>
+
+    <style name="EditText_Nhap">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/color_hint_text</item>
+        <item name="font">@font/open_sans_regular</item>
+        <item name="android:textSize">@dimen/font_size_edittext</item>
+        <item name="android:paddingTop">@dimen/padding_top_editext</item>
+        <item name="android:paddingLeft">@dimen/padding_left_editext</item>
+        <item name="android:paddingBottom">@dimen/padding_bottom_editext</item>
+        <item name="android:background">@drawable/border_edittext</item>
+    </style>
+    <!--    Đóng sử dụng chung-->
+
+    <!--    Màn hình đăng nhập-->
+
+    <style name="imageView_DangNhap">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:src">@drawable/logo</item>
+    </style>
+
+    <style name="TextView_DangNhap_QTK">
+        <item name="android:layout_width">150sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="font">@font/open_sans_bold</item>
+        <item name="android:textSize">@dimen/font_size_textview</item>
+        <item name="android:textColor">@color/color_textview_quenTaiKhoan</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="TextView_DangNhap_ChuaCoTK">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="font">@font/open_sans_bold</item>
+        <item name="android:textSize">@dimen/font_size_textview</item>
+        <item name="android:textColor">@color/black_color_textview</item>
+    </style>
+
+    <style name="TextView_DangNhap_ChuaCoTK_dangky">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="font">@font/open_sans_bold</item>
+        <item name="android:textSize">@dimen/font_size_textview</item>
+        <item name="android:textColor">@color/color_textview_quenTaiKhoan</item>
+        <item name="android:layout_marginLeft">5dp</item>
+    </style>
+
+    <style name="ButtonDangNhap">
+        <item name="android:layout_width">180dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="font">@font/open_sans_regular</item>
+        <item name="android:textSize">@dimen/font_size_button</item>
+        <item name="android:textColor">@color/black_color_textview</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/border_button</item>
+    </style>
+
+    <style name="ButtonDangNhap_others">
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="font">@font/open_sans_regular</item>
+        <item name="android:textSize">@dimen/font_size_button</item>
+        <item name="android:textColor">@color/black_color_textview</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/border_button</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+    <!--    Kết thúc màn hình đăng nhập-->
+
+
+    <!--    Màn hình đăng ký-->
+    <style name="imageView_DangKy">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:src">@drawable/user</item>
+    </style>
+
+    <style name="CheckBox_DangKy">
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="liner_hor_Edit_TV">
-        <item name="android:orientation">horizontal</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">360dp</item>
+    <style name="TextViewCheckBox_DangKy">
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
+        <item name="font">@font/open_sans_regular</item>
+        <item name="android:textSize">@dimen/font_size_textview</item>
+        <item name="color">@color/black_color_textview</item>
         <item name="android:gravity">center</item>
+
     </style>
+
+    <style name="ButtonDangKy">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="font">@font/open_sans_regular</item>
+        <item name="android:textSize">@dimen/font_size_button</item>
+        <item name="android:textColor">@color/black_color_textview</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/border_button</item>
+        <item name="android:layout_marginTop">30dp</item>
+    </style>
+    <!--    Kết thúc màn hình đăng ký-->
+
+
+    <!--    Màn hình nhà-->
+
+    <!--    Kết thúc màn hình nhà-->
+
+
+    <!--    Màn hình quên tài khoản-->
+    <style name="imageView_QuenTaiKhoan">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:src">@drawable/forgotpassword</item>
+        <item name="android:layout_marginTop">80dp</item>
+    </style>
+
+    <style name="TextView_QTK_MoTa">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="font">@font/open_sans_regular</item>
+        <item name="android:textSize">@dimen/font_size_textview</item>
+        <item name="color">@color/black_color_textview</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="ButtonQuenTaiKhoan">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="font">@font/open_sans_regular</item>
+        <item name="android:textSize">@dimen/font_size_button</item>
+        <item name="android:textColor">@color/black_color_textview</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/border_button</item>
+        <item name="android:layout_marginTop">50dp</item>
+    </style>
+    <!--    Kết thúc màn hình quên tài khoản-->
+
+
+    <!--    Màn hình kết quả tìm kiếm-->
+    <!--    Kết thúc màn hình kết quả tìm kiếm-->
+
+
     <style name="liner_hor_spinner">
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_weight">0.5</item>
@@ -30,91 +195,21 @@
         <item name="android:background">@drawable/border_edittext</item>
 
     </style>
-<!--    ImageView-->
-    <style name="imageView">
+    <!--    ImageView-->
+
+    <style name="imageViewStar">
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">100dp</item>
-        <item name="android:layout_height">100dp</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_gravity">left</item>
     </style>
 
-<!--    EditText-->
-    <style name="EditText">
-        <item name="android:layout_width">250dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColorHint">#a3a3a3</item>
-        <item name="font">@font/open_sans_regular</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:paddingBottom">10dp</item>
-        <item name="android:paddingLeft">10dp</item>
-    </style>
-<!--    TextView-->
-    <style name="TextView">
-        <item name="android:layout_width">100dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="font">@font/open_sans_bold</item>
-        <item name="android:textSize">16sp</item>
-        <item name="color">#000000</item>
-    </style>
-    <style name="TextViewCheckBox">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="font">@font/open_sans_regular</item>
-        <item name="android:textSize">16sp</item>
-        <item name="color">#000000</item>
-        <item name="android:gravity">center</item>
-
-    </style>
-    <style name="TextViewQuenTK">
-        <item name="android:layout_width">150sp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="font">@font/open_sans_bold</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#17ead9</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_weight">1</item>
-    </style>
-    <style name="TextViewDangKy">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="font">@font/open_sans_regular</item>
-        <item name="android:textSize">16sp</item>
-        <item name="color">#000000</item>
-    </style>
-<!--    CheckBox-->
-    <style name="CheckBox">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-<!--    Button-->
-    <style name="ButtonDangKy">
-        <item name="android:layout_width">200dp</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="font">@font/open_sans_regular</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">#000000</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_gravity">center</item>
-    </style>
-    <style name="ButtonTypeDangNhap">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="font">@font/open_sans_regular</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">#000000</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginLeft">20dp</item>
-        <item name="android:layout_marginRight">20dp</item>
-
-    </style>
-<!--    Spinner-->
+    <!--    Spinner-->
     <style name="Spinner">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">50dp</item>
         <item name="android:spinnerMode">dropdown</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/background_spinner</item>
     </style>
 </resources>

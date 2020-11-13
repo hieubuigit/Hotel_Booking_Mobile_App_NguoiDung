@@ -7,5 +7,24 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="red">#EF1515</color>
+
+<!--    Màu chuyên đề-->
+    <color name="black_color_textview">#000000</color>
+    <color name="color_textview_quenTaiKhoan">#17ead9</color>
+
+    <color name="white_color_edittext">#FFFFFF</color>
+    <color name="white_color_button">#FFFFFF</color>
+    <color name="color_bg_button">#2b4ae3</color>
+    <color name="color_bdr_button">#2b4ae3</color>
+    <color name="red_color_warning">#ff1b0a</color>
+    <color name="color_hint_text">#a3a3a3</color>
+
+    <color name="yellow_color_rating">#ffd724</color>
+    <color name="white_color_rating">#FFFFFF</color>
+    <color name="yellow_color_bdr_rating">#ffd724</color>
+    <color name="black_color_bdr_rating">#000000</color>
+
+
+
+
 </resources>

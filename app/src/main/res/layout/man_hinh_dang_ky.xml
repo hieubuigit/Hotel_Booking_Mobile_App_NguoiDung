@@ -1,99 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/liner_ver_total"
-    android:background="@drawable/background_app">
+    style="@style/liner_ver">
 
     <ImageView
         android:id="@+id/imageViewDangKy"
-        style="@style/imageView"
-        android:src="@drawable/user"/>
+        style="@style/imageView_DangKy" />
 
-    <LinearLayout
-        style="@style/liner_hor_Edit_TV">
+    <LinearLayout style="@style/liner_hor">
+
         <TextView
             android:id="@+id/textViewTenTK_DangKy"
-            style="@style/TextView"
-            android:text="@string/tvTenTK"></TextView>
+            style="@style/TextView_Nhap"
+            android:text="@string/tvTenTK_DangKy"></TextView>
 
         <EditText
             android:id="@+id/editTextTenTK_DangKy"
-            style="@style/EditText"
-            android:background="@drawable/border_edittext"
-            android:hint="@string/hintNhapTenTK"></EditText>
+            style="@style/EditText_Nhap"
+            android:hint="@string/hintNhapTenTK_DangKy"></EditText>
     </LinearLayout>
-    <LinearLayout
-        style="@style/liner_hor_Edit_TV">
+
+    <LinearLayout style="@style/liner_hor">
+
         <TextView
             android:id="@+id/textViewEmail"
-            style="@style/TextView"
-            android:text="@string/tvEmail"></TextView>
+            style="@style/TextView_Nhap"
+            android:text="@string/tvEmail_DangKy"></TextView>
 
         <EditText
             android:id="@+id/editTextEmail"
-            style="@style/EditText"
-            android:background="@drawable/border_edittext"
-            android:hint="@string/hintNhapEmail"></EditText>
+            style="@style/EditText_Nhap"
+            android:hint="@string/hintNhapEmail_DangKy"></EditText>
     </LinearLayout>
-    <LinearLayout
-        style="@style/liner_hor_Edit_TV">
+
+    <LinearLayout style="@style/liner_hor">
+
         <TextView
             android:id="@+id/textViewSDT"
-            style="@style/TextView"
+            style="@style/TextView_Nhap"
             android:text="@string/tvSDT"></TextView>
 
         <EditText
             android:id="@+id/editTextSDT"
-            style="@style/EditText"
-            android:background="@drawable/border_edittext"
+            style="@style/EditText_Nhap"
             android:hint="@string/hintNhapSDT"></EditText>
     </LinearLayout>
-    <LinearLayout
-        style="@style/liner_hor_Edit_TV">
+
+    <LinearLayout style="@style/liner_hor">
+
         <TextView
             android:id="@+id/textViewMatKhau_DangKy"
-            style="@style/TextView"
-            android:text="@string/tvMK"></TextView>
+            style="@style/TextView_Nhap"
+            android:text="@string/tvMK_DangKy"></TextView>
 
         <EditText
             android:id="@+id/editTextMatKhau_DangKy"
-            style="@style/EditText"
-            android:background="@drawable/border_edittext"
-            android:hint="@string/hintMK"></EditText>
+            style="@style/EditText_Nhap"
+            android:hint="@string/hintMK_DangKy"></EditText>
     </LinearLayout>
-    <LinearLayout
-        style="@style/liner_hor_Edit_TV">
+
+    <LinearLayout style="@style/liner_hor">
+
         <TextView
             android:id="@+id/textViewXacNhan"
-            style="@style/TextView"
+            style="@style/TextView_Nhap"
             android:text="@string/tvXacNhanMK"></TextView>
 
         <EditText
             android:id="@+id/editTextXacNhan"
-            style="@style/EditText"
-            android:background="@drawable/border_edittext"
+            style="@style/EditText_Nhap"
             android:hint="@string/hintXacNhanMK"></EditText>
     </LinearLayout>
-    <LinearLayout
-        style="@style/liner_hor_Edit_TV">
+
+    <LinearLayout style="@style/liner_hor">
 
         <CheckBox
             android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></CheckBox>
+            style="@style/CheckBox_DangKy"></CheckBox>
 
         <TextView
             android:id="@+id/textViewCheckBox"
-            style="@style/TextViewCheckBox"
-            android:layout_width="wrap_content"
+            style="@style/TextViewCheckBox_DangKy"
             android:text="@string/tvCheckBox"></TextView>
     </LinearLayout>
 
     <Button
         android:id="@+id/buttonDangKy"
         style="@style/ButtonDangKy"
-        android:background="@drawable/border_button"
         android:text="@string/btnDangKy"></Button>
 </LinearLayout>
