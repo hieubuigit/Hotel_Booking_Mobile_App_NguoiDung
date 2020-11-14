@@ -144,7 +144,76 @@
 
 
     <!--    Màn hình nhà-->
+    <style name="liner_ver_MaHinhNha">
+        <item name="android:orientation">vertical</item>
+        <item name="android:weightSum">5</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/border_xemphong</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
 
+    <style name="liner_hor_ManHinhNha">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:weightSum">2</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+    <style name="imageView_ManHinhNha">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:src">@drawable/phong</item>
+    </style>
+    <style name="EditText_ManHinhNha">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/color_hint_text</item>
+        <item name="font">@font/open_sans_regular</item>
+        <item name="android:textSize">@dimen/font_size_edittext</item>
+        <item name="android:paddingTop">@dimen/padding_top_editext</item>
+        <item name="android:paddingLeft">@dimen/padding_left_editext</item>
+        <item name="android:paddingBottom">@dimen/padding_bottom_editext</item>
+        <item name="android:background">@drawable/border_edittext</item>
+        <item name="android:drawableLeft">@drawable/search</item>
+    </style>
+    <style name="EditText_TenPhong">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textSize">@dimen/font_size_edittext</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@null</item>
+    </style>
+    <style name="Spinner">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:spinnerMode">dropdown</item>
+        <item name="android:background">@drawable/background_spinner</item>
+    </style>
+    <style name="TextView_GiaPhong">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="font">@font/open_sans_regular</item>
+        <item name="android:textSize">@dimen/font_size_textview</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+    <style name="ratingBar_ManHinhNha" parent="Widget.AppCompat.RatingBar.Indicator">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:numStars">5</item>
+        <item name="android:rating">4.5</item>
+        <item name="android:theme">@style/color_ratingbar</item>
+    </style>
     <!--    Kết thúc màn hình nhà-->
 
 
@@ -195,21 +264,5 @@
         <item name="android:background">@drawable/border_edittext</item>
 
     </style>
-    <!--    ImageView-->
 
-    <style name="imageViewStar">
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">30dp</item>
-        <item name="android:layout_height">30dp</item>
-        <item name="android:layout_gravity">left</item>
-    </style>
-
-    <!--    Spinner-->
-    <style name="Spinner">
-        <item name="android:layout_width">150dp</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:spinnerMode">dropdown</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:background">@drawable/background_spinner</item>
-    </style>
 </resources>
