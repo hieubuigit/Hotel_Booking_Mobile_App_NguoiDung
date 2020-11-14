@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#17EAD9"
+    tools:context=".GiaoDien.Manhinhchitiet">>
+
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:id="@+id/viewpager">
+
+    </androidx.viewpager.widget.ViewPager>
+
+    <LinearLayout
+        style="@style/LeanerLayout">
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/circle_indicator"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="-50dp"
+        android:layout_gravity="center"
+        android:layout_height="30dp"/>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ibHeart"
+        android:background="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="450dp"
+        android:layout_marginTop="-55dp"
+        android:src="@drawable/ic_baseline_favorite_border_24"
+        ></ImageButton>
+
+
+
+
+
+
+
+    <TextView
+            style="@style/NameHotel"
+            android:text="phòng 123 "
+            android:id="@+id/txtTenphong"
+        android:layout_marginTop="30dp"
+            ></TextView>
+
+
+
+    <LinearLayout
+        style="@style/LeanerLayout">
+    <EditText
+        style="@style/label"
+        android:text="Địa Chỉ:"
+        ></EditText>
+
+     <TextView
+         style="@style/textview"
+         android:text="37 chương dương"
+         android:id="@+id/txtDiachi">
+
+     </TextView>
+    </LinearLayout>
+    <LinearLayout
+       style="@style/LeanerLayout">
+        <EditText
+           style="@style/label"
+            android:text="Ranting:"></EditText>
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:progressTint="#ffff00"
+            android:id="@+id/rbrating"
+            android:numStars="5"
+            android:stepSize=".5"
+            style="@android:style/Widget.Holo.RatingBar"></RatingBar>
+
+
+        <TextView
+           style="@style/textview"
+            android:layout_marginLeft="100dp"
+            android:text="12$/đêm"></TextView>
+
+
+    </LinearLayout>
+
+    <EditText
+        style="@style/label"
+        android:text="Mô Tả: ">
+
+    </EditText>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/txtMota"
+            android:text="phòng sạch sẽ thoáng mát"
+            ></TextView>
+
+    <TextView
+        style="@style/textview"
+        android:text="số người tối đa 2 người lớn"
+        ></TextView>
+    <EditText
+        style="@style/label"
+        android:text="Các dịch vụ:"></EditText>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/viewpager2">
+
+    </androidx.viewpager.widget.ViewPager>
+
+    <LinearLayout
+       style="@style/LeanerLayout">
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/circle_indicator2"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="-30dp"
+        android:layout_gravity="center"
+        android:layout_height="30dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LeanerLayout">
+        <EditText
+            style="@style/label"
+            android:text="Đánh Giá:"></EditText>
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:progressTint="#ffff00"
+            android:id="@+id/rbDanhgia"
+            android:numStars="5"
+            android:stepSize=".5"
+            style="@android:style/Widget.Holo.RatingBar"></RatingBar>
+
+
+    </LinearLayout>
+
+    <EditText
+        style="@style/label"
+        android:text="Bình Luận:"
+        ></EditText>
+    <LinearLayout
+        style="@style/LeanerLayoutbl"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/txtBinhluan"
+            android:text="khách sạn rất tốt"></EditText>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bình Luận"
+            android:layout_marginLeft="-150dp"
+            android:layout_marginTop="50dp"
+            android:id="@+id/btnBinhluan"
+            android:layout_marginBottom="50dp"></Button>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>
