@@ -132,7 +132,7 @@
         style="@style/LeanerLayout">
         <EditText
             style="@style/label"
-            android:text="Đánh Giá:"></EditText>
+            android:text="Đánh Giá: "></EditText>
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
