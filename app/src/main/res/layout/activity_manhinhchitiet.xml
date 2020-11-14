@@ -44,7 +44,7 @@
 
     <TextView
             style="@style/NameHotel"
-            android:text="phòng 123 "
+            android:text="phòng 123"
             android:id="@+id/txtTenphong"
         android:layout_marginTop="30dp"
             ></TextView>
