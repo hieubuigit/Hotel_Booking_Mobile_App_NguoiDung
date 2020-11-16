@@ -1,6 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/liner_ver">
 
+    <EditText
+        android:id="@+id/editTextTenTK_KetQua"
+        style="@style/EditText_ManHinhNha"
+        android:hint="@string/txtTimKiem"></EditText>
+
+    <LinearLayout
+        style="@style/liner_hor"
+        android:layout_marginTop="20dp">
+        <RelativeLayout style="@style/Relative_spinner_MaHinhNha">
+            <Spinner
+                android:id="@+id/spinnerTinhThanh"
+                style="@style/Spinner"
+                android:entries="@array/spTinhThanh"></Spinner>
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/Relative_spinner_MaHinhNha"
+            android:layout_marginLeft="30dp">
+
+            <Spinner
+                android:id="@+id/spinnerTinhThanh2"
+                style="@style/Spinner"
+                android:entries="@array/spLoaiPhong"></Spinner>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/liner_hor">
+
+        <RelativeLayout
+            style="@style/Relative_spinner_MaHinhNha"
+            android:layout_marginLeft="180dp">
+
+            <Spinner
+                android:id="@+id/spinnerTinhThanh3"
+                style="@style/Spinner"
+                android:entries="@array/spTieuChi"></Spinner>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout style="@style/liner_hor_ManHinhNha">
+
+        <LinearLayout style="@style/liner_ver_MaHinhNha">
+
+            <ImageView
+                android:id="@+id/imageView_MaHinhNha_XemPhong1"
+                style="@style/imageView_ManHinhNha"></ImageView>
+
+            <EditText
+                android:id="@+id/editText_tenphong1"
+                style="@style/EditText_TenPhong"
+                android:hint="@string/txtTenPhong"></EditText>
+
+            <RatingBar
+                android:id="@+id/ratingbar1"
+                style="@style/ratingBar_ManHinhNha"></RatingBar>
+
+            <TextView
+                android:id="@+id/textView_GiaPhong1"
+                style="@style/TextView_GiaPhong"
+                android:text="@string/tvGia"></TextView>
+        </LinearLayout>
+
+        <LinearLayout style="@style/liner_ver_MaHinhNha">
+
+            <ImageView
+                android:id="@+id/imageView_MaHinhNha_XemPhong2"
+                style="@style/imageView_ManHinhNha"></ImageView>
+
+            <EditText
+                android:id="@+id/editText_tenphong2"
+                style="@style/EditText_TenPhong"
+                android:hint="@string/txtTenPhong"></EditText>
+
+            <RatingBar
+                android:id="@+id/ratingbar2"
+                style="@style/ratingBar_ManHinhNha"></RatingBar>
+
+            <TextView
+                android:id="@+id/textView_GiaPhong2"
+                style="@style/TextView_GiaPhong"
+                android:text="@string/tvGia"></TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout style="@style/liner_hor_ManHinhNha">
+
+        <LinearLayout style="@style/liner_ver_MaHinhNha">
+
+            <ImageView
+                android:id="@+id/imageView_MaHinhNha_XemPhong3"
+                style="@style/imageView_ManHinhNha"></ImageView>
+
+            <EditText
+                android:id="@+id/editText_tenphong3"
+                style="@style/EditText_TenPhong"
+                android:hint="@string/txtTenPhong"></EditText>
+
+            <RatingBar
+                android:id="@+id/ratingbar3"
+                style="@style/ratingBar_ManHinhNha"></RatingBar>
+
+            <TextView
+                android:id="@+id/textView_GiaPhong3"
+                style="@style/TextView_GiaPhong"
+                android:text="@string/tvGia"></TextView>
+        </LinearLayout>
+
+        <LinearLayout style="@style/liner_ver_MaHinhNha">
+
+            <ImageView
+                android:id="@+id/imageView_MaHinhNha_XemPhong4"
+                style="@style/imageView_ManHinhNha"></ImageView>
+
+            <EditText
+                android:id="@+id/editText_tenphong4"
+                style="@style/EditText_TenPhong"
+                android:hint="@string/txtTenPhong"></EditText>
+
+            <RatingBar
+                android:id="@+id/ratingbar4"
+                style="@style/ratingBar_ManHinhNha"></RatingBar>
+
+            <TextView
+                android:id="@+id/textView_GiaPhong4"
+                style="@style/TextView_GiaPhong"
+                android:text="@string/tvGia"></TextView>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
