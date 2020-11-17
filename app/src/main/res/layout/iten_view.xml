@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="5dp">
+
+    <LinearLayout
+       style="@style/LeanerLayout">
+
+
+
+    <ImageView
+        android:id="@+id/imgbinhluan"
+        android:scaleType="fitXY"
+        android:src="@drawable/hinhgai1"
+        android:layout_width="75dp"
+        android:layout_height="75dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/txtloibinhluan"
+            android:text="khách sạn rất tốt"></EditText>
+    </LinearLayout>
+
+
+</RelativeLayout>

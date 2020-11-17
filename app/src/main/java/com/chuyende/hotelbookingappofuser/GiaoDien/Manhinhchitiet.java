@@ -1,19 +1,30 @@
 package com.chuyende.hotelbookingappofuser.GiaoDien;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.chuyende.hotelbookingappofuser.Adapter.BinhluanAdapter;
 import com.chuyende.hotelbookingappofuser.Adapter.DichvuAdapter;
 import com.chuyende.hotelbookingappofuser.Adapter.PhotoAdapter;
+import com.chuyende.hotelbookingappofuser.Model.Binhluan;
 import com.chuyende.hotelbookingappofuser.Model.Dichvu;
 import com.chuyende.hotelbookingappofuser.Model.Photo;
 import com.chuyende.hotelbookingappofuser.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +33,7 @@ import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class Manhinhchitiet extends AppCompatActivity {
+public class Manhinhchitiet extends AppCompatActivity   {
 
      ViewPager viewPager, viewPagerdv;
      ImageButton ibHeart;
@@ -34,6 +45,12 @@ public class Manhinhchitiet extends AppCompatActivity {
      Timer mTimer;
      Boolean iconyeuthich = false;
 
+    RecyclerView recyclerView;
+    ArrayList<Binhluan> listbinhluan;
+    BinhluanAdapter binhluanAdapter;
+    Button btndatngay;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +58,8 @@ public class Manhinhchitiet extends AppCompatActivity {
 
 
         setControl();
+
+
 
         mListPhoto = getListPhoto();
         photoAdapter = new PhotoAdapter(this, mListPhoto);
@@ -64,7 +83,23 @@ public class Manhinhchitiet extends AppCompatActivity {
         ibHeart.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
         ibHeart.setOnClickListener(Heart);
 
+        //custom recycler binh luan
 
+        recyclerView=findViewById(R.id.recyclerview);
+        listbinhluan=new ArrayList<>();
+        listbinhluan.add(new Binhluan("khach san rat tot" ,R.drawable.hinhgai1));
+        listbinhluan.add(new Binhluan("rat la ok" ,R.drawable.hinhgai2));
+        binhluanAdapter=new BinhluanAdapter(getApplicationContext(),listbinhluan);
+        recyclerView.setAdapter(binhluanAdapter);
+
+        // kết nối qua man hinh thanh toan
+
+        btndatngay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                open();
+            }
+        });
 
     }
 
@@ -90,6 +125,9 @@ public class Manhinhchitiet extends AppCompatActivity {
         ibHeart = findViewById(R.id.ibHeart);
         viewPagerdv = findViewById(R.id.viewpager2);
         circleIndicatordv = findViewById(R.id.circle_indicator2);
+        btndatngay = findViewById(R.id.btnDatngay);
+
+
     }
 
 
@@ -150,4 +188,10 @@ public class Manhinhchitiet extends AppCompatActivity {
             mTimer = null;
         }
     }
+    public void open(){
+        Intent intent = new Intent(this, Manhinhthanhtoan.class);
+        startActivity(intent);
+    }
+
+
 }
