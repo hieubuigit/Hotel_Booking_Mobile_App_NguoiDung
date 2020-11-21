@@ -1,16 +1,24 @@
 package com.chuyende.hotelbookingappofuser.GiaoDien;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationProvider;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import com.chuyende.hotelbookingappofuser.Adapter.BinhluanAdapter;
 import com.chuyende.hotelbookingappofuser.Adapter.DichvuAdapter;
@@ -19,12 +27,17 @@ import com.chuyende.hotelbookingappofuser.Model.Binhluan;
 import com.chuyende.hotelbookingappofuser.Model.Dichvu;
 import com.chuyende.hotelbookingappofuser.Model.Photo;
 import com.chuyende.hotelbookingappofuser.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,17 +46,22 @@ import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class Manhinhchitiet extends AppCompatActivity   {
+public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallback {
 
-     ViewPager viewPager, viewPagerdv;
-     ImageButton ibHeart;
-     CircleIndicator circleIndicator, circleIndicatordv;
-     PhotoAdapter photoAdapter;
-     DichvuAdapter dichvuAdapter;
-     List<Dichvu> dvListDichvu;
-     List<Photo> mListPhoto;
-     Timer mTimer;
-     Boolean iconyeuthich = false;
+    //khai bao map
+    Location currentLocation;
+    FusedLocationProviderClient fusedLocationProviderClient;
+    private static final int REQUEST_CODE = 101;
+
+    ViewPager viewPager, viewPagerdv;
+    ImageButton ibHeart;
+    CircleIndicator circleIndicator, circleIndicatordv;
+    PhotoAdapter photoAdapter;
+    DichvuAdapter dichvuAdapter;
+    List<Dichvu> dvListDichvu;
+    List<Photo> mListPhoto;
+    Timer mTimer;
+    Boolean iconyeuthich = false;
 
     RecyclerView recyclerView;
     ArrayList<Binhluan> listbinhluan;
@@ -59,6 +77,11 @@ public class Manhinhchitiet extends AppCompatActivity   {
 
         setControl();
 
+
+        //map
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        fetchLastLocation();
 
 
         mListPhoto = getListPhoto();
@@ -85,11 +108,11 @@ public class Manhinhchitiet extends AppCompatActivity   {
 
         //custom recycler binh luan
 
-        recyclerView=findViewById(R.id.recyclerview);
-        listbinhluan=new ArrayList<>();
-        listbinhluan.add(new Binhluan("khach san rat tot" ,R.drawable.hinhgai1));
-        listbinhluan.add(new Binhluan("rat la ok" ,R.drawable.hinhgai2));
-        binhluanAdapter=new BinhluanAdapter(getApplicationContext(),listbinhluan);
+        recyclerView = findViewById(R.id.recyclerview);
+        listbinhluan = new ArrayList<>();
+        listbinhluan.add(new Binhluan("khach san rat tot", R.drawable.hinhgai1));
+        listbinhluan.add(new Binhluan("rat la ok", R.drawable.hinhgai2));
+        binhluanAdapter = new BinhluanAdapter(getApplicationContext(), listbinhluan);
         recyclerView.setAdapter(binhluanAdapter);
 
         // kết nối qua man hinh thanh toan
@@ -103,6 +126,29 @@ public class Manhinhchitiet extends AppCompatActivity   {
 
     }
 
+    private void fetchLastLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]
+                    {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+
+            return;
+        }
+        Task<Location> task = fusedLocationProviderClient.getLastLocation();
+        task.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if(location != null){
+                    currentLocation = location;
+                    Toast.makeText(getApplicationContext(), currentLocation.getLatitude() +" "+ currentLocation.getLongitude(), Toast.LENGTH_LONG).show();
+
+                    SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map);
+
+                    supportMapFragment.getMapAsync(Manhinhchitiet.this);
+                }
+            }
+        });
+    }
 
 
     //hàm  click để chọn yêu thích
@@ -194,4 +240,25 @@ public class Manhinhchitiet extends AppCompatActivity   {
     }
 
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("I Am Here");
+
+        googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
+        googleMap.addMarker(markerOptions);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case REQUEST_CODE:
+                if(grantResults.length > 0 && grantResults[0]  == PackageManager.PERMISSION_GRANTED ){
+                    fetchLastLocation();
+                }
+                break;
+        }
+    }
 }

@@ -63,23 +63,28 @@ tools:context=".GiaoDien.Manhinhchitiet">
 
     <LinearLayout
         style="@style/LeanerLayout">
-    <EditText
+    <TextView
         style="@style/label"
         android:text="Địa Chỉ:"
-        ></EditText>
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        ></TextView>
 
      <TextView
          style="@style/textview"
          android:text="37 chương dương"
-         android:id="@+id/txtDiachi">
+         android:textStyle="bold"
+         android:id="@+id/txtDiachi"
+         >
 
      </TextView>
     </LinearLayout>
     <LinearLayout
        style="@style/LeanerLayout">
-        <EditText
+        <TextView
            style="@style/label"
-            android:text="Ranting:"></EditText>
+            android:text="Rating:"
+            android:textStyle="bold"></TextView>
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -100,11 +105,12 @@ tools:context=".GiaoDien.Manhinhchitiet">
 
     </LinearLayout>
 
-    <EditText
+    <TextView
         style="@style/label"
-        android:text="Mô Tả: ">
+        android:text="Mô Tả: "
+        android:textStyle="bold">
 
-    </EditText>
+    </TextView>
         <TextView
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -118,9 +124,9 @@ tools:context=".GiaoDien.Manhinhchitiet">
         style="@style/textview"
         android:text="số người tối đa 2 người lớn"
         ></TextView>
-    <EditText
+    <TextView
         style="@style/label"
-        android:text="Các dịch vụ:"></EditText>
+        android:text="Các dịch vụ:"></TextView>
 
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
@@ -142,12 +148,13 @@ tools:context=".GiaoDien.Manhinhchitiet">
 
     <LinearLayout
         style="@style/LeanerLayout">
-        <EditText
+        <TextView
             style="@style/label"
-            android:text="Đánh Giá: "></EditText>
+            android:text="Đánh Giá: "
+            android:textStyle="bold"></TextView>
         <RatingBar
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:progressTint="#ffff00"
             android:id="@+id/rbDanhgia"
             android:numStars="5"
@@ -159,10 +166,11 @@ tools:context=".GiaoDien.Manhinhchitiet">
 
     </LinearLayout>
 
-    <EditText
+    <TextView
         style="@style/label"
         android:text="Bình Luận:"
-        ></EditText>
+
+        ></TextView>
     <LinearLayout
         style="@style/LeanerLayoutbl"
         >
@@ -198,27 +206,31 @@ tools:context=".GiaoDien.Manhinhchitiet">
             />
         </LinearLayout>
 
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="xem them danh gia"
             android:layout_gravity="center"
             android:textColor="#FF5722"
-            android:id="@+id/txtxemthem">
+            android:id="@+id/txtxemthem"
+            android:textSize="20dp">
 
-        </EditText>
+        </TextView>
 
     </LinearLayout>
-    <EditText
+    <TextView
+        android:textSize="20dp"
         style="@style/label"
         android:text="Vị trí trên bản đồ:"
-        ></EditText>
-    <ImageButton
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:id="@+id/imgBT_map"
-        android:src="@drawable/map2"></ImageButton>
+        ></TextView>
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:id="@+id/google_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+
+
 
 
 
@@ -232,7 +244,7 @@ tools:context=".GiaoDien.Manhinhchitiet">
 <Button
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Đặc ngay"
+    android:text="Đặt ngay"
     android:id="@+id/btnDatngay"
     android:layout_marginTop="-40dp"
     ></Button>
