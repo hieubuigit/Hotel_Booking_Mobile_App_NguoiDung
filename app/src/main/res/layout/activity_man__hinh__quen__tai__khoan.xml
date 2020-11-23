@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/liner_ver">
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/liner_ver"
+    tools:context=".activities.Man_Hinh_Quen_Tai_Khoan">
 
     <ImageView
         android:id="@+id/imageViewDangKy"

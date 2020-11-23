@@ -59,7 +59,6 @@
     <!--    Kết thúc màn hình đăng nhập-->
 
 
-
     <!--    Màn hình quên tài khoản-->
     <string name="tvEmail_QTK">Email</string>
     <string name="hintNhapEmail_QTK">Nhập email.....</string>
@@ -68,11 +67,10 @@
     <!--    Kết thúc màn hình quên tài khoản-->
 
 
-
     <!--    Màn hình quên kết quả tìm kiếm-->
     <!--    Kết thúc màn hình kết quả tìm kiếm-->
 
-<!--    Menu bottom navigation-->
+    <!--    Menu bottom navigation-->
     <string name="home">Tất cả phòng</string>
     <string name="favorite">Yêu thích</string>
     <string name="account">Tài khoản</string>

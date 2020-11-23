@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="@drawable/border_xemphong"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:weightSum="4">
+
+    <ImageView
+        android:id="@+id/imageView_listitem"
+        style="@style/imageView_ManHinhNha"></ImageView>
+
+    <EditText
+        android:id="@+id/editText_listitem_tenphong"
+        style="@style/EditText_TenPhong"
+        android:hint="@string/txtTenPhong"></EditText>
+
+    <RatingBar
+        android:id="@+id/ratingbar_listitem"
+        style="@style/ratingBar_ManHinhNha"></RatingBar>
+
+    <TextView
+        android:id="@+id/textView_listitem_giaphong"
+        style="@style/TextView_GiaPhong"
+        android:text="@string/tvGia"></TextView>
+</LinearLayout>

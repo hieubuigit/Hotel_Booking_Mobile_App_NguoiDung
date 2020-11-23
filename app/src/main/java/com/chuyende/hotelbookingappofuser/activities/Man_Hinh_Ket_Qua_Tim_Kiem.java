@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.chuyende.hotelbookingappofuser.R;
 
-public class Man_Hinh_Dang_Ky extends AppCompatActivity {
+public class Man_Hinh_Ket_Qua_Tim_Kiem extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_man__hinh__dang__ky);
+        setContentView(R.layout.activity_man__hinh__ket__qua__tim__kiem);
     }
 }

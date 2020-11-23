@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_app"
+    tools:context=".activities.Man_Hinh_Nha">
+    <LinearLayout
+        style="@style/liner_ver"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_above="@+id/bottom_navigation">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <AutoCompleteTextView
+                android:id="@+id/multiauto_Search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_spinner"
+                android:drawableLeft="@drawable/search"
+                android:padding="10dp"></AutoCompleteTextView>
+        </RelativeLayout>
+
+        <LinearLayout
+            style="@style/liner_hor_ManHinhNha">
+
+            <RelativeLayout
+                style="@style/Relative_spinner_ManHinhNha">
+
+                <Spinner
+                    android:id="@+id/spinnerTinhThanh"
+                    style="@style/Spinner"
+                    android:entries="@array/spTinhThanh"></Spinner>
+            </RelativeLayout>
+
+            <RelativeLayout
+                style="@style/Relative_spinner_ManHinhNha"
+                android:layout_marginLeft="10dp">
+
+                <Spinner
+                    android:id="@+id/spinnerTinhThanh2"
+                    style="@style/Spinner"
+                    android:entries="@array/spLoaiPhong"></Spinner>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/liner_hor_ManHinhNha">
+
+            <RelativeLayout
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                style="@style/Relative_spinner_ManHinhNha"
+                android:layout_marginLeft="10dp">
+
+                <Spinner
+                    android:id="@+id/spinnerTinhThanh4"
+                    style="@style/Spinner"
+                    android:entries="@array/spTieuChi"></Spinner>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <GridView
+            android:id="@+id/gridViewMain"
+            android:layout_width="match_parent"
+            android:layout_height="370dp"
+            android:layout_marginTop="20dp"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"
+            android:numColumns="2"
+            android:stretchMode="columnWidth"></GridView>
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/menu_bottom_navigation">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+</RelativeLayout>
