@@ -1,4 +1,4 @@
-package com.chuyende.hotelbookingappofuser.GiaoDien;
+package com.chuyende.hotelbookingappofuser.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

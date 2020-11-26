@@ -6,7 +6,11 @@
     android:padding="5dp">
 
     <LinearLayout
-       style="@style/LeanerLayout">
+       android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/customedittext"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
 
 
@@ -15,7 +19,9 @@
         android:scaleType="fitXY"
         android:src="@drawable/hinhgai1"
         android:layout_width="75dp"
-        android:layout_height="75dp"/>
+        android:layout_height="75dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -23,7 +29,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:id="@+id/txtloibinhluan"
-            android:text="khách sạn rất tốt"></EditText>
+            android:text="khách sạn rất tốt"
+            android:layout_gravity="center"></EditText>
     </LinearLayout>
 
 

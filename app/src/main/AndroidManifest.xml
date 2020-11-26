@@ -17,8 +17,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_api_key" />
 
-        <activity android:name=".GiaoDien.Manhinhthanhtoan"></activity>
-        <activity android:name=".GiaoDien.Manhinhchitiet">
+        <activity android:name=".activities.Manhinhthanhtoan"></activity>
+        <activity android:name=".activities.Manhinhchitiet">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

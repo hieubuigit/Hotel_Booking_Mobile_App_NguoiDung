@@ -5,8 +5,8 @@ android:layout_height="match_parent"
 xmlns:tools="http://schemas.android.com/tools"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 android:orientation="vertical"
-android:background="#17EAD9"
-tools:context=".GiaoDien.Manhinhchitiet">
+android:background="@drawable/custombackground"
+tools:context=".activities.Manhinhchitiet">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,8 +14,7 @@ tools:context=".GiaoDien.Manhinhchitiet">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#17EAD9">
+    android:orientation="vertical">
 
 
 
@@ -54,6 +53,7 @@ tools:context=".GiaoDien.Manhinhchitiet">
 
     <TextView
             style="@style/NameHotel"
+        android:fontFamily="@font/open_sans_regular"
             android:text="phòng 123"
             android:id="@+id/txtTenphong"
         android:layout_marginTop="30dp"
@@ -68,6 +68,7 @@ tools:context=".GiaoDien.Manhinhchitiet">
         android:text="Địa Chỉ:"
         android:textStyle="bold"
         android:paddingTop="10dp"
+        android:fontFamily="@font/open_sans_regular"
         ></TextView>
 
      <TextView
@@ -75,6 +76,7 @@ tools:context=".GiaoDien.Manhinhchitiet">
          android:text="37 chương dương"
          android:textStyle="bold"
          android:id="@+id/txtDiachi"
+         android:fontFamily="@font/open_sans_regular"
          >
 
      </TextView>
@@ -84,7 +86,8 @@ tools:context=".GiaoDien.Manhinhchitiet">
         <TextView
            style="@style/label"
             android:text="Rating:"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"
+            android:fontFamily="@font/open_sans_regular"></TextView>
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -108,10 +111,12 @@ tools:context=".GiaoDien.Manhinhchitiet">
     <TextView
         style="@style/label"
         android:text="Mô Tả: "
-        android:textStyle="bold">
+        android:textStyle="bold"
+        android:fontFamily="@font/open_sans_regular">
 
     </TextView>
         <TextView
+            android:fontFamily="@font/open_sans_regular"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
@@ -121,12 +126,15 @@ tools:context=".GiaoDien.Manhinhchitiet">
             ></TextView>
 
     <TextView
+        android:fontFamily="@font/open_sans_regular"
         style="@style/textview"
         android:text="số người tối đa 2 người lớn"
+        android:textStyle="bold"
         ></TextView>
     <TextView
         style="@style/label"
-        android:text="Các dịch vụ:"></TextView>
+        android:text="Các dịch vụ:"
+        android:fontFamily="@font/open_sans_regular"></TextView>
 
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
@@ -151,7 +159,8 @@ tools:context=".GiaoDien.Manhinhchitiet">
         <TextView
             style="@style/label"
             android:text="Đánh Giá: "
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"
+            android:fontFamily="@font/open_sans_regular"></TextView>
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -169,18 +178,20 @@ tools:context=".GiaoDien.Manhinhchitiet">
     <TextView
         style="@style/label"
         android:text="Bình Luận:"
-
+        android:fontFamily="@font/open_sans_regular"
         ></TextView>
     <LinearLayout
         style="@style/LeanerLayoutbl"
         >
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="100dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"
             android:id="@+id/txtBinhluan"
-            android:text="khách sạn rất tốt"></EditText>
+            android:text="khách sạn rất tốt"
+            android:fontFamily="@font/open_sans_regular"></EditText>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -193,7 +204,8 @@ tools:context=".GiaoDien.Manhinhchitiet">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -211,9 +223,11 @@ tools:context=".GiaoDien.Manhinhchitiet">
             android:layout_height="wrap_content"
             android:text="xem them danh gia"
             android:layout_gravity="center"
-            android:textColor="#FF5722"
+            android:textColor="#00FFEA"
             android:id="@+id/txtxemthem"
-            android:textSize="20dp">
+            android:layout_marginBottom="20dp"
+            android:textSize="20dp"
+            android:fontFamily="@font/open_sans_regular">
 
         </TextView>
 
@@ -222,6 +236,7 @@ tools:context=".GiaoDien.Manhinhchitiet">
         android:textSize="20dp"
         style="@style/label"
         android:text="Vị trí trên bản đồ:"
+        android:fontFamily="@font/open_sans_regular"
         ></TextView>
     <fragment
         android:layout_width="match_parent"
@@ -241,13 +256,18 @@ tools:context=".GiaoDien.Manhinhchitiet">
 
     </ScrollView>
 
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Đặt ngay"
-    android:id="@+id/btnDatngay"
-    android:layout_marginTop="-40dp"
-    ></Button>
+    <Button
+        android:id="@+id/btnDatngay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-40dp"
+        android:background="@drawable/maubutton"
+        android:text="Đặt ngay"
+
+
+
+        ></Button>
+
 
 </LinearLayout>
 
