@@ -1,260 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-xmlns:tools="http://schemas.android.com/tools"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-android:orientation="vertical"
-android:background="@drawable/custombackground"
-tools:context=".activities.Manhinhchitiet">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@drawable/custombackground"
+    android:orientation="vertical"
+    tools:context=".activities.Manhinhchitiet">
 
-
-
-    <androidx.viewpager.widget.ViewPager
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:id="@+id/viewpager">
-
-    </androidx.viewpager.widget.ViewPager>
-
-    <LinearLayout
-        style="@style/LeanerLayout">
-    <me.relex.circleindicator.CircleIndicator
-        android:id="@+id/circle_indicator"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="-50dp"
-        android:layout_gravity="center"
-        android:layout_height="30dp"/>
-    </LinearLayout>
-
-    <ImageButton
-        android:id="@+id/ibHeart"
-        android:background="@null"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="450dp"
-        android:layout_marginTop="-55dp"
-        android:src="@drawable/ic_baseline_favorite_border_24"
-        ></ImageButton>
-
-
-
-
-
-
-
-    <TextView
-            style="@style/NameHotel"
-        android:fontFamily="@font/open_sans_regular"
-            android:text="phòng 123"
-            android:id="@+id/txtTenphong"
-        android:layout_marginTop="30dp"
-            ></TextView>
-
-
-
-    <LinearLayout
-        style="@style/LeanerLayout">
-    <TextView
-        style="@style/label"
-        android:text="Địa Chỉ:"
-        android:textStyle="bold"
-        android:paddingTop="10dp"
-        android:fontFamily="@font/open_sans_regular"
-        ></TextView>
-
-     <TextView
-         style="@style/textview"
-         android:text="37 chương dương"
-         android:textStyle="bold"
-         android:id="@+id/txtDiachi"
-         android:fontFamily="@font/open_sans_regular"
-         >
-
-     </TextView>
-    </LinearLayout>
-    <LinearLayout
-       style="@style/LeanerLayout">
-        <TextView
-           style="@style/label"
-            android:text="Rating:"
-            android:textStyle="bold"
-            android:fontFamily="@font/open_sans_regular"></TextView>
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:progressTint="#ffff00"
-            android:id="@+id/rbrating"
-            android:numStars="5"
-            android:stepSize=".5"
-            android:scaleY="0.8"
-            android:scaleX="0.8"
-            style="@android:style/Widget.Holo.RatingBar"></RatingBar>
-
-
-        <TextView
-           style="@style/textview"
-            android:layout_marginLeft="100dp"
-            android:text="12$/đêm"></TextView>
-
-
-    </LinearLayout>
-
-    <TextView
-        style="@style/label"
-        android:text="Mô Tả: "
-        android:textStyle="bold"
-        android:fontFamily="@font/open_sans_regular">
-
-    </TextView>
-        <TextView
-            android:fontFamily="@font/open_sans_regular"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:id="@+id/txtMota"
-            android:text="phòng sạch sẽ thoáng mát"
-            ></TextView>
-
-    <TextView
-        android:fontFamily="@font/open_sans_regular"
-        style="@style/textview"
-        android:text="số người tối đa 2 người lớn"
-        android:textStyle="bold"
-        ></TextView>
-    <TextView
-        style="@style/label"
-        android:text="Các dịch vụ:"
-        android:fontFamily="@font/open_sans_regular"></TextView>
-
-    <androidx.viewpager.widget.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:id="@+id/viewpager2">
-
-    </androidx.viewpager.widget.ViewPager>
-
-    <LinearLayout
-       style="@style/LeanerLayout">
-
-    <me.relex.circleindicator.CircleIndicator
-        android:id="@+id/circle_indicator2"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="-30dp"
-        android:layout_gravity="center"
-        android:layout_height="30dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        style="@style/LeanerLayout">
-        <TextView
-            style="@style/label"
-            android:text="Đánh Giá: "
-            android:textStyle="bold"
-            android:fontFamily="@font/open_sans_regular"></TextView>
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:progressTint="#ffff00"
-            android:id="@+id/rbDanhgia"
-            android:numStars="5"
-            android:stepSize=".5"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
-            style="@android:style/Widget.Holo.RatingBar"></RatingBar>
-
-
-    </LinearLayout>
-
-    <TextView
-        style="@style/label"
-        android:text="Bình Luận:"
-        android:fontFamily="@font/open_sans_regular"
-        ></TextView>
-    <LinearLayout
-        style="@style/LeanerLayoutbl"
-        >
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="15dp"
-            android:id="@+id/txtBinhluan"
-            android:text="khách sạn rất tốt"
-            android:fontFamily="@font/open_sans_regular"></EditText>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bình Luận"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/btnBinhluan"
-            ></Button>
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_marginTop="5dp"
-            tools:listitem="@layout/iten_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="220dp">
+
+            </androidx.viewpager.widget.ViewPager>
+
+            <LinearLayout style="@style/LeanerLayout">
+                <me.relex.circleindicator.CircleIndicator
+                    android:id="@+id/circle_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="-50dp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/ibHeart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="450dp"
+                android:layout_marginTop="-55dp"
+                android:background="@null"
+                android:src="@drawable/ic_baseline_favorite_border_24"></ImageButton>
+
+
+            <TextView
+                android:id="@+id/txtTenphong"
+                style="@style/NameHotel"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="phòng 123"></TextView>
+
+
+            <LinearLayout
+                style="@style/LeanerLayout"
+                android:layout_marginTop="10dp"
+                android:weightSum="10">
+
+                <TextView
+                    style="@style/label"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:text="Địa Chỉ:"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/txtDiachi"
+                    style="@style/textview"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="9"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:text="37 chương dương"
+                    android:textStyle="bold">
+
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LeanerLayout"
+                android:layout_marginTop="10dp"
+                android:weightSum="10">
+
+                <TextView
+                    style="@style/label"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:paddingTop="15dp"
+                    android:text="Rating:"
+                    android:textStyle="bold"></TextView>
+
+                <RatingBar
+                    android:id="@+id/rbrating"
+                    style="@android:style/Widget.Holo.RatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="4"
+                    android:numStars="5"
+                    android:progressTint="#ffff00"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:stepSize=".5"></RatingBar>
+
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="55dp"
+                    android:layout_weight="5"
+                    android:text="12$/đêm"></TextView>
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/label"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Mô Tả: "
+                android:textStyle="bold">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/txtMota"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/customdienvao"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="phòng sạch sẽ thoáng mát"></EditText>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:weightSum="10"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:paddingTop="10dp"
+                    android:text="Số người tối đa:"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:paddingTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:text=" 2 người lớn"
+                    android:layout_marginLeft="30dp"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
+
+
+            <TextView
+                style="@style/label"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Các dịch vụ:"></TextView>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+
+            </androidx.viewpager.widget.ViewPager>
+
+            <LinearLayout style="@style/LeanerLayout">
+
+                <me.relex.circleindicator.CircleIndicator
+                    android:id="@+id/circle_indicator2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="-30dp" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/LeanerLayout">
+
+                <TextView
+                    style="@style/label"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:paddingTop="15dp"
+                    android:text="Đánh Giá: "
+                    android:textStyle="bold"></TextView>
+
+                <RatingBar
+
+
+                    android:id="@+id/rbDanhgia"
+                    style="@android:style/Widget.Holo.RatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:numStars="5"
+                    android:progressTint="#ffff00"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:stepSize=".5"></RatingBar>
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/label"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Bình Luận:"></TextView>
+
+            <LinearLayout
+                style="@style/LeanerLayoutbl"
+                android:weightSum="10">
+
+                <EditText
+                    android:id="@+id/txtBinhluan"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="4"
+                    android:background="@drawable/customdienvao"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:hint="đánh giá nhận xét của bạn về phòng"></EditText>
+
+                <Button
+                    android:id="@+id/btnBinhluan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custombinhluan"
+                    android:text="Bình Luận"></Button>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="4"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/iten_view" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtxemthem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:text="xem thêm đánh giá"
+                    android:textColor="#00FFEA"
+                    android:textSize="20dp">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/label"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Vị trí trên bản đồ:"
+                android:textSize="20dp"></TextView>
+
+            <fragment
+                android:id="@+id/google_map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="xem them danh gia"
-            android:layout_gravity="center"
-            android:textColor="#00FFEA"
-            android:id="@+id/txtxemthem"
-            android:layout_marginBottom="20dp"
-            android:textSize="20dp"
-            android:fontFamily="@font/open_sans_regular">
-
-        </TextView>
-
-    </LinearLayout>
-    <TextView
-        android:textSize="20dp"
-        style="@style/label"
-        android:text="Vị trí trên bản đồ:"
-        android:fontFamily="@font/open_sans_regular"
-        ></TextView>
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:id="@+id/google_map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"/>
-
-
-
-
-
-
-
-
-
-</LinearLayout>
-
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <Button
         android:id="@+id/btnDatngay"
@@ -263,7 +296,6 @@ tools:context=".activities.Manhinhchitiet">
         android:layout_marginTop="-40dp"
         android:background="@drawable/maubutton"
         android:text="Đặt ngay"
-
 
 
         ></Button>

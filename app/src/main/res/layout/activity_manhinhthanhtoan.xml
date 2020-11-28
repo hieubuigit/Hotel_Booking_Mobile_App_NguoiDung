@@ -29,7 +29,19 @@
             android:layout_gravity="center"
             android:fontFamily="@font/open_sans_regular"
             ></TextView>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:weightSum="10">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Địa Chỉ:"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"></TextView>
         <TextView
             android:fontFamily="@font/open_sans_regular"
             android:layout_marginTop="10dp"
@@ -37,14 +49,17 @@
             android:text="37 chương dương"
             android:id="@+id/edit_diachitt"
            android:layout_marginLeft="10dp"
+            android:layout_weight="9"
             ></TextView>
-
+        </LinearLayout>
         <LinearLayout
+            android:weightSum="2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
             <LinearLayout
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -58,15 +73,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                        <TextView
+                        <EditText
                             android:fontFamily="@font/open_sans_regular"
                             android:id="@+id/edit_Ngayden"
                             android:layout_width="100dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
-                            android:background="@drawable/customedittext"
-                            ></TextView>
+                            android:background="@drawable/customdienvao"
+                            android:inputType="text"
+                            ></EditText>
                     <ImageButton
                         android:id="@+id/img_Ngayden"
                         android:layout_width="wrap_content"
@@ -80,10 +96,11 @@
 
             </LinearLayout>
             <LinearLayout
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="150dp">
+                android:layout_marginLeft="110dp">
             <TextView
                 android:fontFamily="@font/open_sans_regular"
                 style="@style/label"
@@ -94,16 +111,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
+                <EditText
                     android:fontFamily="@font/open_sans_regular"
                     android:id="@+id/edit_Ngaydi"
                     android:layout_width="100dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/customedittext"
+                    android:background="@drawable/customdienvao"
+                    android:inputType="text"
 
-                    ></TextView>
+                    ></EditText>
                 <ImageButton
                     android:id="@+id/img_Ngaydi"
                     android:layout_width="wrap_content"
@@ -117,15 +135,17 @@
 
         <LinearLayout
             android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="10">
         <TextView
             android:fontFamily="@font/open_sans_regular"
             style="@style/label"
             android:text="Số người:"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"></TextView>
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"></TextView>
         <TextView
             android:fontFamily="@font/open_sans_regular"
             style="@style/label"
@@ -133,15 +153,19 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:textColor="#673AB7"
-            android:id="@+id/txtsonguoi"></TextView>
+            android:id="@+id/txtsonguoi"
+            android:layout_weight="9"></TextView>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:weightSum="10"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
         <TextView
+            android:layout_weight="2"
             android:fontFamily="@font/open_sans_regular"
             style="@style/label"
             android:text="Giá phòng:"
@@ -149,21 +173,24 @@
             android:layout_marginTop="10dp"></TextView>
 
             <TextView
+                android:layout_weight="8"
                 android:fontFamily="@font/open_sans_regular"
                 android:id="@+id/txtGia"
                 style="@style/label"
                 android:text="12$/Đêm"
-                android:layout_marginLeft="300dp"
+                android:gravity="center"
                 android:layout_marginTop="10dp"></TextView>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="10">
 
             <TextView
+                android:layout_weight="2"
                 android:fontFamily="@font/open_sans_regular"
                 style="@style/label"
                 android:text="Tạm Tính:"
@@ -171,43 +198,55 @@
                 android:layout_marginTop="10dp"></TextView>
 
             <TextView
+                android:layout_weight="8"
+                android:gravity="center"
                 android:fontFamily="@font/open_sans_regular"
                 android:id="@+id/txtGiatamtinh"
                 style="@style/label"
                 android:text="12$/Đêm"
-                android:layout_marginLeft="300dp"
+
                 android:layout_marginTop="10dp"></TextView>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="10">
 
             <TextView
+                android:layout_weight="2"
                 android:fontFamily="@font/open_sans_regular"
                 style="@style/label"
                 android:text="Giảm Giá:"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"></TextView>
+                android:paddingTop="15dp"></TextView>
 
-            <TextView
+            <EditText
+                android:layout_weight="8"
                 android:fontFamily="@font/open_sans_regular"
                 android:id="@+id/txtmagiamgia"
                 style="@style/label"
-                android:text="GD2005"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="10dp"></TextView>
+                android:hint="DSH551"
+                android:gravity="center"
+                android:inputType="text"
+             android:layout_marginLeft="70dp"
+                android:paddingTop="15dp"
+
+                android:background="@drawable/customdienvao"></EditText>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:weightSum="10">
 
             <TextView
+                android:layout_weight="2"
                 android:fontFamily="@font/open_sans_regular"
                 style="@style/label"
                 android:text="Tổng Tiền:"
@@ -219,7 +258,8 @@
                 android:id="@+id/txttongtien"
                 style="@style/label"
                 android:text="8$/Đêm"
-                android:layout_marginLeft="300dp"
+               android:layout_weight="8"
+                android:gravity="center"
                 android:layout_marginTop="10dp"></TextView>
 
         </LinearLayout>
@@ -323,13 +363,13 @@
                 android:textColor="#E91E63"
                 ></TextView>
 
-            <EditText
-                android:fontFamily="@font/open_sans_regular"
+            <TextView
+
                 style="@style/label"
-                android:text="Bước 3: Quý khách chuyển số tiền vào tài khoản của chúng tôi: "
                 android:layout_marginLeft="10dp"
-                android:textColor="#101010"
-                ></EditText>
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Bước 3: Quý khách chuyển số tiền vào tài khoản của chúng tôi: "
+                android:textColor="#101010"></TextView>
 
             <TextView
                 android:fontFamily="@font/open_sans_regular"

@@ -103,6 +103,8 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
         ibHeart.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
         ibHeart.setOnClickListener(Heart);
 
+
+
         //custom recycler binh luan
 
         recyclerView = findViewById(R.id.recyclerview);
@@ -161,6 +163,19 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
 
         }
     };
+    // ham bỏ yêu thich
+//    View.OnClickListener Noheart = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//            if (iconyeuthich)
+//            {
+//                view.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
+//            }
+//            else{
+//                view.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
+//            }
+//        }
+//    };
 
     private void setControl() {
         viewPager = findViewById(R.id.viewpager);
