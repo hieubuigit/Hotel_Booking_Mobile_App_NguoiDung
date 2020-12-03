@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--==================== Man hinh yeu thich ===================-->
+    <color name="startColor">#17EAD9</color>
+    <color name="endColor">#6078EA</color>
+    <!--==================== End man hinh yeu thich ===================-->
+
 </resources>
