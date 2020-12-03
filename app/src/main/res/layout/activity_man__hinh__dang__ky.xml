@@ -5,7 +5,7 @@
     tools:context=".activities.Man_Hinh_Dang_Ky">
 
     <ImageView
-        android:id="@+id/imageViewDangKy"
+        android:id="@+id/imageView_Anh_Dai_Dien_DangKy"
         style="@style/imageView_DangKy" />
 
     <LinearLayout style="@style/liner_hor">
@@ -29,7 +29,7 @@
             android:text="@string/tvEmail_DangKy"></TextView>
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/editText_Email_DangKy"
             style="@style/EditText_Nhap"
             android:hint="@string/hintNhapEmail_DangKy"></EditText>
     </LinearLayout>
@@ -42,7 +42,7 @@
             android:text="@string/tvSDT"></TextView>
 
         <EditText
-            android:id="@+id/editTextSDT"
+            android:id="@+id/editText_SDT_DangKy"
             style="@style/EditText_Nhap"
             android:hint="@string/hintNhapSDT"></EditText>
     </LinearLayout>
@@ -55,7 +55,7 @@
             android:text="@string/tvMK_DangKy"></TextView>
 
         <EditText
-            android:id="@+id/editTextMatKhau_DangKy"
+            android:id="@+id/editText_MatKhau_DangKy"
             style="@style/EditText_Nhap"
             android:hint="@string/hintMK_DangKy"></EditText>
     </LinearLayout>
@@ -68,7 +68,7 @@
             android:text="@string/tvXacNhanMK"></TextView>
 
         <EditText
-            android:id="@+id/editTextXacNhan"
+            android:id="@+id/editText_XacNhan_DangKy"
             style="@style/EditText_Nhap"
             android:hint="@string/hintXacNhanMK"></EditText>
     </LinearLayout>
@@ -76,7 +76,8 @@
     <LinearLayout style="@style/liner_hor">
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkBox_DangKy"
+            android:checked="false"
             style="@style/CheckBox_DangKy"></CheckBox>
 
         <TextView
@@ -86,7 +87,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/buttonDangKy"
+        android:id="@+id/button_DangKy"
         style="@style/ButtonDangKy"
         android:text="@string/btnDangKy"></Button>
 </LinearLayout>

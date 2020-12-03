@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_width="250dp"
+    android:weightSum="4"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/textView_Dialog_QTK_Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/open_sans_bold"
+        android:textSize="@dimen/font_size_textview"
+        android:text="@string/tv_Dialog_Email"/>
+    <TextView
+        android:id="@+id/textView_Dialog_QTK_TenTK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/open_sans_bold"
+        android:textSize="@dimen/font_size_textview"
+        android:hint="@string/tv_Dialog_TenTK" />
+    <EditText
+        android:id="@+id/editText_Dialog_OTP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/open_sans_regular"
+        android:textSize="@dimen/font_size_edittext"
+        android:hint="@string/txt_Dialog_OTP"/>
+    <EditText
+        android:id="@+id/editText_Dialog_MK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/open_sans_regular"
+        android:textSize="@dimen/font_size_edittext"
+        android:hint="@string/txt_Dialog_MatKhau"/>
+
+</LinearLayout>

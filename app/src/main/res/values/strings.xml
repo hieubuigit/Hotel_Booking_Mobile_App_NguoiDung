@@ -66,6 +66,14 @@
     <string name="tvQuenMatKhau">Bạn đang gặp sự cố về tài khoản? Hãy nhập tài khoản email đăng ký để được đặt lại mật khẩu.</string>
     <!--    Kết thúc màn hình quên tài khoản-->
 
+    <!--    Dialog Màn hình quên tài khoản-->
+    <string name="tv_Dialog_Email">Email</string>
+    <string name="tv_Dialog_TenTK">Tên tài khoản của bạn</string>
+    <string name="txt_Dialog_OTP">Nhập mã OTP</string>
+    <string name="txt_Dialog_MatKhau">Nhập mật khẩu mới</string>
+    <string name="positive">Xác nhận</string>
+    <string name="negative">Hủy</string>
+    <!--    Dialog Kết thúc màn hình quên tài khoản-->
 
     <!--    Màn hình quên kết quả tìm kiếm-->
     <!--    Kết thúc màn hình kết quả tìm kiếm-->
@@ -74,4 +82,11 @@
     <string name="home">Tất cả phòng</string>
     <string name="favorite">Yêu thích</string>
     <string name="account">Tài khoản</string>
+
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_app_id">139038610997148</string>
+    <string name="fb_login_protocol_scheme">fb139038610997148</string>
+    <!-- Twitter consumer key and secret -->
+    <string name="twitter_consumer_key" translatable="false">YOUR_CONSUMER_KEY</string>
+    <string name="twitter_consumer_secret" translatable="false">YOUR_CONSUMER_SECRET</string>
 </resources>

@@ -23,13 +23,13 @@
             android:text="@string/tvEmail_QTK"></TextView>
 
         <EditText
-            android:id="@+id/editTextEmail_QMK"
+            android:id="@+id/editText_Email_QMK"
             style="@style/EditText_Nhap"
             android:hint="@string/hintNhapEmail_QTK"></EditText>
     </LinearLayout>
 
     <Button
-        android:id="@+id/buttonDangNhap"
+        android:id="@+id/button_DatLaiMatKhau_QMK"
         style="@style/ButtonQuenTaiKhoan"
         android:text="@string/btnQuenMatKhau"></Button>
 

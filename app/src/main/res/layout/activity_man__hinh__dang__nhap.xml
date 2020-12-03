@@ -40,22 +40,23 @@
         android:text="@string/tvQuenTaiKhoan"></TextView>
 
     <Button
-        android:id="@+id/buttonDangNhap"
+        android:id="@+id/button_DangNhap"
         style="@style/ButtonDangNhap"
         android:text="@string/btnDangNhap"></Button>
 
     <Button
-        android:id="@+id/buttonGG"
+        android:id="@+id/button_DangNhap_Google"
         style="@style/ButtonDangNhap_others"
         android:text="@string/btnGG"></Button>
 
+
     <Button
-        android:id="@+id/buttonFB"
+        android:id="@+id/button_DangNhap_Facebook"
         style="@style/ButtonDangNhap_others"
         android:text="@string/btnFB"></Button>
 
     <Button
-        android:id="@+id/buttonIns"
+        android:id="@+id/button_DangNhap_Twitter"
         style="@style/ButtonDangNhap_others"
         android:text="@string/btnIns"></Button>
 

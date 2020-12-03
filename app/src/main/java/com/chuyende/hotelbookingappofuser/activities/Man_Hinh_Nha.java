@@ -89,10 +89,17 @@ public class Man_Hinh_Nha extends AppCompatActivity {
         arrayList.add(phong5);
         return arrayList;
     }
+
+    // Ánh xạ
     private void setControl() {
+        // grid view
         gridView = findViewById(R.id.gridViewMain);
+        // autocomplete
         AutoCompleteTextView = findViewById(R.id.multiauto_Search);
+        // bottomnavigation
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        // scrollview
+        scrollView = findViewById(R.id.scrollView);
 
     }
 
