@@ -113,6 +113,7 @@ public class Man_Hinh_Dang_Nhap extends AppCompatActivity {
             }
         });
 //        [END click button chuyển sang màn hình quên tài khoản]
+
 //         [START click button đăng nhập bằng tài khoản đăng ký]
         // chưa hoàn thành
         btn_Dang_Nhap.setOnClickListener(new View.OnClickListener() {
@@ -129,11 +130,13 @@ public class Man_Hinh_Dang_Nhap extends AppCompatActivity {
                             && taiKhoanNguoiDung2.getMatKhau_TKNguoiDung().equals(txt_Mat_Khau_DN.getText().toString().trim()) == true) {
                         Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Man_Hinh_Dang_Nhap.this, Man_Hinh_Nha.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("key_id_ten_tai_khoan",taiKhoanNguoiDung2.getMa_TKNguoiDung());
+                        intent.putExtras(bundle);
                         startActivity(intent);
                     } else {
                         Log.d("TAG4", "Dang Nhap that bai");
                     }
-
                 }
                 Log.d("TAG-ArrayList_after_click", "Gia tri arrlist => " + arrayListTKNguoiDung.toString());
             }

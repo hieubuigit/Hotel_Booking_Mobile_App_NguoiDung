@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/liner_ver"
+    android:weightSum="4"
     tools:context=".activities.Man_Hinh_Quen_Tai_Khoan">
 
     <ImageView
         android:id="@+id/imageViewDangKy"
+        android:layout_weight="1"
         style="@style/imageView_QuenTaiKhoan" />
 
     <TextView
@@ -15,7 +17,7 @@
 
     <LinearLayout
         style="@style/liner_hor"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="30dp">
 
         <TextView
             android:id="@+id/textView"

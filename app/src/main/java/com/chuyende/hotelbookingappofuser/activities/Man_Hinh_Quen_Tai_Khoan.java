@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +28,8 @@ public class Man_Hinh_Quen_Tai_Khoan extends AppCompatActivity{
 
     // sự kiện
     private void setEvent() {
+//        Bundle bundle =getIntent().getExtras();
+//        String getBundle = bundle.getString("key_id_ten_tai_khoan");
         btn_Dat_Lai_Mat_Khau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.ScrollView;
 
 import com.chuyende.hotelbookingappofuser.R;
+import com.chuyende.hotelbookingappofuser.adapters.Adapter_ExpandableHeightGridView;
 import com.chuyende.hotelbookingappofuser.adapters.Adapter_GridView_Phong;
 import com.chuyende.hotelbookingappofuser.data_models.ClsPhong;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,9 +20,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 public class Man_Hinh_Nha extends AppCompatActivity {
-    GridView gridView;
+//    GridView gridView;
     ScrollView scrollView;
     AutoCompleteTextView AutoCompleteTextView;
+    Adapter_ExpandableHeightGridView gridView;
     ArrayAdapter arrayAdapter;
     Adapter_GridView_Phong adapter;
     BottomNavigationView bottomNavigationView; // khai bao layout fragment chính (activity_man layout)
@@ -37,7 +39,7 @@ public class Man_Hinh_Nha extends AppCompatActivity {
         ArrayList<ClsPhong> arrListPhong = get_Data_Phong();
         adapter = new Adapter_GridView_Phong(this,R.layout.listview_item, arrListPhong);
         gridView.setAdapter(adapter);
-
+        gridView.setExpanded(true);
         // multiautpcomplete search
         ArrayList arrayList = new ArrayList();
         String getenphong = "";
@@ -100,7 +102,7 @@ public class Man_Hinh_Nha extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         // scrollview
         scrollView = findViewById(R.id.scrollView);
-
+        // gridview full height
     }
 
 }

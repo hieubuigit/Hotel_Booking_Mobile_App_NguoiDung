@@ -11,20 +11,19 @@ public class TaiKhoanNguoiDung {
     private String email_TKNguoiDung;
     private String sdt_TKNguoiDung;
     private String maOTP_TKNGuoiDung;
-    private ArrayList<TaiKhoanNguoiDung> arrayList;
+
     public TaiKhoanNguoiDung() {
     }
 
     public TaiKhoanNguoiDung(String ma_TKNguoiDung, String ten_TKNguoiDung,
                              String matKhau_TKNguoiDung, String email_TKNguoiDung,
-                             String sdt_TKNguoiDung, String maOTP_TKNGuoiDung, ArrayList<TaiKhoanNguoiDung> arrList) {
+                             String sdt_TKNguoiDung, String maOTP_TKNGuoiDung) {
         this.ma_TKNguoiDung = ma_TKNguoiDung;
         this.ten_TKNguoiDung = ten_TKNguoiDung;
         this.matKhau_TKNguoiDung = matKhau_TKNguoiDung;
         this.email_TKNguoiDung = email_TKNguoiDung;
         this.sdt_TKNguoiDung = sdt_TKNguoiDung;
         this.maOTP_TKNGuoiDung = maOTP_TKNGuoiDung;
-        this.arrayList = arrList;
     }
 
     public String getMa_TKNguoiDung() {
@@ -75,13 +74,6 @@ public class TaiKhoanNguoiDung {
         this.maOTP_TKNGuoiDung = maOTP_TKNGuoiDung;
     }
 
-    public ArrayList<TaiKhoanNguoiDung> getArrayList() {
-        return arrayList;
-    }
-
-    public void setArrayList(ArrayList<TaiKhoanNguoiDung> arrayList) {
-        this.arrayList = arrayList;
-    }
 
     @Override
     public String toString() {
@@ -92,7 +84,6 @@ public class TaiKhoanNguoiDung {
                 ", email_TKNguoiDung='" + email_TKNguoiDung + '\'' +
                 ", sdt_TKNguoiDung='" + sdt_TKNguoiDung + '\'' +
                 ", maOTP_TKNGuoiDung='" + maOTP_TKNGuoiDung + '\'' +
-                ", arrayList=" + arrayList +
                 '}';
     }
 }

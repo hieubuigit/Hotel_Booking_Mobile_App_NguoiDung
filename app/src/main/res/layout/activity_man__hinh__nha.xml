@@ -79,16 +79,19 @@
 
             </LinearLayout>
 
-            <GridView
+            <com.chuyende.hotelbookingappofuser.adapters.Adapter_ExpandableHeightGridView
                 android:layout_weight="1"
                 android:id="@+id/gridViewMain"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:horizontalSpacing="10dp"
+                android:isScrollContainer="false"
                 android:verticalSpacing="10dp"
                 android:numColumns="2"
-                android:stretchMode="columnWidth"></GridView>
+                android:stretchMode="columnWidth">
+
+            </com.chuyende.hotelbookingappofuser.adapters.Adapter_ExpandableHeightGridView>
         </LinearLayout>
 <!--        android:layout_height="370dp"-->
     </ScrollView>

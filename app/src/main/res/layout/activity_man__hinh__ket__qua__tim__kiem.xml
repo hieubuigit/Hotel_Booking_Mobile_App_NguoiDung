@@ -1,145 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/liner_ver"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_app"
     tools:context=".activities.Man_Hinh_Ket_Qua_Tim_Kiem">
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation">
+        <LinearLayout
+            android:weightSum="4"
+            style="@style/liner_ver"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/editTextTenTK_KetQua"
-        style="@style/EditText_ManHinhNha"
-        android:hint="@string/txtTimKiem"></EditText>
+                <AutoCompleteTextView
+                    android:id="@+id/multiauto_Search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_spinner"
+                    android:drawableLeft="@drawable/search"
+                    android:padding="10dp"></AutoCompleteTextView>
+            </RelativeLayout>
 
-    <LinearLayout
-        style="@style/liner_hor_ManHinhNha">
+            <LinearLayout
+                android:layout_weight="1"
+                style="@style/liner_hor_ManHinhNha">
 
-        <RelativeLayout style="@style/Relative_spinner_ManHinhNha"
-            android:layout_marginRight="10dp">
+                <RelativeLayout
+                    style="@style/Relative_spinner_ManHinhNha">
 
-            <Spinner
-                android:id="@+id/spinnerTinhThanh"
-                style="@style/Spinner"
-                android:entries="@array/spTinhThanh"></Spinner>
-        </RelativeLayout>
+                    <Spinner
+                        android:id="@+id/spinnerTinhThanh"
+                        style="@style/Spinner"
+                        android:entries="@array/spTinhThanh"></Spinner>
+                </RelativeLayout>
 
-        <RelativeLayout
-            style="@style/Relative_spinner_ManHinhNha"
-            android:layout_marginLeft="10dp">
-            <Spinner
-                android:id="@+id/spinnerTinhThanh2"
-                style="@style/Spinner"
-                android:entries="@array/spLoaiPhong"></Spinner>
-        </RelativeLayout>
+                <RelativeLayout
+                    style="@style/Relative_spinner_ManHinhNha"
+                    android:layout_marginLeft="10dp">
 
-    </LinearLayout>
-    <LinearLayout
-        style="@style/liner_hor_ManHinhNha">
+                    <Spinner
+                        android:id="@+id/spinnerTinhThanh2"
+                        style="@style/Spinner"
+                        android:entries="@array/spLoaiPhong"></Spinner>
+                </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp">
+            </LinearLayout>
 
-        </RelativeLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                style="@style/liner_hor_ManHinhNha">
 
-        <RelativeLayout
-            style="@style/Relative_spinner_ManHinhNha"
-            android:layout_marginLeft="10dp">
-            <Spinner
-                android:id="@+id/spinnerTinhThanh4"
-                style="@style/Spinner"
-                android:entries="@array/spTieuChi"></Spinner>
-        </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
 
-    </LinearLayout>
+                </RelativeLayout>
 
-    <LinearLayout style="@style/liner_hor_ManHinhNha">
+                <RelativeLayout
+                    style="@style/Relative_spinner_ManHinhNha"
+                    android:layout_marginLeft="10dp">
 
-        <LinearLayout style="@style/liner_ver_MaHinhNha">
+                    <Spinner
+                        android:id="@+id/spinnerTinhThanh4"
+                        style="@style/Spinner"
+                        android:entries="@array/spTieuChi"></Spinner>
+                </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/imageView_MaHinhNha_XemPhong1"
-                style="@style/imageView_ManHinhNha"></ImageView>
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_tenphong1"
-                style="@style/EditText_TenPhong"
-                android:hint="@string/txtTenPhong"></EditText>
+            <com.chuyende.hotelbookingappofuser.adapters.Adapter_ExpandableHeightGridView
+                android:layout_weight="1"
+                android:id="@+id/gridViewMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:horizontalSpacing="10dp"
+                android:isScrollContainer="false"
+                android:verticalSpacing="10dp"
+                android:numColumns="2"
+                android:stretchMode="columnWidth">
 
-            <RatingBar
-                android:id="@+id/ratingbar1"
-                style="@style/ratingBar_ManHinhNha"></RatingBar>
-
-            <TextView
-                android:id="@+id/textView_GiaPhong1"
-                style="@style/TextView_GiaPhong"
-                android:text="@string/tvGia"></TextView>
+            </com.chuyende.hotelbookingappofuser.adapters.Adapter_ExpandableHeightGridView>
         </LinearLayout>
+        <!--        android:layout_height="370dp"-->
+    </ScrollView>
 
-        <LinearLayout style="@style/liner_ver_MaHinhNha">
-
-            <ImageView
-                android:id="@+id/imageView_MaHinhNha_XemPhong2"
-                style="@style/imageView_ManHinhNha"></ImageView>
-
-            <EditText
-                android:id="@+id/editText_tenphong2"
-                style="@style/EditText_TenPhong"
-                android:hint="@string/txtTenPhong"></EditText>
-
-            <RatingBar
-                android:id="@+id/ratingbar2"
-                style="@style/ratingBar_ManHinhNha"></RatingBar>
-
-            <TextView
-                android:id="@+id/textView_GiaPhong2"
-                style="@style/TextView_GiaPhong"
-                android:text="@string/tvGia"></TextView>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout style="@style/liner_hor_ManHinhNha">
-
-        <LinearLayout style="@style/liner_ver_MaHinhNha">
-
-            <ImageView
-                android:id="@+id/imageView_MaHinhNha_XemPhong3"
-                style="@style/imageView_ManHinhNha"></ImageView>
-
-            <EditText
-                android:id="@+id/editText_tenphong3"
-                style="@style/EditText_TenPhong"
-                android:hint="@string/txtTenPhong"></EditText>
-
-            <RatingBar
-                android:id="@+id/ratingbar3"
-                style="@style/ratingBar_ManHinhNha"></RatingBar>
-
-            <TextView
-                android:id="@+id/textView_GiaPhong3"
-                style="@style/TextView_GiaPhong"
-                android:text="@string/tvGia"></TextView>
-        </LinearLayout>
-
-        <LinearLayout style="@style/liner_ver_MaHinhNha">
-
-            <ImageView
-                android:id="@+id/imageView_MaHinhNha_XemPhong4"
-                style="@style/imageView_ManHinhNha"></ImageView>
-
-            <EditText
-                android:id="@+id/editText_tenphong4"
-                style="@style/EditText_TenPhong"
-                android:hint="@string/txtTenPhong"></EditText>
-
-            <RatingBar
-                android:id="@+id/ratingbar4"
-                style="@style/ratingBar_ManHinhNha"></RatingBar>
-
-            <TextView
-                android:id="@+id/textView_GiaPhong4"
-                style="@style/TextView_GiaPhong"
-                android:text="@string/tvGia"></TextView>
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="@drawable/background_bottomnavigation"
+        app:itemTextColor="@drawable/background_bottomnavigation"
+        android:background="#6078EA"
+        app:menu="@menu/menu_bottom_navigation">
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+</RelativeLayout>
