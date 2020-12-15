@@ -255,8 +255,9 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("I Am Here");
+//        LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+        LatLng latLng = new LatLng(10.983603, 108.281124);
+        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Thành Phố Phan Thiết");
 
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
