@@ -1,16 +1,16 @@
 package com.chuyende.hotelbookingappofuser.Model;
 import java.util.List;
 public class Phong {
-    private String maPhong;
+
     private String tenPhong;
-    private String maTrangThaiPhong;
+
     private Double giaThue;
-    private String maLoaiPhong;
+
     private int soKhach;
     private String maTienNghi;
     private String moTaPhong;
     private double ratingPhong;
-    private String maTinhThanhPho;
+
     private String diaChiPhong;
     private Double kinhDo;
     private Double viDo;
@@ -18,24 +18,22 @@ public class Phong {
     private String anhDaiDien;
     private String boSuuTapAnh;
     private String maKhachSan;
-    private int soLuotDat;
-    private int soLuotHuy;
 
     public Phong() {
     }
 
-    public Phong(String maPhong, String tenPhong, String maTrangThaiPhong, Double giaThue, String maLoaiPhong, int soKhach, String maTienNghi,
-                 String moTaPhong, String maTinhThanhPho, String diaChiPhong, Double kinhDo, Double viDo, int phanTramGiamGia, String anhDaiDien,
+    public Phong( String tenPhong, Double giaThue,  int soKhach, String maTienNghi,
+                 String moTaPhong,  String diaChiPhong, Double kinhDo, Double viDo, int phanTramGiamGia, String anhDaiDien,
                  String boSuuTapAnh, String maKhachSan) {
-        this.maPhong = maPhong;
+
         this.tenPhong = tenPhong;
-        this.maTrangThaiPhong = maTrangThaiPhong;
+
         this.giaThue = giaThue;
-        this.maLoaiPhong = maLoaiPhong;
+
         this.soKhach = soKhach;
         this.maTienNghi = maTienNghi;
         this.moTaPhong = moTaPhong;
-        this.maTinhThanhPho = maTinhThanhPho;
+
         this.diaChiPhong = diaChiPhong;
         this.kinhDo = kinhDo;
         this.viDo = viDo;
@@ -44,23 +42,22 @@ public class Phong {
         this.boSuuTapAnh = boSuuTapAnh;
         this.maKhachSan = maKhachSan;
         this.ratingPhong = 0.0;
-        this.soLuotDat = 0;
-        this.soLuotHuy = 0;
+
     }
 
-    public Phong(String maPhong, String tenPhong, String maTrangThaiPhong, Double giaThue, String maLoaiPhong, int soKhach, String maTienNghi,
-                 String moTaPhong, double ratingPhong, String maTinhThanhPho, String diaChiPhong, Double kinhDo, Double viDo, int phanTramGiamGia,
-                 String anhDaiDien, String boSuuTapAnh, String maKhachSan, int soLuotDat, int soLuotHuy) {
-        this.maPhong = maPhong;
+    public Phong( String tenPhong,  Double giaThue,  int soKhach, String maTienNghi,
+                 String moTaPhong, double ratingPhong,  String diaChiPhong, Double kinhDo, Double viDo, int phanTramGiamGia,
+                 String anhDaiDien, String boSuuTapAnh, String maKhachSan) {
+
         this.tenPhong = tenPhong;
-        this.maTrangThaiPhong = maTrangThaiPhong;
+
         this.giaThue = giaThue;
-        this.maLoaiPhong = maLoaiPhong;
+
         this.soKhach = soKhach;
         this.maTienNghi = maTienNghi;
         this.moTaPhong = moTaPhong;
         this.ratingPhong = ratingPhong;
-        this.maTinhThanhPho = maTinhThanhPho;
+
         this.diaChiPhong = diaChiPhong;
         this.kinhDo = kinhDo;
         this.viDo = viDo;
@@ -68,17 +65,10 @@ public class Phong {
         this.anhDaiDien = anhDaiDien;
         this.boSuuTapAnh = boSuuTapAnh;
         this.maKhachSan = maKhachSan;
-        this.soLuotDat = soLuotDat;
-        this.soLuotHuy = soLuotHuy;
+
     }
 
-    public String getMaPhong() {
-        return maPhong;
-    }
 
-    public void setMaPhong(String maPhong) {
-        this.maPhong = maPhong;
-    }
 
     public String getTenPhong() {
         return tenPhong;
@@ -88,13 +78,7 @@ public class Phong {
         this.tenPhong = tenPhong;
     }
 
-    public String getMaTrangThaiPhong() {
-        return maTrangThaiPhong;
-    }
 
-    public void setMaTrangThaiPhong(String maTrangThaiPhong) {
-        this.maTrangThaiPhong = maTrangThaiPhong;
-    }
 
     public Double getGiaThue() {
         return giaThue;
@@ -104,13 +88,6 @@ public class Phong {
         this.giaThue = giaThue;
     }
 
-    public String getMaLoaiPhong() {
-        return maLoaiPhong;
-    }
-
-    public void setMaLoaiPhong(String maLoaiPhong) {
-        this.maLoaiPhong = maLoaiPhong;
-    }
 
     public int getSoKhach() {
         return soKhach;
@@ -144,13 +121,7 @@ public class Phong {
         this.ratingPhong = ratingPhong;
     }
 
-    public String getMaTinhThanhPho() {
-        return maTinhThanhPho;
-    }
 
-    public void setMaTinhThanhPho(String maTinhThanhPho) {
-        this.maTinhThanhPho = maTinhThanhPho;
-    }
 
     public String getDiaChiPhong() {
         return diaChiPhong;
@@ -208,35 +179,21 @@ public class Phong {
         this.maKhachSan = maKhachSan;
     }
 
-    public int getSoLuotDat() {
-        return soLuotDat;
-    }
 
-    public void setSoLuotDat(int soLuotDat) {
-        this.soLuotDat = soLuotDat;
-    }
-
-    public int getSoLuotHuy() {
-        return soLuotHuy;
-    }
-
-    public void setSoLuotHuy(int soLuotHuy) {
-        this.soLuotHuy = soLuotHuy;
-    }
 
     @Override
     public String toString() {
         return "Phong{" +
-                "maPhong='" + maPhong + '\'' +
+
                 " -- tenPhong='" + tenPhong + '\'' +
-                " -- maTrangThaiPhong='" + maTrangThaiPhong + '\'' +
+
                 " -- giaThue=" + giaThue +
-                " -- maLoaiPhong='" + maLoaiPhong + '\'' +
+
                 " -- soKhach='" + soKhach + '\'' +
                 " -- maTienNghi='" + maTienNghi.toString() + '\'' +
                 " -- moTaPhong='" + moTaPhong + '\'' +
                 " -- ratingPhong=" + ratingPhong +
-                " -- maTinhThanhPho='" + maTinhThanhPho + '\'' +
+
                 " -- diaChiPhong='" + diaChiPhong + '\'' +
                 " -- kinhDo=" + kinhDo +
                 " -- viDo=" + viDo +
@@ -244,8 +201,7 @@ public class Phong {
                 " -- anhDaiDien='" + anhDaiDien + '\'' +
                 " -- boSuuTapAnh='" + boSuuTapAnh + '\'' +
                 " -- maKhachSan='" + maKhachSan + '\'' +
-                " -- soLuotDat=" + soLuotDat +
-                " -- soLuotHuy=" + soLuotHuy +
+
                 '}';
     }
 }

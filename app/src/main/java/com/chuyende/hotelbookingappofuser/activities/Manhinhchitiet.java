@@ -2,20 +2,24 @@ package com.chuyende.hotelbookingappofuser.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.DialogTitle;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chuyende.hotelbookingappofuser.Adapter.BinhluanAdapter;
@@ -23,6 +27,7 @@ import com.chuyende.hotelbookingappofuser.Adapter.DichvuAdapter;
 import com.chuyende.hotelbookingappofuser.Adapter.PhotoAdapter;
 import com.chuyende.hotelbookingappofuser.Model.Binhluan;
 import com.chuyende.hotelbookingappofuser.Model.Dichvu;
+import com.chuyende.hotelbookingappofuser.Model.Phong;
 import com.chuyende.hotelbookingappofuser.Model.Photo;
 import com.chuyende.hotelbookingappofuser.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -33,8 +38,13 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +60,7 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
 
+
     ViewPager viewPager, viewPagerdv;
     ImageButton ibHeart;
     CircleIndicator circleIndicator, circleIndicatordv;
@@ -64,6 +75,9 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
     ArrayList<Binhluan> listbinhluan;
     BinhluanAdapter binhluanAdapter;
     Button btndatngay;
+    FirebaseFirestore db=FirebaseFirestore.getInstance();
+
+
 
 
     @Override
@@ -71,6 +85,9 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manhinhchitiet);
 
+
+        //data base
+        getData();
 
         setControl();
 
@@ -80,7 +97,7 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLastLocation();
 
-
+        // Viewpage
         mListPhoto = getListPhoto();
         photoAdapter = new PhotoAdapter(this, mListPhoto);
         viewPager.setAdapter(photoAdapter);
@@ -159,6 +176,7 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
             }
             else {
                 view.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
+
             }
 
         }
@@ -250,18 +268,18 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
         Intent intent = new Intent(this, Manhinhthanhtoan.class);
         startActivity(intent);
     }
-
+    GoogleMap googleMap;
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-//        LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        LatLng latLng = new LatLng(10.983603, 108.281124);
-        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Thành Phố Phan Thiết");
+        double x = 10.983603;
+        double y = 108.281124;
+        this.googleMap =googleMap;
 
-        googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
-        googleMap.addMarker(markerOptions);
+
+//        LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+
     }
 
     @Override
@@ -273,5 +291,32 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
                 }
                 break;
         }
+    }
+
+    public void getData()
+    {
+        db.collection("Phong").document("KS010WBuLfIBmX55ssYoGq3U").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                Phong phong=task.getResult().toObject(Phong.class);
+                Log.d("test", "onComplete: "+phong.toString());
+                LatLng latLng = new LatLng(phong.getKinhDo(), phong.getViDo());
+                MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(phong.getTenPhong());
+
+                String[] tienIch=phong.getMaTienNghi().split(",");
+                for(String v:tienIch){
+                    Log.d("test", "onComplete: "+v);
+                }
+
+                task.getResult().getId();
+                //intent
+
+                googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
+                googleMap.addMarker(markerOptions);
+            }
+        });
+
+
     }
 }

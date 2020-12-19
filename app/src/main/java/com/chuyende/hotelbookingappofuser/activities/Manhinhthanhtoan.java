@@ -12,5 +12,9 @@ public class Manhinhthanhtoan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manhinhthanhtoan);
+        //ngayden-ngaydi
+        //onvaluetextchange thuc hien
+        //try catch
+        //tinh tong ngay new date()
     }
 }
