@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,6 +71,9 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
     List<Photo> mListPhoto;
     Timer mTimer;
     Boolean iconyeuthich = false;
+
+    TextView txtTenphong, txtDiachi, txtGia, txtSonguoi, txtMoTa;
+    RatingBar rbDanhGia;
 
     RecyclerView recyclerView;
     ArrayList<Binhluan> listbinhluan;
@@ -202,6 +206,12 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
         viewPagerdv = findViewById(R.id.viewpager2);
         circleIndicatordv = findViewById(R.id.circle_indicator2);
         btndatngay = findViewById(R.id.btnDatngay);
+        txtSonguoi = findViewById(R.id.txtsonguoiTD);
+        txtTenphong = findViewById(R.id.txtTenphong);
+        txtDiachi = findViewById(R.id.txtDiachi);
+        txtGia = findViewById(R.id.txtGiaphong);
+        rbDanhGia = findViewById(R.id.rbrating);
+        txtMoTa = findViewById(R.id.txtMota);
 
 
     }
@@ -302,18 +312,26 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
                 Log.d("test", "onComplete: "+phong.toString());
                 LatLng latLng = new LatLng(phong.getKinhDo(), phong.getViDo());
                 MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(phong.getTenPhong());
+//               googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+//                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
+//                googleMap.addMarker(markerOptions);
 
                 String[] tienIch=phong.getMaTienNghi().split(",");
                 for(String v:tienIch){
                     Log.d("test", "onComplete: "+v);
                 }
+                txtTenphong.setText(phong.getTenPhong());
+                txtDiachi.setText(phong.getDiaChiPhong());
+                txtGia.setText(phong.getGiaThue().toString());
+                txtSonguoi.setText(""+phong.getSoKhach());
+               rbDanhGia.setRating((float)phong.getRatingPhong());
+               txtMoTa.setText(phong.getMoTaPhong().toString());
+
 
                 task.getResult().getId();
                 //intent
 
-                googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
-                googleMap.addMarker(markerOptions);
+
             }
         });
 

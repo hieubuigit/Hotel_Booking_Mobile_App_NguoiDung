@@ -1,5 +1,5 @@
 package com.chuyende.hotelbookingappofuser.Model;
-import java.util.List;
+
 public class Phong {
 
     private String tenPhong;
@@ -9,7 +9,7 @@ public class Phong {
     private int soKhach;
     private String maTienNghi;
     private String moTaPhong;
-    private double ratingPhong;
+    private float ratingPhong;
 
     private String diaChiPhong;
     private Double kinhDo;
@@ -24,7 +24,7 @@ public class Phong {
 
     public Phong( String tenPhong, Double giaThue,  int soKhach, String maTienNghi,
                  String moTaPhong,  String diaChiPhong, Double kinhDo, Double viDo, int phanTramGiamGia, String anhDaiDien,
-                 String boSuuTapAnh, String maKhachSan) {
+                 String boSuuTapAnh, String maKhachSan, float ratingPhong) {
 
         this.tenPhong = tenPhong;
 
@@ -41,12 +41,12 @@ public class Phong {
         this.anhDaiDien = anhDaiDien;
         this.boSuuTapAnh = boSuuTapAnh;
         this.maKhachSan = maKhachSan;
-        this.ratingPhong = 0.0;
+       this.ratingPhong = ratingPhong;
 
     }
 
     public Phong( String tenPhong,  Double giaThue,  int soKhach, String maTienNghi,
-                 String moTaPhong, double ratingPhong,  String diaChiPhong, Double kinhDo, Double viDo, int phanTramGiamGia,
+                 String moTaPhong, float ratingPhong,  String diaChiPhong, Double kinhDo, Double viDo, int phanTramGiamGia,
                  String anhDaiDien, String boSuuTapAnh, String maKhachSan) {
 
         this.tenPhong = tenPhong;
@@ -117,7 +117,7 @@ public class Phong {
         return ratingPhong;
     }
 
-    public void setRatingPhong(double ratingPhong) {
+    public void setRatingPhong(float ratingPhong) {
         this.ratingPhong = ratingPhong;
     }
 

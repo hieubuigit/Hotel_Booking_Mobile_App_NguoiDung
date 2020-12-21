@@ -84,6 +84,7 @@
                             android:inputType="text"
                             ></EditText>
                     <ImageButton
+
                         android:id="@+id/img_Ngayden"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -104,7 +105,7 @@
             <TextView
                 android:fontFamily="@font/open_sans_regular"
                 style="@style/label"
-                android:text="Ngày Đến"
+                android:text="Ngày Đi"
                 android:layout_marginLeft="20dp"></TextView>
             <LinearLayout
                 android:layout_width="wrap_content"
