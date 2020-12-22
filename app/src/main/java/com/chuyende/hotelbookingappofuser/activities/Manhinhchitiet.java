@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -74,13 +76,14 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
 
     TextView txtTenphong, txtDiachi, txtGia, txtSonguoi, txtMoTa;
     RatingBar rbDanhGia;
+    ImageView imgPhoto;
 
     RecyclerView recyclerView;
     ArrayList<Binhluan> listbinhluan;
     BinhluanAdapter binhluanAdapter;
     Button btndatngay;
     FirebaseFirestore db=FirebaseFirestore.getInstance();
-
+    GoogleMap googleMap;
 
 
 
@@ -179,6 +182,7 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
                 view.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
             }
             else {
+
                 view.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
 
             }
@@ -212,6 +216,7 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
         txtGia = findViewById(R.id.txtGiaphong);
         rbDanhGia = findViewById(R.id.rbrating);
         txtMoTa = findViewById(R.id.txtMota);
+        imgPhoto = findViewById(R.id.img_photo);
 
 
     }
@@ -278,14 +283,14 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
         Intent intent = new Intent(this, Manhinhthanhtoan.class);
         startActivity(intent);
     }
-    GoogleMap googleMap;
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         double x = 10.983603;
         double y = 108.281124;
-        this.googleMap =googleMap;
+        this.googleMap = googleMap;
 
 
 //        LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
@@ -312,8 +317,8 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
                 Log.d("test", "onComplete: "+phong.toString());
                 LatLng latLng = new LatLng(phong.getKinhDo(), phong.getViDo());
                 MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(phong.getTenPhong());
-//               googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-//                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
+//             googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+//               googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
 //                googleMap.addMarker(markerOptions);
 
                 String[] tienIch=phong.getMaTienNghi().split(",");
@@ -326,7 +331,7 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
                 txtSonguoi.setText(""+phong.getSoKhach());
                rbDanhGia.setRating((float)phong.getRatingPhong());
                txtMoTa.setText(phong.getMoTaPhong().toString());
-
+//               imgPhoto.setTe(phong.getBoSuuTapAnh().toString());
 
                 task.getResult().getId();
                 //intent
@@ -337,4 +342,10 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
 
 
     }
+
+    public void BinhLuan()
+    {
+
+    }
+
 }
