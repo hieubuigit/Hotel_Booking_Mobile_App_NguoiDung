@@ -1,20 +1,16 @@
 package com.chuyende.hotelbookingappofuser.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.chuyende.hotelbookingappofuser.R;
-import com.chuyende.hotelbookingappofuser.dialogs.Dialog_Man_Hinh_Quen_Tai_Khoan;
+import com.chuyende.hotelbookingappofuser.dialogs.DialogManHinhQuenTaiKhoan;
 
-public class Man_Hinh_Quen_Tai_Khoan extends AppCompatActivity{
+public class ManHinhQuenTaiKhoan extends AppCompatActivity{
     Button btn_Dat_Lai_Mat_Khau;
     EditText txt_Nhap_Email;
 
@@ -34,7 +30,7 @@ public class Man_Hinh_Quen_Tai_Khoan extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 // show hộp thoại nhập mã otp và nhập mật khẩu mới
-                Dialog_Man_Hinh_Quen_Tai_Khoan dialog = new Dialog_Man_Hinh_Quen_Tai_Khoan();
+                DialogManHinhQuenTaiKhoan dialog = new DialogManHinhQuenTaiKhoan();
                 dialog.show(getSupportFragmentManager(),"dialog");
 
             }

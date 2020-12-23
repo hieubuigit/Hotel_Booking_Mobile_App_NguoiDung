@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import com.chuyende.hotelbookingappofuser.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Man_Hinh_Tai_Khoan extends AppCompatActivity {
+public class ManHinhTaiKhoan extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +23,11 @@ public class Man_Hinh_Tai_Khoan extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.item_Home:
-                        startActivity(new Intent(getApplicationContext(),Man_Hinh_Nha.class));
+                        startActivity(new Intent(getApplicationContext(), ManHinhNha.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.item_Favorite:
-                        startActivity(new Intent(getApplicationContext(),Man_Hinh_Yeu_Thich.class));
+                        startActivity(new Intent(getApplicationContext(), ManHinhYeuThich.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.item_Account:

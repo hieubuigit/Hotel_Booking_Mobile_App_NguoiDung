@@ -31,7 +31,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
-public class Man_Hinh_Dang_Nhap extends AppCompatActivity {
+public class ManHinhDangNhap extends AppCompatActivity {
     TextView tv_NextTo_Dang_Ky, tv_NextTo_QTK;
     Button btn_Dang_Nhap, btn_Dang_Nhap_Google, btn_Dang_Nhap_Facebook, btn_Dang_Nhap_Twitter;
     EditText txt_Ten_TK_DN, txt_Mat_Khau_DN;
@@ -47,7 +47,7 @@ public class Man_Hinh_Dang_Nhap extends AppCompatActivity {
 //        FirebaseUser currentUser = mAuth.getCurrentUser();
         GoogleSignInAccount currentUser = GoogleSignIn.getLastSignedInAccount(this);
         if (currentUser != null) {
-            Intent intent = new Intent(Man_Hinh_Dang_Nhap.this, Man_Hinh_Nha.class);
+            Intent intent = new Intent(ManHinhDangNhap.this, ManHinhNha.class);
             startActivity(intent);
         }
         super.onStart();
@@ -98,7 +98,7 @@ public class Man_Hinh_Dang_Nhap extends AppCompatActivity {
         tv_NextTo_Dang_Ky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Man_Hinh_Dang_Nhap.this, Man_Hinh_Dang_Ky.class);
+                Intent intent = new Intent(ManHinhDangNhap.this, ManHinhDangKy.class);
                 startActivity(intent);
             }
         });
@@ -108,7 +108,7 @@ public class Man_Hinh_Dang_Nhap extends AppCompatActivity {
         tv_NextTo_QTK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Man_Hinh_Dang_Nhap.this, Man_Hinh_Quen_Tai_Khoan.class);
+                Intent intent = new Intent(ManHinhDangNhap.this, ManHinhQuenTaiKhoan.class);
                 startActivity(intent);
             }
         });
@@ -129,7 +129,7 @@ public class Man_Hinh_Dang_Nhap extends AppCompatActivity {
                     if (taiKhoanNguoiDung2.getTen_TKNguoiDung().equals(txt_Ten_TK_DN.getText().toString().trim()) == true
                             && taiKhoanNguoiDung2.getMatKhau_TKNguoiDung().equals(txt_Mat_Khau_DN.getText().toString().trim()) == true) {
                         Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(Man_Hinh_Dang_Nhap.this, Man_Hinh_Nha.class);
+                        Intent intent = new Intent(ManHinhDangNhap.this, ManHinhNha.class);
                         Bundle bundle = new Bundle();
                         bundle.putString("key_id_ten_tai_khoan",taiKhoanNguoiDung2.getMa_TKNguoiDung());
                         intent.putExtras(bundle);
@@ -227,7 +227,7 @@ public class Man_Hinh_Dang_Nhap extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
-            startActivity(new Intent(Man_Hinh_Dang_Nhap.this, Man_Hinh_Nha.class));
+            startActivity(new Intent(ManHinhDangNhap.this, ManHinhNha.class));
             Log.d("TAG-Successssssssssssss", "Login ok");
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
@@ -246,7 +246,7 @@ public class Man_Hinh_Dang_Nhap extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(Man_Hinh_Dang_Nhap.this, Man_Hinh_Nha.class);
+                            Intent intent = new Intent(ManHinhDangNhap.this, ManHinhNha.class);
                             startActivity(intent);
                             Log.d("TAG-Successssssssssssss222222222", "Login ok");
                         } else {

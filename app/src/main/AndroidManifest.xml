@@ -10,14 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HotelBookingAppOfUser">
-        <activity android:name=".activities.Man_Hinh_Tai_Khoan"></activity>
+        <activity android:name=".activities.ManHinhTaiKhoan"></activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".activities.Man_Hinh_Yeu_Thich" />
-        <activity android:name=".activities.Man_Hinh_Dang_Ky" />
-        <activity android:name=".activities.Man_Hinh_Nha" />
-        <activity android:name=".activities.Man_Hinh_Ket_Qua_Tim_Kiem" />
-        <activity android:name=".activities.Man_Hinh_Quen_Tai_Khoan"/>
-        <activity android:name=".activities.Man_Hinh_Dang_Nhap">
+        <activity android:name=".activities.ManHinhYeuThich" />
+        <activity android:name=".activities.ManHinhDangKy" />
+        <activity android:name=".activities.ManHinhQuenTaiKhoan"/>
+        <activity android:name=".activities.ManHinhDangNhap"/>
+        <activity android:name=".activities.ManHinhNha">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/liner_ver"
     android:weightSum="4"
-    tools:context=".activities.Man_Hinh_Quen_Tai_Khoan">
+    tools:context=".activities.ManHinhQuenTaiKhoan">
 
     <ImageView
         android:id="@+id/imageViewDangKy"

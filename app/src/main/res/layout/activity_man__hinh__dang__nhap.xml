@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/liner_ver"
-    tools:context=".activities.Man_Hinh_Dang_Nhap">
+    tools:context=".activities.ManHinhDangNhap">
 
     <ImageView
         android:id="@+id/imageViewDangNhap"

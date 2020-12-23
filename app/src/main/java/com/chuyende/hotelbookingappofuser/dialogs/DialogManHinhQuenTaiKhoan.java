@@ -2,20 +2,14 @@ package com.chuyende.hotelbookingappofuser.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 
 import androidx.fragment.app.DialogFragment;
 
 import com.chuyende.hotelbookingappofuser.R;
-import com.chuyende.hotelbookingappofuser.activities.Man_Hinh_Quen_Tai_Khoan;
 
-public class Dialog_Man_Hinh_Quen_Tai_Khoan extends DialogFragment {
+public class DialogManHinhQuenTaiKhoan extends DialogFragment {
 
 //    @Override
 //    public View onCreateView(LayoutInflater inflater, ViewGroup container,

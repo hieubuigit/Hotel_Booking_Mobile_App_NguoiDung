@@ -10,20 +10,13 @@
     <string name="btnTaiKhoan">Tài khoản</string>
     <string name="txtTenPhong">Tên phòng</string>
     <string name="tvGia">24000000VND/Đêm</string>
-    <string-array name="spTinhThanh">
-        <item>Tỉnh thành</item>
-        <item>Tp.HCM</item>
-        <item>Hà nội</item>
-    </string-array>
-    <string-array name="spLoaiPhong">
-        <item>Loại phòng</item>
-        <item>mega VIP</item>
-        <item>VIP</item>
-    </string-array>
+
     <string-array name="spTieuChi">
-        <item>Tiêu chí</item>
-        <item>Couple</item>
-        <item>Family</item>
+<!--        <item>Đặt nhiều nhất</item>-->
+<!--        <item>Khuyến mãi</item>-->
+        <item>Rating</item>
+        <item>Giá tăng dần</item>
+        <item>Giá giảm dần</item>
     </string-array>
     <!--    Kết thúc màn hình nhà-->
 

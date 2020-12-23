@@ -5,21 +5,21 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
-public class Adapter_ExpandableHeightGridView extends GridView {
+public class AdapterExpandableHeightGridView extends GridView {
     boolean expanded = false;
 
-    public Adapter_ExpandableHeightGridView(Context context)
+    public AdapterExpandableHeightGridView(Context context)
     {
         super(context);
     }
 
-    public Adapter_ExpandableHeightGridView(Context context, AttributeSet attrs)
+    public AdapterExpandableHeightGridView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
     }
 
-    public Adapter_ExpandableHeightGridView(Context context, AttributeSet attrs,
-                                    int defStyle)
+    public AdapterExpandableHeightGridView(Context context, AttributeSet attrs,
+                                           int defStyle)
     {
         super(context, attrs, defStyle);
     }

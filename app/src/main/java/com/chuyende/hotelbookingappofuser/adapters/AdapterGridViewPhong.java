@@ -10,17 +10,18 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import com.chuyende.hotelbookingappofuser.R;
-import com.chuyende.hotelbookingappofuser.data_models.ClsPhong;
+import com.chuyende.hotelbookingappofuser.data_models.Phong;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class Adapter_GridView_Phong extends BaseAdapter {
-    private ArrayList<ClsPhong> arrListPhong;
+public class AdapterGridViewPhong extends BaseAdapter {
+    private ArrayList<Phong> arrListPhong;
     private LayoutInflater layoutInflater;
     private Context context;
     int Resource;
 
-    public Adapter_GridView_Phong(Context constructorContext, int resource, ArrayList<ClsPhong> arrListPhong) {
+    public AdapterGridViewPhong(Context constructorContext, int resource, ArrayList<Phong> arrListPhong) {
         this.context = constructorContext;
         this.Resource = resource;
         this.arrListPhong = arrListPhong;
@@ -44,9 +45,8 @@ public class Adapter_GridView_Phong extends BaseAdapter {
 
     static class ViewHolder {
         ImageView imgHinh;
-        EditText txtTenPhong;
         RatingBar rating;
-        TextView tvGiaPhong;
+        TextView tvGiaPhong, tvTenPhong;
     }
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
@@ -55,18 +55,19 @@ public class Adapter_GridView_Phong extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.listview_item, null);
             clsViewHolder = new ViewHolder();
             clsViewHolder.imgHinh = view.findViewById(R.id.imageView_listitem);
-            clsViewHolder.txtTenPhong = view.findViewById(R.id.editText_listitem_tenphong);
+            clsViewHolder.tvTenPhong = view.findViewById(R.id.textView_listitem_tenphong);
             clsViewHolder.rating = view.findViewById(R.id.ratingbar_listitem);
             clsViewHolder.tvGiaPhong = view.findViewById(R.id.textView_listitem_giaphong);
             view.setTag(clsViewHolder);
         } else {
             clsViewHolder = (ViewHolder) view.getTag();
         }
-        ClsPhong clsPhong = this.arrListPhong.get(i);
-        clsViewHolder.imgHinh.setImageResource(clsPhong.getHinh());
-        clsViewHolder.txtTenPhong.setText(clsPhong.getTenPhong());
-        clsViewHolder.rating.setRating(clsPhong.getRating());
-        clsViewHolder.tvGiaPhong.setText(clsPhong.getGiaPhong());
+        Phong clsPhong = this.arrListPhong.get(i);
+        String url = clsPhong.getAnhDaiDien();
+        Picasso.with(context).load(url).into(clsViewHolder.imgHinh);// hiện hình ảnh từ source sử dụng Picasso(add thư viện picasso)
+        clsViewHolder.tvTenPhong.setText(clsPhong.getTenPhong());
+        clsViewHolder.rating.setRating((float) clsPhong.getRatingPhong());
+        clsViewHolder.tvGiaPhong.setText(clsPhong.getGiaThue() + "VND/đêm");
         return view;
     }
 }

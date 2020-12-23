@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/liner_ver"
-    tools:context=".activities.Man_Hinh_Dang_Ky">
+    tools:context=".activities.ManHinhDangKy">
 
     <ImageView
         android:id="@+id/imageView_Anh_Dai_Dien_DangKy"
@@ -18,7 +18,9 @@
         <EditText
             android:id="@+id/editTextTenTK_DangKy"
             style="@style/EditText_Nhap"
-            android:hint="@string/hintNhapTenTK_DangKy"></EditText>
+            android:hint="@string/hintNhapTenTK_DangKy">
+        </EditText>
+
     </LinearLayout>
 
     <LinearLayout style="@style/liner_hor">
@@ -77,8 +79,8 @@
 
         <CheckBox
             android:id="@+id/checkBox_DangKy"
-            android:checked="false"
-            style="@style/CheckBox_DangKy"></CheckBox>
+            style="@style/CheckBox_DangKy"
+            android:checked="false"></CheckBox>
 
         <TextView
             android:id="@+id/textViewCheckBox"

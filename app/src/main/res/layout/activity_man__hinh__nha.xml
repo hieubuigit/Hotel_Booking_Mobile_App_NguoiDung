@@ -5,43 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_app"
-    tools:context=".activities.Man_Hinh_Nha">
+    tools:context=".activities.ManHinhNha">
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_navigation">
-        <LinearLayout
-            android:weightSum="4"
-            style="@style/liner_ver"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <AutoCompleteTextView
-                    android:id="@+id/multiauto_Search"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_spinner"
-                    android:drawableLeft="@drawable/search"
-                    android:padding="10dp"></AutoCompleteTextView>
-            </RelativeLayout>
+        <LinearLayout
+            style="@style/liner_ver"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:weightSum="4">
 
             <LinearLayout
-                android:layout_weight="1"
-                style="@style/liner_hor_ManHinhNha">
+                android:background="@drawable/background_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_weight="1">
 
-                <RelativeLayout
-                    style="@style/Relative_spinner_ManHinhNha">
+                <AutoCompleteTextView
+                    android:layout_weight="1.7"
+                    android:id="@+id/multiauto_Search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:completionThreshold="1"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:drawableLeft="@drawable/search"
+                    android:hint="@string/txtTimKiem"
+                    android:padding="10dp"></AutoCompleteTextView>
+                <ImageView
+                    android:layout_weight="0.3"
+                    android:id="@+id/imageview_ClearText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:src="@drawable/ic_clear_black_24dp"></ImageView>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/liner_hor_ManHinhNha"
+                android:layout_weight="1">
+
+                <RelativeLayout style="@style/Relative_spinner_ManHinhNha">
 
                     <Spinner
-                        android:id="@+id/spinnerTinhThanh"
-                        style="@style/Spinner"
-                        android:entries="@array/spTinhThanh"></Spinner>
+                        android:id="@+id/spinner_TinhThanhPho_Man_Hinh_Nha"
+                        style="@style/Spinner"></Spinner>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -49,16 +66,15 @@
                     android:layout_marginLeft="10dp">
 
                     <Spinner
-                        android:id="@+id/spinnerTinhThanh2"
-                        style="@style/Spinner"
-                        android:entries="@array/spLoaiPhong"></Spinner>
+                        android:id="@+id/spinner_LoaiPhong_Man_Hinh_Nha"
+                        style="@style/Spinner"></Spinner>
                 </RelativeLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_weight="1"
-                style="@style/liner_hor_ManHinhNha">
+                style="@style/liner_hor_ManHinhNha"
+                android:layout_weight="1">
 
                 <RelativeLayout
                     android:layout_width="80dp"
@@ -72,28 +88,28 @@
                     android:layout_marginLeft="10dp">
 
                     <Spinner
-                        android:id="@+id/spinnerTinhThanh4"
+                        android:id="@+id/spinner_TieuChi_Man_Hinh_Nha"
                         style="@style/Spinner"
                         android:entries="@array/spTieuChi"></Spinner>
                 </RelativeLayout>
 
             </LinearLayout>
 
-            <com.chuyende.hotelbookingappofuser.adapters.Adapter_ExpandableHeightGridView
-                android:layout_weight="1"
+            <com.chuyende.hotelbookingappofuser.adapters.AdapterExpandableHeightGridView
                 android:id="@+id/gridViewMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_weight="1"
                 android:horizontalSpacing="10dp"
                 android:isScrollContainer="false"
-                android:verticalSpacing="10dp"
                 android:numColumns="2"
-                android:stretchMode="columnWidth">
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="10dp">
 
-            </com.chuyende.hotelbookingappofuser.adapters.Adapter_ExpandableHeightGridView>
+            </com.chuyende.hotelbookingappofuser.adapters.AdapterExpandableHeightGridView>
         </LinearLayout>
-<!--        android:layout_height="370dp"-->
+        <!--        android:layout_height="370dp"-->
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -101,9 +117,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="#6078EA"
         app:itemIconTint="@drawable/background_bottomnavigation"
         app:itemTextColor="@drawable/background_bottomnavigation"
-        android:background="#6078EA"
-        app:menu="@menu/menu_bottom_navigation">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:menu="@menu/menu_bottom_navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>
 </RelativeLayout>
