@@ -1,4 +1,4 @@
-package com.chuyende.hotelbookingappofuser.Adapter;
+package com.chuyende.hotelbookingappofuser.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,21 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
-import com.chuyende.hotelbookingappofuser.Model.Dichvu;
-import com.chuyende.hotelbookingappofuser.Model.Photo;
 import com.chuyende.hotelbookingappofuser.R;
-
+import com.chuyende.hotelbookingappofuser.data_models.DichVu;
 
 import java.util.List;
 
-public class DichvuAdapter extends PagerAdapter {
+public class DichVuAdapter extends PagerAdapter {
 
     private Context dvContext;
-    private List<Dichvu> dvListDichvu;
+    private List<DichVu> dvListDichVu;
 
-    public DichvuAdapter(Context dvContext, List<Dichvu> dvListDichvu){
+    public DichVuAdapter(Context dvContext, List<DichVu> dvListDichVu) {
         this.dvContext = dvContext;
-        this.dvListDichvu = dvListDichvu;
+        this.dvListDichVu = dvListDichVu;
     }
 
     @NonNull
@@ -36,8 +34,8 @@ public class DichvuAdapter extends PagerAdapter {
 //        ImageView imgLocalCafe = view.findViewById(R.id.img_localCafe);
 //        ImageView imgrestaurant = view.findViewById(R.id.img_restaurant);
 
-        Dichvu dichvu = dvListDichvu.get(position);
-        if(dichvu != null){
+        DichVu dichvu = dvListDichVu.get(position);
+        if (dichvu != null) {
             Glide.with(dvContext).load(dichvu.getResourceId()).into(imgLiveTV);
 //            Glide.with(dvContext).load(dichvu.getResourceId()).into(imghandbail);
 //            Glide.with(dvContext).load(dichvu.getResourceId()).into(imgLocalCafe);
@@ -56,8 +54,8 @@ public class DichvuAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        if(dvListDichvu !=null){
-            return dvListDichvu.size();
+        if (dvListDichVu != null) {
+            return dvListDichVu.size();
         }
         return 0;
     }

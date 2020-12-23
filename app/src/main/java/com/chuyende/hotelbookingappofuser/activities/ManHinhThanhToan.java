@@ -1,8 +1,5 @@
 package com.chuyende.hotelbookingappofuser.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -15,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chuyende.hotelbookingappofuser.Model.ThanhToan;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.chuyende.hotelbookingappofuser.R;
+import com.chuyende.hotelbookingappofuser.data_models.ThanhToan;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,7 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Manhinhthanhtoan extends AppCompatActivity {
+public class ManHinhThanhToan extends AppCompatActivity {
 
     EditText edtDateNDen, edtDatenDi;
     ImageButton imgDatenDen, ingDateNDi;
@@ -34,7 +34,7 @@ public class Manhinhthanhtoan extends AppCompatActivity {
     TextView txtTenphong, txtDiachi, txtSonguoi, txtGiaphong, txtTamtinh, txtTongTien;
     EditText edtGiamgia;
     ImageView imgHinhanh;
-    FirebaseFirestore db=FirebaseFirestore.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +44,14 @@ public class Manhinhthanhtoan extends AppCompatActivity {
         //onvaluetextchange thuc hien
         //try catch
         //tinh tong ngay new date()
-
         //tinh Tổng Tiền
-
 
         //firebase
         getdataTT();
 
-        imgDatenDen = (ImageButton)findViewById(R.id.img_Ngayden);
-        ingDateNDi = (ImageButton)findViewById(R.id.img_Ngaydi);
+        imgDatenDen = (ImageButton) findViewById(R.id.img_Ngayden);
+        ingDateNDi = (ImageButton) findViewById(R.id.img_Ngaydi);
+
         //get datePickerDialog
         simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
         imgDatenDen.setOnClickListener(new View.OnClickListener() {
@@ -69,14 +68,12 @@ public class Manhinhthanhtoan extends AppCompatActivity {
             }
         });
 
-
-
         TongTien();
 
         setControl();
     }
 
-    private void setControl() {
+    public void setControl() {
         edtDateNDen = findViewById(R.id.edit_Ngayden);
         edtDatenDi = findViewById(R.id.edit_Ngaydi);
         txtTenphong = findViewById(R.id.edit_tenphongtt);
@@ -86,12 +83,9 @@ public class Manhinhthanhtoan extends AppCompatActivity {
         txtTamtinh = findViewById(R.id.txtGiatamtinh);
         edtGiamgia = findViewById(R.id.txtmagiamgia);
         txtTongTien = findViewById(R.id.txttongtien);
-
     }
 
-
-    private void chongay1()
-    {
+    public void chongay1() {
         calendarone = Calendar.getInstance();
         int ngay = calendarone.get(Calendar.DATE);
         int thang = calendarone.get(Calendar.MONTH);
@@ -105,8 +99,8 @@ public class Manhinhthanhtoan extends AppCompatActivity {
         }, nam, thang, ngay);
         datePickerDialog.show();
     }
-    private void chongay2()
-    {
+
+    public void chongay2() {
         calendartwo = Calendar.getInstance();
         int ngay = calendartwo.get(Calendar.DATE);
         int thang = calendartwo.get(Calendar.MONTH);
@@ -121,49 +115,36 @@ public class Manhinhthanhtoan extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+    public void getdataTT() {
+        db.collection("Phong").document("KS010WBuLfIBmX55ssYoGq3U").get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        ThanhToan thanhToan = task.getResult().toObject(ThanhToan.class);
+                        Log.d("test", "onComplete: " + thanhToan.toString());
 
-    public void getdataTT()
-    {
-        db.collection("Phong").document("KS010WBuLfIBmX55ssYoGq3U").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                ThanhToan thanhToan = task.getResult().toObject(ThanhToan.class);
-                Log.d("test", "onComplete: "+thanhToan.toString());
-
-                txtTenphong.setText(thanhToan.getTenPhong());
-                txtDiachi.setText(thanhToan.getDiaChiPhong());
-                txtSonguoi.setText(""+thanhToan.getSoKhach());
-                txtGiaphong.setText(thanhToan.getGiaThue().toString());
-                txtTamtinh.setText(thanhToan.getGiaThue().toString());
-                edtGiamgia.setText(""+thanhToan.getPhanTramGiamGia());
-
-
-
-            }
-        });
+                        txtTenphong.setText(thanhToan.getTenPhong());
+                        txtDiachi.setText(thanhToan.getDiaChiPhong());
+                        txtSonguoi.setText("" + thanhToan.getSoKhach());
+                        txtGiaphong.setText(thanhToan.getGiaThue().toString());
+                        txtTamtinh.setText(thanhToan.getGiaThue().toString());
+                        edtGiamgia.setText("" + thanhToan.getPhanTramGiamGia());
+                    }
+                });
     }
 
-    public void TongTien()
-    {
-        if(edtDateNDen == null  && edtDatenDi == null)
-        {
-            Context context =getApplicationContext();
-            CharSequence text  = "vui long chon ngay den va ngay di";
-           Toast toast = Toast.makeText(context,text, Toast.LENGTH_LONG);
-           toast.show();
-
-
-        }
-        else
-        {
-            int nTongngay = (int) ((calendartwo.getTimeInMillis() - calendarone.getTimeInMillis()) / (1000*60*60*24));
+    public void TongTien() {
+        if (edtDateNDen == null && edtDatenDi == null) {
+            Context context = getApplicationContext();
+            CharSequence text = "vui long chon ngay den va ngay di";
+            Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
+            toast.show();
+        } else {
+            int nTongngay = (int) ((calendartwo.getTimeInMillis() - calendarone.getTimeInMillis()) / (1000 * 60 * 60 * 24));
             String stien = txtTamtinh.getText().toString();
             int a = Integer.parseInt(stien);
             int nTong = nTongngay * a;
             txtTongTien.setText(String.valueOf(nTong));
         }
-
-
-
     }
 }
