@@ -317,9 +317,9 @@ public class Manhinhchitiet extends AppCompatActivity implements OnMapReadyCallb
                 Log.d("test", "onComplete: "+phong.toString());
                 LatLng latLng = new LatLng(phong.getKinhDo(), phong.getViDo());
                 MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(phong.getTenPhong());
-//             googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-//               googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
-//                googleMap.addMarker(markerOptions);
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
+                    googleMap.addMarker(markerOptions);
 
                 String[] tienIch=phong.getMaTienNghi().split(",");
                 for(String v:tienIch){

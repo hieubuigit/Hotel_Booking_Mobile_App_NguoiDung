@@ -38,7 +38,7 @@
                 android:id="@+id/ibHeart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="355dp"
+                android:layout_marginLeft="300dp"
                 android:layout_marginTop="-55dp"
                 android:background="@null"
                 android:src="@drawable/ic_baseline_favorite_border_24"></ImageButton>
@@ -55,12 +55,12 @@
             <LinearLayout
                 style="@style/LeanerLayout"
                 android:layout_marginTop="10dp"
-                android:weightSum="10">
+                >
 
                 <TextView
                     style="@style/label"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+
                     android:fontFamily="@font/open_sans_regular"
                     android:text="Địa Chỉ:"
                     android:textStyle="bold"></TextView>
@@ -69,7 +69,7 @@
                     android:id="@+id/txtDiachi"
                     style="@style/textview"
                     android:layout_marginBottom="10dp"
-                    android:layout_weight="9"
+                    android:layout_marginLeft="20dp"
                     android:fontFamily="@font/open_sans_regular"
                     android:text="37 chương dương"
                     android:textStyle="bold">
@@ -80,11 +80,11 @@
             <LinearLayout
                 style="@style/LeanerLayout"
                 android:layout_marginTop="10dp"
-                android:weightSum="10">
+                >
 
                 <TextView
                     style="@style/label"
-                    android:layout_weight="1"
+
                     android:fontFamily="@font/open_sans_regular"
                     android:paddingTop="15dp"
                     android:text="Rating:"
@@ -95,7 +95,7 @@
                     style="@android:style/Widget.Holo.RatingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_weight="4"
+
                     android:numStars="5"
                     android:progressTint="#ffff00"
                     android:scaleX="0.8"
@@ -106,8 +106,8 @@
                 <TextView
                     android:id="@+id/txtGiaphong"
                     style="@style/textview"
-                    android:layout_marginLeft="55dp"
-                    android:layout_weight="5"
+                    android:layout_marginLeft="-10dp"
+
                     android:text="12$/đêm"></TextView>
 
 
@@ -125,7 +125,7 @@
             <TextView
                 android:id="@+id/txtMota"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/customdienvao"
@@ -146,6 +146,7 @@
                     android:fontFamily="@font/open_sans_regular"
                     android:paddingTop="10dp"
                     android:text="Số người tối đa:"
+                    android:layout_marginLeft="10dp"
                     android:textStyle="bold"></TextView>
 
                 <TextView
@@ -235,7 +236,7 @@
                     android:id="@+id/btnBinhluan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="300dp"
+                    android:layout_marginLeft="250dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/custombinhluan"

@@ -45,7 +45,7 @@ public class Manhinhthanhtoan extends AppCompatActivity {
         //try catch
         //tinh tong ngay new date()
 
-        //tinh Tổng Tiền
+        TongTien();
 
 
         //firebase
@@ -145,23 +145,24 @@ public class Manhinhthanhtoan extends AppCompatActivity {
 
     public void TongTien()
     {
-        if(edtDateNDen == null  && edtDatenDi == null)
-        {
-            Context context =getApplicationContext();
-            CharSequence text  = "vui long chon ngay den va ngay di";
-           Toast toast = Toast.makeText(context,text, Toast.LENGTH_LONG);
-           toast.show();
+        int nTongngay = 1;
+//        if(edtDateNDen == null  && edtDatenDi == null)
+//        {
+//            Context context =getApplicationContext();
+//            CharSequence text  = "vui long chon ngay den va ngay di";
+//           Toast toast = Toast.makeText(context,text, Toast.LENGTH_LONG);
+//           toast.show();
+//
+//
+//        }
+//        else
+//        {
 
-
-        }
-        else
-        {
-            int nTongngay = (int) ((calendartwo.getTimeInMillis() - calendarone.getTimeInMillis()) / (1000*60*60*24));
-            String stien = txtTamtinh.getText().toString();
-            int a = Integer.parseInt(stien);
-            int nTong = nTongngay * a;
+             nTongngay = (int) ((calendartwo.getTimeInMillis() - calendarone.getTimeInMillis()) / (1000*60*60*24));
+            double a = Double.parseDouble(txtTamtinh.getText().toString().trim());
+            double nTong = (nTongngay * a)/90*100;
             txtTongTien.setText(String.valueOf(nTong));
-        }
+//        }
 
 
 
