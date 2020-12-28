@@ -1,4 +1,4 @@
-package com.chuyende.hotelbookingappofuser.Adapter;
+package com.chuyende.hotelbookingappofuser.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chuyende.hotelbookingappofuser.Model.Binhluan;
 import com.chuyende.hotelbookingappofuser.R;
+import com.chuyende.hotelbookingappofuser.data_models.BinhLuan;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class BinhluanAdapter extends RecyclerView.Adapter<BinhluanAdapter.ViewHolder> {
+public class BinhLuanAdapter extends RecyclerView.Adapter<BinhLuanAdapter.ViewHolder> {
     private static final int HEADER = 0;
     private static final int CONTENT = 1;
     Context context;
-    ArrayList<Binhluan> listBinhluan;
+    ArrayList<BinhLuan> listBinhLuan;
 
-    public BinhluanAdapter(Context context, ArrayList<Binhluan> listBinhluan) {
+    public BinhLuanAdapter(Context context, ArrayList<BinhLuan> listBinhLuan) {
         this.context = context;
-        this.listBinhluan = listBinhluan;
+        this.listBinhLuan = listBinhLuan;
     }
 
     @NonNull
@@ -38,8 +38,8 @@ public class BinhluanAdapter extends RecyclerView.Adapter<BinhluanAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        // Gán dữ liêuk
-        Binhluan binhluan = listBinhluan.get(position);
+        // Gán dữ liêu
+        BinhLuan binhluan = listBinhLuan.get(position);
         holder.txtloibinhluan.setText(binhluan.getNoidungBL());
         Locale locale = new Locale("vn", "VN");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
@@ -48,7 +48,7 @@ public class BinhluanAdapter extends RecyclerView.Adapter<BinhluanAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return listBinhluan.size(); // trả item tại vị trí postion
+        return listBinhLuan.size(); // trả item tại vị trí postion
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -60,10 +60,9 @@ public class BinhluanAdapter extends RecyclerView.Adapter<BinhluanAdapter.ViewHo
             // Ánh xạ view
             imgAvatar = itemView.findViewById(R.id.imgbinhluan);
             txtloibinhluan = itemView.findViewById(R.id.txtloibinhluan);
-
-
         }
     }
+
 }
 
 

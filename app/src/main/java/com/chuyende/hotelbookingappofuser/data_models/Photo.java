@@ -1,9 +1,12 @@
-package com.chuyende.hotelbookingappofuser.Model;
+package com.chuyende.hotelbookingappofuser.data_models;
 
-public class Dichvu {
+public class Photo {
     private int resourceId;
 
-    public Dichvu(int resourceId) {
+    public Photo() {
+    }
+
+    public Photo(int resourceId) {
         this.resourceId = resourceId;
     }
 
@@ -15,4 +18,3 @@ public class Dichvu {
         this.resourceId = resourceId;
     }
 }
-

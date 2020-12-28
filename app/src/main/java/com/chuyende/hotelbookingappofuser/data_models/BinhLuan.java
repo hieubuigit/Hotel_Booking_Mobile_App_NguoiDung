@@ -1,10 +1,10 @@
-package com.chuyende.hotelbookingappofuser.Model;
+package com.chuyende.hotelbookingappofuser.data_models;
 
-public class Binhluan {
-    private  String noidungBL;
+public class BinhLuan {
+    private String noidungBL;
     private int hinhanhBL;
 
-    public Binhluan(String noidungBL, int hinhanhBL) {
+    public BinhLuan(String noidungBL, int hinhanhBL) {
         this.noidungBL = noidungBL;
         this.hinhanhBL = hinhanhBL;
     }

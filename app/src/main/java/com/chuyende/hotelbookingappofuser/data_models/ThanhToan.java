@@ -1,24 +1,14 @@
-package com.chuyende.hotelbookingappofuser.Model;
+package com.chuyende.hotelbookingappofuser.data_models;
 
 public class ThanhToan {
-
-
-
     private String tenPhong;
-
     private Double giaThue;
-
     private int soKhach;
-
-
     private String diaChiPhong;
-
     private int phanTramGiamGia;
     private String anhDaiDien;
 
-    public  ThanhToan()
-    {
-
+    public ThanhToan() {
     }
 
     public ThanhToan(String tenPhong, Double giaThue, int soKhach, String diaChiPhong, int phanTramGiamGia, String anhDaiDien) {
@@ -29,7 +19,6 @@ public class ThanhToan {
         this.phanTramGiamGia = phanTramGiamGia;
         this.anhDaiDien = anhDaiDien;
     }
-
 
     public String getTenPhong() {
         return tenPhong;

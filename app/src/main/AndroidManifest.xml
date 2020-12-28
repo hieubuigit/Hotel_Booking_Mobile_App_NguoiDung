@@ -2,9 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chuyende.hotelbookingappofuser">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET">
+    </uses-permission>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION">
+    </uses-permission>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION">
+    </uses-permission>
 
     <application
         android:allowBackup="true"
@@ -14,19 +19,23 @@
         android:supportsRtl="true"
         android:largeHeap="true"
         android:theme="@style/Theme.HotelBookingAppOfUser">
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_api_key" />
 
-        <activity android:name=".activities.Manhinhthanhtoan"></activity>
-        <activity android:name=".activities.Manhinhchitiet">
+        <activity android:name=".activities.ManHinhThanhToan">
+        </activity>
+
+        <activity android:name=".activities.ManHinhChiTiet">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+
+        <activity android:name=".MainActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/custombackground"
     android:orientation="vertical"
-    tools:context=".activities.Manhinhchitiet">
+    tools:context=".activities.ManHinhChiTiet">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -17,7 +17,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager"
                 android:layout_width="match_parent"
@@ -26,6 +25,7 @@
             </androidx.viewpager.widget.ViewPager>
 
             <LinearLayout style="@style/LeanerLayout">
+
                 <me.relex.circleindicator.CircleIndicator
                     android:id="@+id/circle_indicator"
                     android:layout_width="wrap_content"
@@ -43,14 +43,12 @@
                 android:background="@null"
                 android:src="@drawable/ic_baseline_favorite_border_24"></ImageButton>
 
-
             <TextView
                 android:id="@+id/txtTenphong"
                 style="@style/NameHotel"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/open_sans_regular"
                 android:text="phòng 123"></TextView>
-
 
             <LinearLayout
                 style="@style/LeanerLayout"
@@ -102,14 +100,12 @@
                     android:scaleY="0.8"
                     android:stepSize=".5"></RatingBar>
 
-
                 <TextView
                     android:id="@+id/txtGiaphong"
                     style="@style/textview"
                     android:layout_marginLeft="-10dp"
 
                     android:text="12$/đêm"></TextView>
-
 
             </LinearLayout>
 
@@ -135,8 +131,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:weightSum="10"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:weightSum="10">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -151,13 +147,13 @@
 
                 <TextView
                     android:id="@+id/txtsonguoiTD"
-                    android:paddingTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
                     android:layout_weight="6"
                     android:fontFamily="@font/open_sans_regular"
+                    android:paddingTop="10dp"
                     android:text=" 2 người lớn"
-                    android:layout_marginLeft="30dp"
                     android:textStyle="bold"></TextView>
             </LinearLayout>
 
@@ -176,7 +172,6 @@
             </androidx.viewpager.widget.ViewPager>
 
             <LinearLayout style="@style/LeanerLayout">
-
                 <me.relex.circleindicator.CircleIndicator
                     android:id="@+id/circle_indicator2"
                     android:layout_width="wrap_content"
@@ -195,8 +190,6 @@
                     android:textStyle="bold"></TextView>
 
                 <RatingBar
-
-
                     android:id="@+id/rbDanhgia"
                     style="@android:style/Widget.Holo.RatingBar"
                     android:layout_width="wrap_content"
@@ -206,7 +199,6 @@
                     android:scaleX="0.8"
                     android:scaleY="0.8"
                     android:stepSize=".5"></RatingBar>
-
 
             </LinearLayout>
 
@@ -247,7 +239,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerview"
                         android:layout_width="match_parent"
@@ -287,7 +278,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="400dp" />
 
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
@@ -298,11 +288,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-40dp"
         android:background="@drawable/maubutton"
-        android:text="Đặt ngay"
-
-
-        ></Button>
-
+        android:text="Đặt ngay"></Button>
 
 </LinearLayout>
 

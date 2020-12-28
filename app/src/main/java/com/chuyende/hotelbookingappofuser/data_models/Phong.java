@@ -1,16 +1,13 @@
-package com.chuyende.hotelbookingappofuser.Model;
+package com.chuyende.hotelbookingappofuser.data_models;
 
 public class Phong {
 
     private String tenPhong;
-
     private Double giaThue;
-
     private int soKhach;
     private String maTienNghi;
     private String moTaPhong;
     private float ratingPhong;
-
     private String diaChiPhong;
     private Double kinhDo;
     private Double viDo;
@@ -22,18 +19,14 @@ public class Phong {
     public Phong() {
     }
 
-    public Phong( String tenPhong, Double giaThue,  int soKhach, String maTienNghi,
-                 String moTaPhong,  String diaChiPhong, Double kinhDo, Double viDo, int phanTramGiamGia, String anhDaiDien,
+    public Phong(String tenPhong, Double giaThue, int soKhach, String maTienNghi,
+                 String moTaPhong, String diaChiPhong, Double kinhDo, Double viDo, int phanTramGiamGia, String anhDaiDien,
                  String boSuuTapAnh, String maKhachSan, float ratingPhong) {
-
         this.tenPhong = tenPhong;
-
         this.giaThue = giaThue;
-
         this.soKhach = soKhach;
         this.maTienNghi = maTienNghi;
         this.moTaPhong = moTaPhong;
-
         this.diaChiPhong = diaChiPhong;
         this.kinhDo = kinhDo;
         this.viDo = viDo;
@@ -41,23 +34,18 @@ public class Phong {
         this.anhDaiDien = anhDaiDien;
         this.boSuuTapAnh = boSuuTapAnh;
         this.maKhachSan = maKhachSan;
-       this.ratingPhong = ratingPhong;
-
+        this.ratingPhong = ratingPhong;
     }
 
-    public Phong( String tenPhong,  Double giaThue,  int soKhach, String maTienNghi,
-                 String moTaPhong, float ratingPhong,  String diaChiPhong, Double kinhDo, Double viDo, int phanTramGiamGia,
+    public Phong(String tenPhong, Double giaThue, int soKhach, String maTienNghi,
+                 String moTaPhong, float ratingPhong, String diaChiPhong, Double kinhDo, Double viDo, int phanTramGiamGia,
                  String anhDaiDien, String boSuuTapAnh, String maKhachSan) {
-
         this.tenPhong = tenPhong;
-
         this.giaThue = giaThue;
-
         this.soKhach = soKhach;
         this.maTienNghi = maTienNghi;
         this.moTaPhong = moTaPhong;
         this.ratingPhong = ratingPhong;
-
         this.diaChiPhong = diaChiPhong;
         this.kinhDo = kinhDo;
         this.viDo = viDo;
@@ -65,10 +53,7 @@ public class Phong {
         this.anhDaiDien = anhDaiDien;
         this.boSuuTapAnh = boSuuTapAnh;
         this.maKhachSan = maKhachSan;
-
     }
-
-
 
     public String getTenPhong() {
         return tenPhong;
@@ -78,8 +63,6 @@ public class Phong {
         this.tenPhong = tenPhong;
     }
 
-
-
     public Double getGiaThue() {
         return giaThue;
     }
@@ -87,7 +70,6 @@ public class Phong {
     public void setGiaThue(Double giaThue) {
         this.giaThue = giaThue;
     }
-
 
     public int getSoKhach() {
         return soKhach;
@@ -120,8 +102,6 @@ public class Phong {
     public void setRatingPhong(float ratingPhong) {
         this.ratingPhong = ratingPhong;
     }
-
-
 
     public String getDiaChiPhong() {
         return diaChiPhong;
@@ -179,21 +159,15 @@ public class Phong {
         this.maKhachSan = maKhachSan;
     }
 
-
-
     @Override
     public String toString() {
         return "Phong{" +
-
                 " -- tenPhong='" + tenPhong + '\'' +
-
                 " -- giaThue=" + giaThue +
-
                 " -- soKhach='" + soKhach + '\'' +
                 " -- maTienNghi='" + maTienNghi.toString() + '\'' +
                 " -- moTaPhong='" + moTaPhong + '\'' +
                 " -- ratingPhong=" + ratingPhong +
-
                 " -- diaChiPhong='" + diaChiPhong + '\'' +
                 " -- kinhDo=" + kinhDo +
                 " -- viDo=" + viDo +
@@ -201,7 +175,6 @@ public class Phong {
                 " -- anhDaiDien='" + anhDaiDien + '\'' +
                 " -- boSuuTapAnh='" + boSuuTapAnh + '\'' +
                 " -- maKhachSan='" + maKhachSan + '\'' +
-
                 '}';
     }
 }

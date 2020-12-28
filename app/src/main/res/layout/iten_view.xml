@@ -1,53 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:padding="5dp">
 
     <LinearLayout
-       android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@drawable/customedittext"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginRight="10dp"
+        android:background="@drawable/customedittext">
 
-
-
-    <ImageView
-        android:id="@+id/imgbinhluan"
-        android:scaleType="fitXY"
-        android:src="@drawable/hinhgai1"
-        android:layout_width="75dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="10dp"/>
+        <ImageView
+            android:id="@+id/imgbinhluan"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/hinhgai1" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:orientation="vertical">
-        <EditText
+            <EditText
+                android:id="@+id/txtloibinhluan"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="khách sạn rất tốt"></EditText>
 
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:id="@+id/txtloibinhluan"
-            android:text="khách sạn rất tốt"
-            android:layout_gravity="center"></EditText>
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5"
-            android:layout_gravity="center"
-            android:id="@+id/rbratingDG"
-           >
-
-        </RatingBar>
+            <RatingBar
+                android:id="@+id/rbratingDG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="5">
+            </RatingBar>
         </LinearLayout>
 
     </LinearLayout>
-
 
 </RelativeLayout>
