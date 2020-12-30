@@ -3,8 +3,6 @@ package com.chuyende.hotelbookingappofuser.activities;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,15 +23,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import com.bumptech.glide.Glide;
 import com.chuyende.hotelbookingappofuser.R;
 import com.chuyende.hotelbookingappofuser.adapters.BinhLuanAdapter;
 import com.chuyende.hotelbookingappofuser.adapters.DichVuAdapter;
 import com.chuyende.hotelbookingappofuser.adapters.PhotoAdapter;
 import com.chuyende.hotelbookingappofuser.data_models.BinhLuan;
-import com.chuyende.hotelbookingappofuser.data_models.DichVu;
 import com.chuyende.hotelbookingappofuser.data_models.Phong;
-import com.chuyende.hotelbookingappofuser.data_models.Photo;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -42,15 +37,13 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
@@ -65,127 +58,187 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     // Khai bao map
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
-    private static final int REQUEST_CODE = 101;
+    public static final int REQUEST_CODE = 101;
 
-    ViewPager viewPager, viewPagerdv;
+    // Viewpager
+    ViewPager viewPager, viewPagerDv;
+    PhotoAdapter photoAdapter;
+    List<Uri> mListPhoto;
+    DichVuAdapter dichvuAdapter;
+    List<Uri> dvListDichVu;
+
     ImageButton ibHeart;
     CircleIndicator circleIndicator, circleIndicatordv;
-    PhotoAdapter photoAdapter;
-    DichVuAdapter dichvuAdapter;
-    List<DichVu> dvListDichVu;
-    List<Photo> mListPhoto;
     Timer mTimer;
-    Boolean iconyeuthich = false;
+    Boolean iconYeuThich = false;
 
-    TextView txtTenphong, txtDiachi, txtGia, txtSonguoi, txtMoTa;
-    RatingBar rbDanhGia;
+    TextView txtTenPhong, txtDiachi, txtGia, txtSoNguoi, txtMoTa;
+    RatingBar rtPhong;
     ImageView imgPhoto;
 
     RecyclerView recyclerView;
-    ArrayList<BinhLuan> listbinhluan;
-    BinhLuanAdapter binhluanAdapter;
-    Button btndatngay;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    ArrayList<BinhLuan> listBinhLuan;
+    BinhLuanAdapter binhLuanAdapter;
+    Button btnDatNgay;
     GoogleMap googleMap;
-    FirebaseStorage firebaseStorage;
-    StorageReference storageReference;
+
+    // Firebase
+    FirebaseFirestore db;
+    FirebaseStorage storage;
+
+    // A room
+    public static final String COLLECTION_PHONG = "Phong";
+    public static final String MA_PHONG = "KS010WBuLfIBmX55ssYoGq3U";
+    public static String pathBoSuuTap = "";
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("TEST=>", "onStart() is run");
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manhinhchitiet);
 
-        firebaseStorage = FirebaseStorage.getInstance();
-        storageReference = firebaseStorage.getReference();
-        //View page
-//        getImage();
+        Log.d("TEST=>", "onCreate() is run");
 
-        //data base
-        getData();
+        db = FirebaseFirestore.getInstance();
+        storage = FirebaseStorage.getInstance();
+
+        // Find all view from layout
         setControl();
 
+        // Read data a room from Firebase Firestore
+        readDataOfARoom(COLLECTION_PHONG, MA_PHONG);
+        readBoSuuTapAnh("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap");
 
-        //map
+        /*//View page
+        getImage();*/
+
+        // Map
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLastLocation();
 
-        // Viewpage
-        mListPhoto = getListPhoto();
+        // Viewpager contain photos of room
+        //mListPhoto = readBoSuuTapAnh();
         photoAdapter = new PhotoAdapter(this, mListPhoto);
         viewPager.setAdapter(photoAdapter);
 
         circleIndicator.setViewPager(viewPager);
         photoAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
 
-        //dich vu:
-        dvListDichVu = getDvListDichVu();
-        dichvuAdapter = new DichVuAdapter(this, dvListDichVu);
-        viewPagerdv.setAdapter(dichvuAdapter);
+        // Dich vu:
+        //dvListDichVu = getDvListDichVu();
+        //dichvuAdapter = new DichVuAdapter(this, dvListDichVu);
+        viewPagerDv.setAdapter(dichvuAdapter);
 
-        circleIndicatordv.setViewPager(viewPagerdv);
-        dichvuAdapter.registerDataSetObserver(circleIndicatordv.getDataSetObserver());
+        circleIndicatordv.setViewPager(viewPagerDv);
+        //dichvuAdapter.registerDataSetObserver(circleIndicatordv.getDataSetObserver());
 
-        //ham auto hinhanh
+        // Auto switch to another Image
         autoSlideImages();
 
-        //phần icon yêu thích
+        // Icon yêu thích
         ibHeart.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
         ibHeart.setOnClickListener(Heart);
 
         //custom recycler binh luan
         recyclerView = findViewById(R.id.recyclerview);
-        listbinhluan = new ArrayList<>();
-        listbinhluan.add(new BinhLuan("khach san rat tot", R.drawable.hinhgai1));
-        listbinhluan.add(new BinhLuan("rat la ok", R.drawable.hinhgai2));
-        binhluanAdapter = new BinhLuanAdapter(getApplicationContext(), listbinhluan);
-        recyclerView.setAdapter(binhluanAdapter);
+        listBinhLuan = new ArrayList<>();
+        listBinhLuan.add(new BinhLuan("Khach san rat tot", R.drawable.hinhgai1));
+        listBinhLuan.add(new BinhLuan("Rat la ok", R.drawable.hinhgai2));
+        binhLuanAdapter = new BinhLuanAdapter(getApplicationContext(), listBinhLuan);
+        recyclerView.setAdapter(binhLuanAdapter);
 
-        // kết nối qua man hinh thanh toan
-        btndatngay.setOnClickListener(new View.OnClickListener() {
+        // Chuyen sang man hinh dat phong
+        btnDatNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                open();
+                Intent intent = new Intent(ManHinhChiTiet.this, ManHinhThanhToan.class);
+                startActivity(intent);
             }
         });
     }
 
-    private void fetchLastLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]
-                    {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
-            return;
-        }
+    // Function get all view from layout
+    private void setControl() {
+        viewPager = findViewById(R.id.viewpager);
+        circleIndicator = findViewById(R.id.circle_indicator);
+        ibHeart = findViewById(R.id.ibHeart);
+        viewPagerDv = findViewById(R.id.viewpager2);
+        circleIndicatordv = findViewById(R.id.circle_indicator2);
+        btnDatNgay = findViewById(R.id.btnDatngay);
+        txtSoNguoi = findViewById(R.id.txtsonguoiTD);
+        txtTenPhong = findViewById(R.id.txtTenphong);
+        txtDiachi = findViewById(R.id.txtDiachi);
+        txtGia = findViewById(R.id.txtGiaphong);
+        rtPhong = findViewById(R.id.rbrating);
+        txtMoTa = findViewById(R.id.txtMota);
+        imgPhoto = findViewById(R.id.img_photo);
+    }
 
-        Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    currentLocation = location;
-                    Toast.makeText(getApplicationContext(), currentLocation.getLatitude() + " " + currentLocation.getLongitude(), Toast.LENGTH_LONG).show();
+    // Get data of room with ID room
+    public void readDataOfARoom(String collectionPhong, String maPhong) {
+        try {
+            db.collection(collectionPhong).document(maPhong).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    Phong phong = documentSnapshot.toObject(Phong.class);
+                    Log.d("test", "onComplete: " + phong.toString());
 
-                    SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map);
-                    supportMapFragment.getMapAsync(ManHinhChiTiet.this);
+                    LatLng latLng = new LatLng(phong.getKinhDo(), phong.getViDo());
+                    MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(phong.getTenPhong());
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                    googleMap.addMarker(markerOptions);
+
+                    String[] tienIch = phong.getMaTienNghi().split(",");
+                    for (String v : tienIch) {
+                        Log.d("test", "onComplete: " + v);
+                    }
+
+                    txtTenPhong.setText(phong.getTenPhong());
+                    txtDiachi.setText(phong.getDiaChiPhong() + ", "  +phong.getMaTinhThanhPho());
+                    rtPhong.setRating((float) phong.getRatingPhong());
+                    txtGia.setText(phong.getGiaThue() + " VND/đêm");
+                    txtMoTa.setText(phong.getMoTaPhong().toString());
+                    txtSoNguoi.setText(phong.getSoKhach() + " người");
+
+                    // Bo Suu Tap anh cua phong
+                    pathBoSuuTap = phong.getBoSuuTapAnh();
+                    Log.d("PATH=>", pathBoSuuTap + " <!--");
+
+                    // Image cac tien nghi o day
+
                 }
-            }
-        });
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("ERR=>", "Listen boSuuTapAnh is failed! Error: " + e.getMessage());
+                }
+            });
+
+        } catch (Exception e) {
+            Log.d("ERR=>", "Listen data is failed!");
+        }
     }
 
-    //hàm  click để chọn yêu thích
+    // Hàm  click để chọn yêu thích
     View.OnClickListener Heart = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if (iconyeuthich) {
+            if (iconYeuThich) {
                 view.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
             } else {
-
                 view.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
             }
         }
     };
 
-    // ham bỏ yêu thich
+    // Hàm bỏ yêu thich
 //    View.OnClickListener Noheart = new View.OnClickListener() {
 //        @Override
 //        public void onClick(View view) {
@@ -199,43 +252,57 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
 //        }
 //    };
 
-    private void setControl() {
-        viewPager = findViewById(R.id.viewpager);
-        circleIndicator = findViewById(R.id.circle_indicator);
-        ibHeart = findViewById(R.id.ibHeart);
-        viewPagerdv = findViewById(R.id.viewpager2);
-        circleIndicatordv = findViewById(R.id.circle_indicator2);
-        btndatngay = findViewById(R.id.btnDatngay);
-        txtSonguoi = findViewById(R.id.txtsonguoiTD);
-        txtTenphong = findViewById(R.id.txtTenphong);
-        txtDiachi = findViewById(R.id.txtDiachi);
-        txtGia = findViewById(R.id.txtGiaphong);
-        rbDanhGia = findViewById(R.id.rbrating);
-        txtMoTa = findViewById(R.id.txtMota);
-        imgPhoto = findViewById(R.id.img_photo);
+    // Get all list images of room
+    public void readBoSuuTapAnh(String linkBoSuuTapAnh) {
+        Log.d("RUN=>", "Function boSuuTap running! PATH: " + linkBoSuuTapAnh);
+
+        try {
+            StorageReference listRef = storage.getReference().child(linkBoSuuTapAnh);
+            listRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                @Override
+                public void onSuccess(ListResult listResult) {
+                    Log.d("RESULT=>", listResult.getItems().size()+"");
+
+                    for (StorageReference item : listResult.getItems()) {
+                        Log.d("PATH=> =>", item.getPath());
+
+                        item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Log.d("URI=>", "Link download: " + uri);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                            }
+                        });
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("EERR=>", e.getMessage()+"");
+                }
+            });
+
+        } catch (Exception e) {
+            Log.d("ERR=>", "Listen boSuuTap is failed! Error: " + e.getMessage());
+        }
     }
 
-    private List<Photo> getListPhoto() {
+    // Get all icons of convenient of room
+    private List<Uri> getDvListDichVu() {
+        List<Uri> listUrisIconTienNghi = new ArrayList<Uri>();
 
-        List<Photo> list = new ArrayList<>();
-        list.add(new Photo(R.drawable.hinh1));
-        list.add(new Photo(R.drawable.hinh2));
-        list.add(new Photo(R.drawable.hinh3));
-        list.add(new Photo(R.drawable.hinh4));
-
-        return list;
-    }
-
-    private List<DichVu> getDvListDichVu() {
-        List<DichVu> list = new ArrayList<>();
-        list.add(new DichVu(R.drawable.ic_baseline_live_tv_24));
+        /*list.add(new DichVu(R.drawable.ic_baseline_live_tv_24));
         list.add(new DichVu(R.drawable.ic_baseline_local_cafe_24));
         list.add(new DichVu(R.drawable.ic_baseline_sports_handball_24));
         list.add(new DichVu(R.drawable.ic_baseline_restaurant_24));
         list.add(new DichVu(R.drawable.ic_baseline_rowing_24));
-        list.add(new DichVu(R.drawable.ic_baseline_shopping_cart_24));
+        list.add(new DichVu(R.drawable.ic_baseline_shopping_cart_24));*/
 
-        return list;
+        return listUrisIconTienNghi;
     }
 
     private void autoSlideImages() {
@@ -275,11 +342,6 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
         }
     }
 
-    public void open() {
-        Intent intent = new Intent(this, ManHinhThanhToan.class);
-        startActivity(intent);
-    }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         double x = 10.983603;
@@ -300,35 +362,26 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
         }
     }
 
-    public void getData() {
-        db.collection("Phong").document("KS010WBuLfIBmX55ssYoGq3U").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+    private void fetchLastLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]
+                    {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+            return;
+        }
+
+        Task<Location> task = fusedLocationProviderClient.getLastLocation();
+        task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                Phong phong = task.getResult().toObject(Phong.class);
-                Log.d("test", "onComplete: " + phong.toString());
-                LatLng latLng = new LatLng(phong.getKinhDo(), phong.getViDo());
-                MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(phong.getTenPhong());
-                googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
-                googleMap.addMarker(markerOptions);
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    currentLocation = location;
+                    Toast.makeText(getApplicationContext(), currentLocation.getLatitude() + " " + currentLocation.getLongitude(), Toast.LENGTH_LONG).show();
 
-                String[] tienIch = phong.getMaTienNghi().split(",");
-                for (String v : tienIch) {
-                    Log.d("test", "onComplete: " + v);
-
+                    SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map);
+                    supportMapFragment.getMapAsync(ManHinhChiTiet.this);
                 }
-                txtTenphong.setText(phong.getTenPhong());
-                txtDiachi.setText(phong.getDiaChiPhong());
-                txtGia.setText(phong.getGiaThue().toString());
-                txtSonguoi.setText("" + phong.getSoKhach());
-                rbDanhGia.setRating((float) phong.getRatingPhong());
-                txtMoTa.setText(phong.getMoTaPhong().toString());
-
-                // lấy hình vào viewpage
-
-
-                task.getResult().getId();
-                //intent
             }
         });
     }

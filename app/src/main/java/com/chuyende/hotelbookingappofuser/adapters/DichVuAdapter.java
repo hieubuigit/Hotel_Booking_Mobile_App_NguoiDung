@@ -1,6 +1,7 @@
 package com.chuyende.hotelbookingappofuser.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +14,15 @@ import com.bumptech.glide.Glide;
 import com.chuyende.hotelbookingappofuser.R;
 import com.chuyende.hotelbookingappofuser.data_models.DichVu;
 
+import java.util.BitSet;
 import java.util.List;
 
 public class DichVuAdapter extends PagerAdapter {
 
     private Context dvContext;
-    private List<DichVu> dvListDichVu;
+    private List<Bitmap> dvListDichVu;
 
-    public DichVuAdapter(Context dvContext, List<DichVu> dvListDichVu) {
+    public DichVuAdapter(Context dvContext, List<Bitmap> dvListDichVu) {
         this.dvContext = dvContext;
         this.dvListDichVu = dvListDichVu;
     }
@@ -30,17 +32,18 @@ public class DichVuAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_dichvu, container, false);
         ImageView imgLiveTV = view.findViewById(R.id.img_liveTV);
-//        ImageView imghandbail = view.findViewById(R.id.img_handbail);
-//        ImageView imgLocalCafe = view.findViewById(R.id.img_localCafe);
-//        ImageView imgrestaurant = view.findViewById(R.id.img_restaurant);
+        //ImageView imghandbail = view.findViewById(R.id.img_handbail);
+        //ImageView imgLocalCafe = view.findViewById(R.id.img_localCafe);
+        //ImageView imgrestaurant = view.findViewById(R.id.img_restaurant);
 
-        DichVu dichvu = dvListDichVu.get(position);
+        Bitmap dichvu = dvListDichVu.get(position);
         if (dichvu != null) {
-            Glide.with(dvContext).load(dichvu.getResourceId()).into(imgLiveTV);
-//            Glide.with(dvContext).load(dichvu.getResourceId()).into(imghandbail);
-//            Glide.with(dvContext).load(dichvu.getResourceId()).into(imgLocalCafe);
-//            Glide.with(dvContext).load(dichvu.getResourceId()).into(imgrestaurant);
+            //Glide.with(dvContext).load(dichvu.getResourceId()).into(imgLiveTV);
+            //Glide.with(dvContext).load(dichvu.getResourceId()).into(imghandbail);
+            // Glide.with(dvContext).load(dichvu.getResourceId()).into(imgLocalCafe);
+            // Glide.with(dvContext).load(dichvu.getResourceId()).into(imgrestaurant);
         }
+
         //chu ý Add to viewgroup
         container.addView(view);
 

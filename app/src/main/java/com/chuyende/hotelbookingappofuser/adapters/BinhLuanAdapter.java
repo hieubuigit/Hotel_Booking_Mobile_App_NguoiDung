@@ -32,7 +32,7 @@ public class BinhLuanAdapter extends RecyclerView.Adapter<BinhLuanAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // gán view
-        View view = LayoutInflater.from(context).inflate(R.layout.iten_view, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_recycler_view, parent, false);
         return new ViewHolder(view);
     }
 

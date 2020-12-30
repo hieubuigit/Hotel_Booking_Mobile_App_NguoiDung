@@ -1,28 +1,33 @@
 package com.chuyende.hotelbookingappofuser.adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.chuyende.hotelbookingappofuser.R;
-import com.chuyende.hotelbookingappofuser.data_models.Photo;
 
 import java.util.List;
 
 public class PhotoAdapter extends PagerAdapter {
 
     private Context mContext;
-    private List<Photo> mListPhoto;
+    private List<Uri> mListUrisOfPhoto;
 
-    public PhotoAdapter(Context mContext, List<Photo> mListPhoto) {
+    public PhotoAdapter() {
+    }
+
+    public PhotoAdapter(Context mContext, List<Uri> mListUrisOfPhoto) {
         this.mContext = mContext;
-        this.mListPhoto = mListPhoto;
+        this.mListUrisOfPhoto = mListUrisOfPhoto;
     }
 
     @NonNull
@@ -31,26 +36,25 @@ public class PhotoAdapter extends PagerAdapter {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_photo, container, false);
         ImageView imgphoto = view.findViewById(R.id.img_photo);
 
-        //set data
+        Uri uriPhoto = mListUrisOfPhoto.get(position);
 
-
-
-        Photo photo = mListPhoto.get(position);
-        if (photo != null) {
-            Glide.with(mContext).load(photo.getResourceId()).into(imgphoto);
+        if (!uriPhoto.toString().equals("")) {
+            Glide.with(mContext).load(uriPhoto).into(imgphoto);
         }
-        //chu ý Add to viewgroup
-        container.addView(view);
+
+        ViewPager viewPager = (ViewPager) container;
+        viewPager.addView(view);
 
         return view;
     }
 
     @Override
     public int getCount() {
-        if (mListPhoto != null) {
-            return mListPhoto.size();
+        if (mListUrisOfPhoto != null) {
+            return mListUrisOfPhoto.size();
+        } else {
+            return 0;
         }
-        return 0;
     }
 
     @Override
@@ -60,7 +64,8 @@ public class PhotoAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        //remove view
-        container.removeView((View) object);
+        ViewPager viewPager = (ViewPager) container;
+        View view = (View) object;
+        viewPager.removeView(view);
     }
 }

@@ -16,14 +16,14 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_baseline_live_tv_24"></ImageView>
+                android:src="@drawable/ic_baseline_live_tv_24" />
 
             <TextView
                 android:id="@+id/txtTenDV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="xem phim"></TextView>
+                android:text="xem phim" />
 
         </LinearLayout>
 
@@ -37,14 +37,14 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="40dp"
-                android:src="@drawable/ic_baseline_local_cafe_24"></ImageView>
+                android:src="@drawable/ic_baseline_local_cafe_24" />
 
             <TextView
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="55dp"
-                android:text="Cafe"></TextView>
+                android:text="Cafe" />
 
         </LinearLayout>
 
@@ -58,13 +58,13 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="40dp"
-                android:src="@drawable/ic_baseline_sports_handball_24"></ImageView>
+                android:src="@drawable/ic_baseline_sports_handball_24" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:text="Quần vợt"></TextView>
+                android:text="Quần vợt" />
 
         </LinearLayout>
 
@@ -78,13 +78,13 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="50dp"
-                android:src="@drawable/ic_baseline_restaurant_24"></ImageView>
+                android:src="@drawable/ic_baseline_restaurant_24" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:text="Ăn uống"></TextView>
+                android:text="Ăn uống" />
 
         </LinearLayout>
 
@@ -98,13 +98,13 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="50dp"
-                android:src="@drawable/ic_baseline_rowing_24"></ImageView>
+                android:src="@drawable/ic_baseline_rowing_24" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:text="Chèo xuồng"></TextView>
+                android:text="Chèo xuồng" />
 
         </LinearLayout>
 
@@ -118,18 +118,14 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="50dp"
-                android:src="@drawable/ic_baseline_shopping_cart_24"></ImageView>
+                android:src="@drawable/ic_baseline_shopping_cart_24" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:text="Shopping"></TextView>
+                android:text="Shopping" />
 
         </LinearLayout>
-
-
     </LinearLayout>
-
-
 </LinearLayout>

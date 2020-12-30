@@ -51,7 +51,8 @@
             <TextView
                 android:id="@+id/txtTenphong"
                 style="@style/NameHotel"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/open_sans_regular"
                 android:text="Phòng 123" />
 
@@ -378,7 +379,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_weight="4"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/iten_view" />
+                        tools:listitem="@layout/item_recycler_view" />
                 </LinearLayout>
 
                 <TextView
