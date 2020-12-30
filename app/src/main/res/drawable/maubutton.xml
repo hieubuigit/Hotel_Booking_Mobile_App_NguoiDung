@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/custombutton" android:state_pressed="false"></item>
-</selector>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#17ead9"></solid>
+
+    <corners android:radius="50dp"></corners>
+
+</shape>
