@@ -61,7 +61,7 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     public static final int REQUEST_CODE = 101;
 
     // Viewpager
-    ViewPager viewPager, viewPagerDv;
+    ViewPager viewPagerBoSuuTap, viewPagerDv;
     PhotoAdapter photoAdapter;
     List<Uri> mListPhoto;
     DichVuAdapter dichvuAdapter;
@@ -94,8 +94,9 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("TEST=>", "onStart() is run");
 
+        // Read data a room from Firebase Firestore
+        readDataOfARoom(COLLECTION_PHONG, MA_PHONG);
     }
 
     @Override
@@ -103,55 +104,49 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manhinhchitiet);
 
-        Log.d("TEST=>", "onCreate() is run");
-
         db = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
+        mListPhoto = new ArrayList<Uri>();
 
         // Find all view from layout
         setControl();
-
-        // Read data a room from Firebase Firestore
-        readDataOfARoom(COLLECTION_PHONG, MA_PHONG);
-        readBoSuuTapAnh("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap");
-
-        /*//View page
-        getImage();*/
 
         // Map
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLastLocation();
 
-        // Viewpager contain photos of room
-        //mListPhoto = readBoSuuTapAnh();
-        photoAdapter = new PhotoAdapter(this, mListPhoto);
-        viewPager.setAdapter(photoAdapter);
 
-        circleIndicator.setViewPager(viewPager);
-        photoAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
-
-        // Dich vu:
+        /* ----------------- Set images dich vu ----------------- */
         //dvListDichVu = getDvListDichVu();
         //dichvuAdapter = new DichVuAdapter(this, dvListDichVu);
-        viewPagerDv.setAdapter(dichvuAdapter);
-
+        //viewPagerDv.setAdapter(dichvuAdapter);
         circleIndicatordv.setViewPager(viewPagerDv);
         //dichvuAdapter.registerDataSetObserver(circleIndicatordv.getDataSetObserver());
 
-        // Auto switch to another Image
-        autoSlideImages();
 
-        // Icon yêu thích
+        /*------------------------ Icon yêu thích --------------------- */
         ibHeart.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
-        ibHeart.setOnClickListener(Heart);
+        ibHeart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (iconYeuThich) {
+                    v.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
+                    iconYeuThich = false;
+                } else {
+                    v.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
+                    iconYeuThich = true;
+                }
+            }
+        });
 
-        //custom recycler binh luan
-        recyclerView = findViewById(R.id.recyclerview);
+
+        /*------------- Recycler View Binh Luan ---------------*/
         listBinhLuan = new ArrayList<>();
         listBinhLuan.add(new BinhLuan("Khach san rat tot", R.drawable.hinhgai1));
         listBinhLuan.add(new BinhLuan("Rat la ok", R.drawable.hinhgai2));
         binhLuanAdapter = new BinhLuanAdapter(getApplicationContext(), listBinhLuan);
         recyclerView.setAdapter(binhLuanAdapter);
+
 
         // Chuyen sang man hinh dat phong
         btnDatNgay.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +160,7 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
 
     // Function get all view from layout
     private void setControl() {
-        viewPager = findViewById(R.id.viewpager);
+        viewPagerBoSuuTap = findViewById(R.id.viewpager);
         circleIndicator = findViewById(R.id.circle_indicator);
         ibHeart = findViewById(R.id.ibHeart);
         viewPagerDv = findViewById(R.id.viewpager2);
@@ -178,6 +173,7 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
         rtPhong = findViewById(R.id.rbrating);
         txtMoTa = findViewById(R.id.txtMota);
         imgPhoto = findViewById(R.id.img_photo);
+        recyclerView = findViewById(R.id.recyclerview);
     }
 
     // Get data of room with ID room
@@ -210,6 +206,9 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
                     // Bo Suu Tap anh cua phong
                     pathBoSuuTap = phong.getBoSuuTapAnh();
                     Log.d("PATH=>", pathBoSuuTap + " <!--");
+                    if (!pathBoSuuTap.trim().equals("")) {
+                        readBoSuuTapAnh(pathBoSuuTap);
+                    }
 
                     // Image cac tien nghi o day
 
@@ -222,35 +221,9 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
             });
 
         } catch (Exception e) {
-            Log.d("ERR=>", "Listen data is failed!");
+            Log.d("ERR=>", "Listen data is failed! Error: " + e.getMessage());
         }
     }
-
-    // Hàm  click để chọn yêu thích
-    View.OnClickListener Heart = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (iconYeuThich) {
-                view.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
-            } else {
-                view.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
-            }
-        }
-    };
-
-    // Hàm bỏ yêu thich
-//    View.OnClickListener Noheart = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View view) {
-//            if (iconyeuthich)
-//            {
-//                view.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
-//            }
-//            else{
-//                view.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
-//            }
-//        }
-//    };
 
     // Get all list images of room
     public void readBoSuuTapAnh(String linkBoSuuTapAnh) {
@@ -263,6 +236,10 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
                 public void onSuccess(ListResult listResult) {
                     Log.d("RESULT=>", listResult.getItems().size()+"");
 
+                    // Size of files in boSuuTap bucket
+                    int sizeItems = listResult.getItems().size();
+
+                    List<Uri> listUriBoSuuTap = new ArrayList<Uri>();
                     for (StorageReference item : listResult.getItems()) {
                         Log.d("PATH=> =>", item.getPath());
 
@@ -270,11 +247,27 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
                             @Override
                             public void onSuccess(Uri uri) {
                                 Log.d("URI=>", "Link download: " + uri);
+                                listUriBoSuuTap.add(uri);
+
+                                if (listUriBoSuuTap.size() == sizeItems) {
+                                    Log.i("SIZE=>", "Size list = " + listUriBoSuuTap.size()+"");
+                                    mListPhoto.addAll(listUriBoSuuTap);
+
+                                    photoAdapter = new PhotoAdapter(getApplicationContext(), mListPhoto);
+                                    viewPagerBoSuuTap.setAdapter(photoAdapter);
+                                    photoAdapter.notifyDataSetChanged();
+
+                                    circleIndicator.setViewPager(viewPagerBoSuuTap);
+                                    photoAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
+
+                                    // Auto switch to another Image
+                                    autoSlideImages();
+                                }
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-
+                                Log.i("ERR=>", "Exception Error: " + e.getMessage());
                             }
                         });
                     }
@@ -282,31 +275,24 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.d("EERR=>", e.getMessage()+"");
+                    Log.d("ERR=>", "Listen bo suu tap: " + e.getMessage()+"");
                 }
             });
-
         } catch (Exception e) {
             Log.d("ERR=>", "Listen boSuuTap is failed! Error: " + e.getMessage());
         }
     }
 
     // Get all icons of convenient of room
-    private List<Uri> getDvListDichVu() {
+    private List<Uri> readDataTienNghiARoom() {
         List<Uri> listUrisIconTienNghi = new ArrayList<Uri>();
-
-        /*list.add(new DichVu(R.drawable.ic_baseline_live_tv_24));
-        list.add(new DichVu(R.drawable.ic_baseline_local_cafe_24));
-        list.add(new DichVu(R.drawable.ic_baseline_sports_handball_24));
-        list.add(new DichVu(R.drawable.ic_baseline_restaurant_24));
-        list.add(new DichVu(R.drawable.ic_baseline_rowing_24));
-        list.add(new DichVu(R.drawable.ic_baseline_shopping_cart_24));*/
-
+        // Code here
         return listUrisIconTienNghi;
     }
 
+    // Function auto switch Image in ViewPager
     private void autoSlideImages() {
-        if (mListPhoto == null || mListPhoto.isEmpty() || viewPager == null) {
+        if (mListPhoto == null || mListPhoto.isEmpty() || viewPagerBoSuuTap == null) {
             return;
         }
         //Init timer
@@ -319,13 +305,13 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
-                        int currentItem = viewPager.getCurrentItem();
+                        int currentItem = viewPagerBoSuuTap.getCurrentItem();
                         int totalItem = mListPhoto.size() - 1;
                         if (currentItem < totalItem) {
                             currentItem++;
-                            viewPager.setCurrentItem(currentItem);
+                            viewPagerBoSuuTap.setCurrentItem(currentItem);
                         } else {
-                            viewPager.setCurrentItem(0);
+                            viewPagerBoSuuTap.setCurrentItem(0);
                         }
                     }
                 });
@@ -388,23 +374,5 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
 
     public void BinhLuan() {
     }
-
-//    public void getImage()
-//    {
-//        storageReference.child("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                Glide.with(ManHinhChiTiet.this)
-//                        .load(uri)
-//                        .into((ImageView) getListPhoto());
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                // Handle any errors
-//            }
-//        });
-//
-//    }
 
 }

@@ -121,7 +121,8 @@
                         android:progressTint="#ffff00"
                         android:scaleX="0.8"
                         android:scaleY="0.8"
-                        android:stepSize=".5" />
+                        android:stepSize=".5"
+                        android:isIndicator="true"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -295,17 +296,18 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="3">
+                    android:layout_weight="3"
+                    android:gravity="center">
 
                     <RatingBar
                         android:id="@+id/rbDanhgia"
                         style="@android:style/Widget.Holo.RatingBar"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:numStars="5"
                         android:progressTint="#ffff00"
-                        android:scaleX="0.8"
-                        android:scaleY="0.8"
+                        android:scaleX=".8"
+                        android:scaleY=".8"
                         android:stepSize=".5" />
 
                 </LinearLayout>
