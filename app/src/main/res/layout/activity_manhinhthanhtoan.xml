@@ -43,6 +43,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:textSize="16dp"
 
                 android:fontFamily="@font/open_sans_regular"
                 android:text="Địa Chỉ:"></TextView>
@@ -95,13 +97,16 @@
                         android:layout_marginTop="5dp"
                         android:background="@drawable/customdienvao"
                         android:fontFamily="@font/open_sans_regular"
-                        android:inputType="text"></EditText>
+                        android:inputType="text"
+                        android:hint="dd/mm/yyyyy"></EditText>
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/img_Ngayden"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_date_range_24"></ImageButton>
+                        android:src="@drawable/ic_baseline_date_range_24"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"></ImageView>
 
                 </LinearLayout>
             </LinearLayout>
@@ -135,14 +140,17 @@
                         android:background="@drawable/customdienvao"
                         android:fontFamily="@font/open_sans_regular"
                         android:inputType="text"
+                        android:hint="dd/mm/yyyyy"
 
                         ></EditText>
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/img_Ngaydi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_date_range_24"></ImageButton>
+                        android:src="@drawable/ic_baseline_date_range_24"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"></ImageView>
 
                 </LinearLayout>
             </LinearLayout>
@@ -237,17 +245,17 @@
                 android:paddingTop="15dp"
                 android:text="Giảm Giá:"></TextView>
 
-            <EditText
+            <TextView
                 android:id="@+id/txtmagiamgia"
                 style="@style/label"
-                android:layout_marginLeft="70dp"
+
                 android:layout_weight="8"
-                android:background="@drawable/customdienvao"
+
                 android:fontFamily="@font/open_sans_regular"
                 android:gravity="center"
-                android:hint="DSH551"
+                android:hint="10%"
                 android:inputType="text"
-                android:paddingTop="15dp"></EditText>
+                android:paddingTop="15dp"></TextView>
 
         </LinearLayout>
 

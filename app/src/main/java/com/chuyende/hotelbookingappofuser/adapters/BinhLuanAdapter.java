@@ -43,7 +43,7 @@ public class BinhLuanAdapter extends RecyclerView.Adapter<BinhLuanAdapter.ViewHo
         holder.txtloibinhluan.setText(binhluan.getNoidungBL());
         Locale locale = new Locale("vn", "VN");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
-        holder.imgAvatar.setImageResource(binhluan.getHinhanhBL());
+        holder.imgAvatar.setImageResource((binhluan.getHinhanhBL()));
     }
 
     @Override

@@ -34,11 +34,11 @@ import java.util.Calendar;
 public class ManHinhThanhToan extends AppCompatActivity {
 
     EditText edtDateNDen, edtDatenDi;
-    ImageButton imgDatenDen, ingDateNDi;
+    ImageView imgDatenDen, ingDateNDi;
     Calendar calendarone, calendartwo;
     SimpleDateFormat simpleDateFormat;
     private TextView txtTenphong, txtDiachi, txtSonguoi, txtGiaphong, txtTamtinh, txtTongTien, image1;
-    EditText edtGiamgia;
+    TextView edtGiamgia;
     private ImageView imgHinhanh;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseStorage firebaseStorage;
@@ -67,8 +67,8 @@ public class ManHinhThanhToan extends AppCompatActivity {
         //firebase
         getdataTT();
 
-        imgDatenDen = (ImageButton) findViewById(R.id.img_Ngayden);
-        ingDateNDi = (ImageButton) findViewById(R.id.img_Ngaydi);
+        imgDatenDen = (ImageView) findViewById(R.id.img_Ngayden);
+        ingDateNDi = (ImageView) findViewById(R.id.img_Ngaydi);
 
         //get datePickerDialog
         simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
@@ -110,7 +110,7 @@ public class ManHinhThanhToan extends AppCompatActivity {
         int ngay = calendarone.get(Calendar.DATE);
         int thang = calendarone.get(Calendar.MONTH);
         int nam = calendarone.get(Calendar.YEAR);
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, android.R.style.Theme_Holo_Dialog_MinWidth ,  new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                 calendarone.set(i, i1, i2);
@@ -125,7 +125,7 @@ public class ManHinhThanhToan extends AppCompatActivity {
         int ngay = calendartwo.get(Calendar.DATE);
         int thang = calendartwo.get(Calendar.MONTH);
         int nam = calendartwo.get(Calendar.YEAR);
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, android.R.style.Theme_Holo_Dialog_MinWidth ,  new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                 calendartwo.set(i, i1, i2);
@@ -148,9 +148,9 @@ public class ManHinhThanhToan extends AppCompatActivity {
 
                             txtTenphong.setText(thanhToan.getTenPhong());
                             txtDiachi.setText(thanhToan.getDiaChiPhong());
-                            txtSonguoi.setText("" + thanhToan.getSoKhach());
-                            txtGiaphong.setText(thanhToan.getGiaThue().toString());
-                            txtTamtinh.setText(thanhToan.getGiaThue().toString());
+                            txtSonguoi.setText("" + thanhToan.getSoKhach() + " người");
+                            txtGiaphong.setText(thanhToan.getGiaThue().toString() + " VND/đêm");
+                            txtTamtinh.setText(thanhToan.getGiaThue().toString() + " VND");
                             edtGiamgia.setText("" + thanhToan.getPhanTramGiamGia());
 
 

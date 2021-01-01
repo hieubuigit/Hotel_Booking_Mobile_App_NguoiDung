@@ -3,8 +3,11 @@ package com.chuyende.hotelbookingappofuser.activities;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -31,7 +34,6 @@ import com.chuyende.hotelbookingappofuser.data_models.BinhLuan;
 import com.chuyende.hotelbookingappofuser.data_models.Phong;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -46,6 +48,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -61,7 +64,7 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     public static final int REQUEST_CODE = 101;
 
     // Viewpager
-    ViewPager viewPager, viewPagerDv;
+    ViewPager viewPagerBoSuuTap, viewPagerDv;
     PhotoAdapter photoAdapter;
     List<Uri> mListPhoto;
     DichVuAdapter dichvuAdapter;
@@ -74,7 +77,7 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
 
     TextView txtTenPhong, txtDiachi, txtGia, txtSoNguoi, txtMoTa;
     RatingBar rtPhong;
-    ImageView imgPhoto;
+    ImageView imgPhoto, imgBinhLuan;
 
     RecyclerView recyclerView;
     ArrayList<BinhLuan> listBinhLuan;
@@ -86,9 +89,14 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     FirebaseFirestore db;
     FirebaseStorage storage;
 
+    StorageReference storageReference;
+
+    //Binh luan
+
     // A room
     public static final String COLLECTION_PHONG = "Phong";
     public static final String MA_PHONG = "KS010WBuLfIBmX55ssYoGq3U";
+    public static final String MA_NGUOI_DUNG = "ND01";
     public static String pathBoSuuTap = "";
 
     @Override
@@ -107,6 +115,7 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
 
         db = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
+        mListPhoto = new ArrayList<Uri>();
 
         // Find all view from layout
         setControl();
@@ -114,6 +123,11 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
         // Read data a room from Firebase Firestore
         readDataOfARoom(COLLECTION_PHONG, MA_PHONG);
         readBoSuuTapAnh("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap");
+        // Viewpager contain photos of room
+//        mListPhoto = getphoto();
+        /*photoAdapter = new PhotoAdapter(this, mListPhoto);
+        viewPager.setAdapter(photoAdapter);*/
+
 
         /*//View page
         getImage();*/
@@ -122,13 +136,10 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLastLocation();
 
-        // Viewpager contain photos of room
-        //mListPhoto = readBoSuuTapAnh();
-        photoAdapter = new PhotoAdapter(this, mListPhoto);
-        viewPager.setAdapter(photoAdapter);
 
-        circleIndicator.setViewPager(viewPager);
-        photoAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
+
+        circleIndicator.setViewPager(viewPagerBoSuuTap);
+       photoAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
 
         // Dich vu:
         //dvListDichVu = getDvListDichVu();
@@ -140,6 +151,9 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
 
         // Auto switch to another Image
         autoSlideImages();
+
+        //binh luan
+        manguoidung();
 
         // Icon yêu thích
         ibHeart.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
@@ -178,6 +192,7 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
         rtPhong = findViewById(R.id.rbrating);
         txtMoTa = findViewById(R.id.txtMota);
         imgPhoto = findViewById(R.id.img_photo);
+        imgBinhLuan = findViewById(R.id.imgbinhluan);
     }
 
     // Get data of room with ID room
@@ -191,9 +206,9 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
 
                     LatLng latLng = new LatLng(phong.getKinhDo(), phong.getViDo());
                     MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(phong.getTenPhong());
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
-                    googleMap.addMarker(markerOptions);
+//                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+//                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+//                    googleMap.addMarker(markerOptions);
 
                     String[] tienIch = phong.getMaTienNghi().split(",");
                     for (String v : tienIch) {
@@ -255,7 +270,6 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     // Get all list images of room
     public void readBoSuuTapAnh(String linkBoSuuTapAnh) {
         Log.d("RUN=>", "Function boSuuTap running! PATH: " + linkBoSuuTapAnh);
-
         try {
             StorageReference listRef = storage.getReference().child(linkBoSuuTapAnh);
             listRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
@@ -263,6 +277,7 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
                 public void onSuccess(ListResult listResult) {
                     Log.d("RESULT=>", listResult.getItems().size()+"");
 
+                    List<Uri> listUriBoSuuTap = new ArrayList<Uri>();
                     for (StorageReference item : listResult.getItems()) {
                         Log.d("PATH=> =>", item.getPath());
 
@@ -270,19 +285,22 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
                             @Override
                             public void onSuccess(Uri uri) {
                                 Log.d("URI=>", "Link download: " + uri);
+                                listUriBoSuuTap.add(uri);
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-
+                                Log.i("ERR=>", "Error read collection: " + e.getMessage());
                             }
                         });
                     }
+
+                    Log.i("SIZE=>", listUriBoSuuTap.size()+"");
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.d("EERR=>", e.getMessage()+"");
+                    Log.d("ERR=>", e.getMessage()+"");
                 }
             });
 
@@ -303,6 +321,18 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
         list.add(new DichVu(R.drawable.ic_baseline_shopping_cart_24));*/
 
         return listUrisIconTienNghi;
+    }
+    private List<String> getphoto() {
+        List<String> listphoto = new ArrayList<>();
+        {
+            listphoto.add("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap/0b1d5374-6006-4d0e-a793-83ade34cd247.png");
+            listphoto.add("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap/0b32cf86-d103-4f6c-b925-9bd658b0bae3.png");
+            listphoto.add("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap/8bd94c2e-8f5e-4515-adeb-e9938626fd0a.png");
+            listphoto.add("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap/b022efcf-b3e1-4386-b407-4de9d800a6b4.png");
+
+        }
+
+        return listphoto;
     }
 
     private void autoSlideImages() {
@@ -386,8 +416,22 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
         });
     }
 
-    public void BinhLuan() {
+    public void manguoidung()
+    {
+        db.collection("NguoiDung").document("ND01").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Log.d("kkk" ,"hinh anh cua nguoi dung: " + documentSnapshot.getString("anhDaiDien"));
+                BinhLuan binhLuan = documentSnapshot.toObject(BinhLuan.class);
+
+                imgBinhLuan.setImageAlpha(binhLuan.getHinhanhBL());
+            }
+        });
     }
+
+//    public void BinhLuan() {
+//
+//    }
 
 //    public void getImage()
 //    {
