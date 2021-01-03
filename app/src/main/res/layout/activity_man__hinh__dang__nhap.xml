@@ -31,6 +31,7 @@
         <EditText
             android:id="@+id/editTextMatKhau_DangNhap"
             style="@style/EditText_Nhap"
+            android:inputType="textPassword"
             android:hint="@string/hintMK_DangNhap"></EditText>
     </LinearLayout>
 

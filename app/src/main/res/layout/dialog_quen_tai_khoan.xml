@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    android:layout_width="250dp"
-    android:weightSum="4"
+    android:layout_width="match_parent"
+    android:weightSum="5"
     android:layout_height="wrap_content"
     android:padding="10dp">
 
@@ -39,5 +38,30 @@
         android:fontFamily="@font/open_sans_regular"
         android:textSize="@dimen/font_size_edittext"
         android:hint="@string/txt_Dialog_MatKhau"/>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView_Dialog_QTK_Huy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans_bold"
+            android:textSize="@dimen/font_size_textview"
+            android:textColor="@color/color_textview_quenTaiKhoan"
+            android:text="Hủy" />
+        <TextView
+            android:id="@+id/textView_Dialog_QTK_XacNhan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans_bold"
+            android:textSize="@dimen/font_size_textview"
+            android:gravity="right"
+            android:textColor="@color/color_textview_quenTaiKhoan"
+            android:text="Xác nhận" />
+    </LinearLayout>
 </LinearLayout>

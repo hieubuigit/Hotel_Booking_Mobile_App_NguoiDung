@@ -238,7 +238,7 @@
         <item name="fontFamily">@font/open_sans_regular</item>
         <item name="android:textSize">@dimen/font_size_textview</item>
         <item name="color">@color/black_color_textview</item>
-        <item name="android:gravity">center</item>
+<!--        <item name="android:gravity">center</item>-->
         <item name="android:layout_marginTop">20dp</item>
     </style>
 

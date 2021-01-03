@@ -12,8 +12,8 @@
     <string name="tvGia">24000000VND/Đêm</string>
 
     <string-array name="spTieuChi">
-<!--        <item>Đặt nhiều nhất</item>-->
-<!--        <item>Khuyến mãi</item>-->
+        <!--        <item>Đặt nhiều nhất</item>-->
+        <!--        <item>Khuyến mãi</item>-->
         <item>Rating</item>
         <item>Giá tăng dần</item>
         <item>Giá giảm dần</item>
@@ -56,7 +56,10 @@
     <string name="tvEmail_QTK">Email</string>
     <string name="hintNhapEmail_QTK">Nhập email.....</string>
     <string name="btnQuenMatKhau">Đặt lại mật khẩu</string>
-    <string name="tvQuenMatKhau">Bạn đang gặp sự cố về tài khoản? Hãy nhập tài khoản email đăng ký để được đặt lại mật khẩu.</string>
+    <string name="tvQuenMatKhau">Bạn đang gặp sự cố về tài khoản? Hãy nhập tài khoản email đăng ký để được đặt lại mật khẩu.<br/><br/>
+        Lưu ý: Để thuận tiện trong việc xác nhận tài khoản. Vui lòng bật quyền truy cập: <br/><br/>
+        https://myaccount.google.com/security -> Quyền truy cập của ứng dụng kém an toàn -> bật quyền truy cập
+     </string>
     <!--    Kết thúc màn hình quên tài khoản-->
 
     <!--    Dialog Màn hình quên tài khoản-->

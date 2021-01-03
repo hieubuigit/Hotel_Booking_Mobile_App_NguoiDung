@@ -46,6 +46,7 @@
         <EditText
             android:id="@+id/editText_SDT_DangKy"
             style="@style/EditText_Nhap"
+            android:inputType="number"
             android:hint="@string/hintNhapSDT"></EditText>
     </LinearLayout>
 
@@ -59,6 +60,7 @@
         <EditText
             android:id="@+id/editText_MatKhau_DangKy"
             style="@style/EditText_Nhap"
+            android:inputType="textPassword"
             android:hint="@string/hintMK_DangKy"></EditText>
     </LinearLayout>
 
@@ -72,6 +74,7 @@
         <EditText
             android:id="@+id/editText_XacNhan_DangKy"
             style="@style/EditText_Nhap"
+            android:inputType="textPassword"
             android:hint="@string/hintXacNhanMK"></EditText>
     </LinearLayout>
 

@@ -1,37 +1,23 @@
 package com.chuyende.hotelbookingappofuser.data_models;
 
-import com.google.firestore.v1.TargetOrBuilder;
-
-import java.util.ArrayList;
-
 public class TaiKhoanNguoiDung {
-    private String ma_TKNguoiDung;
     private String ten_TKNguoiDung;
     private String matKhau_TKNguoiDung;
     private String email_TKNguoiDung;
     private String sdt_TKNguoiDung;
-    private String maOTP_TKNGuoiDung;
+    private String id;
 
     public TaiKhoanNguoiDung() {
     }
 
-    public TaiKhoanNguoiDung(String ma_TKNguoiDung, String ten_TKNguoiDung,
+    public TaiKhoanNguoiDung(String ten_TKNguoiDung,
                              String matKhau_TKNguoiDung, String email_TKNguoiDung,
-                             String sdt_TKNguoiDung, String maOTP_TKNGuoiDung) {
-        this.ma_TKNguoiDung = ma_TKNguoiDung;
+                             String sdt_TKNguoiDung, String id) {
         this.ten_TKNguoiDung = ten_TKNguoiDung;
         this.matKhau_TKNguoiDung = matKhau_TKNguoiDung;
         this.email_TKNguoiDung = email_TKNguoiDung;
         this.sdt_TKNguoiDung = sdt_TKNguoiDung;
-        this.maOTP_TKNGuoiDung = maOTP_TKNGuoiDung;
-    }
-
-    public String getMa_TKNguoiDung() {
-        return ma_TKNguoiDung;
-    }
-
-    public void setMa_TKNguoiDung(String ma_TKNguoiDung) {
-        this.ma_TKNguoiDung = ma_TKNguoiDung;
+        this.id = id;
     }
 
     public String getTen_TKNguoiDung() {
@@ -66,24 +52,23 @@ public class TaiKhoanNguoiDung {
         this.sdt_TKNguoiDung = sdt_TKNguoiDung;
     }
 
-    public String getMaOTP_TKNGuoiDung() {
-        return maOTP_TKNGuoiDung;
+    public String getId() {
+        return id;
     }
 
-    public void setMaOTP_TKNGuoiDung(String maOTP_TKNGuoiDung) {
-        this.maOTP_TKNGuoiDung = maOTP_TKNGuoiDung;
+    public void setId(String id) {
+        this.id = id;
     }
 
 
     @Override
     public String toString() {
         return "TaiKhoanNguoiDung{" +
-                "ma_TKNguoiDung='" + ma_TKNguoiDung + '\'' +
                 ", ten_TKNguoiDung='" + ten_TKNguoiDung + '\'' +
                 ", matKhau_TKNguoiDung='" + matKhau_TKNguoiDung + '\'' +
                 ", email_TKNguoiDung='" + email_TKNguoiDung + '\'' +
                 ", sdt_TKNguoiDung='" + sdt_TKNguoiDung + '\'' +
-                ", maOTP_TKNGuoiDung='" + maOTP_TKNGuoiDung + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
 }

@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -36,7 +38,12 @@ public class ManHinhDangKy extends AppCompatActivity {
     EditText txt_Ten_Tai_Khoan_DK, txt_Email_DK, txt_SDT_DK, txt_MatKhau_DK, txt_XacNhan_DK;
     CheckBox chk_Xac_Nhan;
     Button btn_Dang_Ky;
-    private static final String COLLECTION = "TaiKhoanNguoiDung";
+    private FirebaseAuth fbAuth;
+    public static final String COLLECTION = "TaiKhoanNguoiDung";
+    public static final String TENTAIKHOAN = "tenTaiKhoan";
+    public static final String MATKHAU = "matKhau";
+    public static final String EMAIL = "email";
+    public static final String SODIENTHOAI = "soDienThoai";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     public final ArrayList<TaiKhoanNguoiDung> arrlstTaiKhoanNguoiDung = new ArrayList<TaiKhoanNguoiDung>();
 
@@ -59,23 +66,21 @@ public class ManHinhDangKy extends AppCompatActivity {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         TaiKhoanNguoiDung taiKhoanNguoiDung = new TaiKhoanNguoiDung();
                         // gán giá trị của field tenTaiKhoan trên firebase : document.get("my-field").toString(); vào các trường của class
-                        taiKhoanNguoiDung.setTen_TKNguoiDung(document.get("tenTaiKhoan").toString());
-                        taiKhoanNguoiDung.setMatKhau_TKNguoiDung(document.get("matKhau").toString());
-                        taiKhoanNguoiDung.setEmail_TKNguoiDung(document.get("email").toString());
-                        taiKhoanNguoiDung.setSdt_TKNguoiDung(document.get("soDienThoai").toString());
-                        taiKhoanNguoiDung.setMa_TKNguoiDung(document.getId());
+                        taiKhoanNguoiDung.setTen_TKNguoiDung(document.get(TENTAIKHOAN).toString());
+                        taiKhoanNguoiDung.setMatKhau_TKNguoiDung(document.get(MATKHAU).toString());
+                        taiKhoanNguoiDung.setEmail_TKNguoiDung(document.get(EMAIL).toString());
+                        taiKhoanNguoiDung.setSdt_TKNguoiDung(document.get(SODIENTHOAI).toString());
+//                        taiKhoanNguoiDung.setMa_TKNguoiDung(document.getId());
                         // thêm vào arraylist
                         arrlstTaiKhoanNguoiDung.add(taiKhoanNguoiDung);
                     }
 
-                    Log.d("TAG-ArrayList2", "arrlist : " + arrlstTaiKhoanNguoiDung.toString());
                 } else {
                     Log.d("TAG", "Error getting documents: ", task.getException());
                 }
             }
         });
 //        [END lấy dữ liệu từ firebase thêm vào arraylist]
-
 
 //        [START sự kiện click checkbox đổi màu button]
         chk_Xac_Nhan.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +116,9 @@ public class ManHinhDangKy extends AppCompatActivity {
                 if (txt_MatKhau_DK.getText().toString().trim().length() == 0) {
                     txt_MatKhau_DK.setError("Hãy nhập mật khẩu");
                 }
+                if (txt_MatKhau_DK.getText().toString().trim().length() <= 7) {
+                    txt_MatKhau_DK.setError("Mật khẩu phải từ 8 ký tự trở lên");
+                }
                 // kiếm tra mật khẩu có khớp với mật khẩu xác nhận hay không
                 if (txt_MatKhau_DK.getText().toString().trim().equals(txt_XacNhan_DK.getText().toString().trim()) == false) {
                     txt_XacNhan_DK.setError("Hãy xác nhận đúng mật khẩu");
@@ -132,7 +140,7 @@ public class ManHinhDangKy extends AppCompatActivity {
                 // các điều kiện để có thể đăng ký
                 if (chk_Xac_Nhan.isChecked() == true
                         && txt_SDT_DK.getText().toString().trim().length() > 0
-                        && txt_MatKhau_DK.getText().toString().trim().length() > 0
+                        && txt_MatKhau_DK.getText().toString().trim().length() > 7
                         && txt_MatKhau_DK.getText().toString().trim().equals(txt_XacNhan_DK.getText().toString().trim()) == true) {
                     themTaiKhoan();
                 } else {
@@ -140,8 +148,9 @@ public class ManHinhDangKy extends AppCompatActivity {
                 }
             }
         });
-
 //        [END sự kiện đăng ký]
+        fbAuth = FirebaseAuth.getInstance();
+
     }
 
     //    [START hàm thêm tài khoản]
@@ -149,10 +158,10 @@ public class ManHinhDangKy extends AppCompatActivity {
         // them mot document ngau nhien
         Map<String, Object> data = new HashMap<String, Object>(); // biến trung gian kết nối code android và firebase
         // put: thêm giá trị vào k: ... , giá trị đó là phần bên phải;
-        data.put("email", txt_Email_DK.getText().toString());
-        data.put("soDienThoai", txt_SDT_DK.getText().toString());
-        data.put("tenTaiKhoan", txt_Ten_Tai_Khoan_DK.getText().toString());
-        data.put("matKhau", txt_MatKhau_DK.getText().toString());
+        data.put(EMAIL, txt_Email_DK.getText().toString());
+        data.put(SODIENTHOAI, txt_SDT_DK.getText().toString());
+        data.put(TENTAIKHOAN, txt_Ten_Tai_Khoan_DK.getText().toString());
+        data.put(MATKHAU, txt_MatKhau_DK.getText().toString());
         db.collection(COLLECTION).add(data).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
@@ -171,6 +180,18 @@ public class ManHinhDangKy extends AppCompatActivity {
                 // khởi tạo dialog
                 AlertDialog dialog = builder.create();
                 dialog.show();
+            }
+        });
+        // đăng ký tài khoản google
+        fbAuth.createUserWithEmailAndPassword(txt_Email_DK.getText().toString().trim(),txt_MatKhau_DK.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(getApplicationContext(),"Email registered", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Log.d("Error register email", " => " + task.getException());
+                }
             }
         });
     }

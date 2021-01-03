@@ -29,25 +29,43 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class ManHinhDangNhap extends AppCompatActivity {
-    TextView tv_NextTo_Dang_Ky, tv_NextTo_QTK;
+
     Button btn_Dang_Nhap, btn_Dang_Nhap_Google, btn_Dang_Nhap_Facebook, btn_Dang_Nhap_Twitter;
+
     EditText txt_Ten_TK_DN, txt_Mat_Khau_DN;
+
+    TextView tv_NextTo_Dang_Ky, tv_NextTo_QTK;
+
+    //firebase
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    public final ArrayList<TaiKhoanNguoiDung> arrayListTKNguoiDung = new ArrayList<TaiKhoanNguoiDung>();
-    private FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
+
+    // google
     static final int RC_SIGN_IN = 123;
     private GoogleSignInClient mGoogleSignInClient;
-//    private CallbackManager mCallbackManager;
+
+    // all arraylist
+    private ArrayList<TaiKhoanNguoiDung> arrayListTKNguoiDung = new ArrayList<TaiKhoanNguoiDung>();
+
+    // collection and field
+    public static final String COLLECTION = "TaiKhoanNguoiDung";
+    public static final String TENTAIKHOAN = "tenTaiKhoan";
+    public static final String MATKHAU = "matKhau";
+    public static final String EMAIL = "email";
+    public static final String SODIENTHOAI = "soDienThoai";
+
+    //    private CallbackManager mCallbackManager;
     @Override
     public void onStart() {
 //        // Check if user is signed in (non-null) and update UI accordingly.
 //        FirebaseUser currentUser = mAuth.getCurrentUser();
         GoogleSignInAccount currentUser = GoogleSignIn.getLastSignedInAccount(this);
         if (currentUser != null) {
-            Intent intent = new Intent(ManHinhDangNhap.this, ManHinhNha.class);
+            Intent intent = new Intent(ManHinhDangNhap.this, FragmentManHinhNha.class);
             startActivity(intent);
         }
         super.onStart();
@@ -64,7 +82,7 @@ public class ManHinhDangNhap extends AppCompatActivity {
     // viết sự kiện ở setEvent()
     private void setEvent() {
 //        [START lấy dữ liệu từ firebase thêm vào arraylist]
-        db.collection("TaiKhoanNguoiDung").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection(COLLECTION).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 // nếu lấy thành công
@@ -73,20 +91,15 @@ public class ManHinhDangNhap extends AppCompatActivity {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         TaiKhoanNguoiDung taiKhoanNguoiDung = new TaiKhoanNguoiDung();
                         // gán giá trị của field tenTaiKhoan trên firebase : document.get("my-field").toString(); vào các trường của class
-                        taiKhoanNguoiDung.setTen_TKNguoiDung(document.get("tenTaiKhoan").toString());
-                        taiKhoanNguoiDung.setMatKhau_TKNguoiDung(document.get("matKhau").toString());
-                        taiKhoanNguoiDung.setEmail_TKNguoiDung(document.get("email").toString());
-                        taiKhoanNguoiDung.setSdt_TKNguoiDung(document.get("soDienThoai").toString());
-                        taiKhoanNguoiDung.setMa_TKNguoiDung(document.getId());
+                        taiKhoanNguoiDung.setTen_TKNguoiDung(document.get(TENTAIKHOAN).toString());
+                        taiKhoanNguoiDung.setMatKhau_TKNguoiDung(document.get(MATKHAU).toString());
+                        taiKhoanNguoiDung.setEmail_TKNguoiDung(document.get(EMAIL).toString());
+                        taiKhoanNguoiDung.setSdt_TKNguoiDung(document.get(SODIENTHOAI).toString());
+//                        taiKhoanNguoiDung.setMa_TKNguoiDung(document.getId());
                         // thêm vào arraylist
                         arrayListTKNguoiDung.add(taiKhoanNguoiDung);
-                        // kiểm tra
-                        Log.d("TAG-tentaikhoan", "tentk : " + taiKhoanNguoiDung.getTen_TKNguoiDung());
-                        Log.d("TAG-matkhau", "matkhau : " + taiKhoanNguoiDung.getMatKhau_TKNguoiDung());
-                        Log.d("TAG-ArrayList", "arrlist : " + arrayListTKNguoiDung.toString());
+//                        Log.d("TAG-ArrayList", "arrlist : " + arrayListTKNguoiDung.toString());
                     }
-
-                    Log.d("TAG-ArrayList2", "arrlist : " + arrayListTKNguoiDung.toString());
                 } else {
                     Log.d("TAG", "Error getting documents: ", task.getException());
                 }
@@ -115,7 +128,6 @@ public class ManHinhDangNhap extends AppCompatActivity {
 //        [END click button chuyển sang màn hình quên tài khoản]
 
 //         [START click button đăng nhập bằng tài khoản đăng ký]
-        // chưa hoàn thành
         btn_Dang_Nhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,29 +140,26 @@ public class ManHinhDangNhap extends AppCompatActivity {
                 for (TaiKhoanNguoiDung taiKhoanNguoiDung2 : arrayListTKNguoiDung) {
                     if (taiKhoanNguoiDung2.getTen_TKNguoiDung().equals(txt_Ten_TK_DN.getText().toString().trim()) == true
                             && taiKhoanNguoiDung2.getMatKhau_TKNguoiDung().equals(txt_Mat_Khau_DN.getText().toString().trim()) == true) {
-                        Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(ManHinhDangNhap.this, ManHinhNha.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("key_id_ten_tai_khoan",taiKhoanNguoiDung2.getMa_TKNguoiDung());
-                        intent.putExtras(bundle);
+                        Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(ManHinhDangNhap.this, FragmentMain.class);
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("key_id_ten_tai_khoan", taiKhoanNguoiDung2.getMa_TKNguoiDung());
+//                        intent.putExtras(bundle);
                         startActivity(intent);
-                    } else {
-                        Log.d("TAG4", "Dang Nhap that bai");
                     }
                 }
-                Log.d("TAG-ArrayList_after_click", "Gia tri arrlist => " + arrayListTKNguoiDung.toString());
             }
         });
-
 //        [END click button đăng nhập bằng tài khoản đăng ký]
+
 //        [START đăng nhập bằng tk google]
         // Configure Google Sign In
+        mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        mAuth = FirebaseAuth.getInstance();
         btn_Dang_Nhap_Google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -227,7 +236,7 @@ public class ManHinhDangNhap extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
-            startActivity(new Intent(ManHinhDangNhap.this, ManHinhNha.class));
+            startActivity(new Intent(ManHinhDangNhap.this, FragmentManHinhNha.class));
             Log.d("TAG-Successssssssssssss", "Login ok");
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
@@ -246,9 +255,8 @@ public class ManHinhDangNhap extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(ManHinhDangNhap.this, ManHinhNha.class);
+                            Intent intent = new Intent(ManHinhDangNhap.this, FragmentManHinhNha.class);
                             startActivity(intent);
-                            Log.d("TAG-Successssssssssssss222222222", "Login ok");
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
