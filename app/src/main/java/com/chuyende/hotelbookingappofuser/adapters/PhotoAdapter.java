@@ -18,7 +18,6 @@ import com.chuyende.hotelbookingappofuser.R;
 import java.util.List;
 
 public class PhotoAdapter extends PagerAdapter {
-
     private Context mContext;
     private List<Uri> mListUrisOfPhoto;
 

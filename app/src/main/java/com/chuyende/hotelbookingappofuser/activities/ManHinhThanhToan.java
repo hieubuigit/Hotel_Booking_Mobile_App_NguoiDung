@@ -16,13 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.chuyende.hotelbookingappofuser.R;
-import com.chuyende.hotelbookingappofuser.data_models.Photo;
 import com.chuyende.hotelbookingappofuser.data_models.ThanhToan;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -47,7 +45,7 @@ public class ManHinhThanhToan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manhinhthanhtoan);
+        setContentView(R.layout.activity_man_hinh_thanh_toan);
         //ngayden-ngaydi
         //onvaluetextchange thuc hien
         //try catch

@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/custombackground"
+        android:background="@drawable/custom_background"
         android:orientation="vertical">
 
         <ImageView
@@ -93,7 +93,7 @@
                         android:layout_height="30dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/customdienvao"
+                        android:background="@drawable/custom_dien_vao"
                         android:fontFamily="@font/open_sans_regular"
                         android:inputType="text"></EditText>
 
@@ -132,7 +132,7 @@
                         android:layout_height="30dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/customdienvao"
+                        android:background="@drawable/custom_dien_vao"
                         android:fontFamily="@font/open_sans_regular"
                         android:inputType="text"
 
@@ -242,7 +242,7 @@
                 style="@style/label"
                 android:layout_marginLeft="70dp"
                 android:layout_weight="8"
-                android:background="@drawable/customdienvao"
+                android:background="@drawable/custom_dien_vao"
                 android:fontFamily="@font/open_sans_regular"
                 android:gravity="center"
                 android:hint="DSH551"
@@ -290,7 +290,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/customedittext"
+            android:background="@drawable/custom_edittext"
             android:fontFamily="@font/open_sans_regular"
             android:gravity="center"
             android:text="Quý khách vui lòng thanh toán trước 15% "
@@ -303,7 +303,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/customlinearlayout"
+            android:background="@drawable/custom_linearlayout"
             android:orientation="vertical">
 
             <TextView
@@ -404,7 +404,7 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:background="@drawable/custombutton"
+        android:background="@drawable/custom_button"
         android:fontFamily="@font/open_sans_regular"
         android:text="Đồng ý đặt phòng"></Button>
     </LinearLayout>
