@@ -18,7 +18,7 @@ public class YeuThichFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = null;
-        v = inflater.inflate(R.layout.fragment_yeu_thich_fragment, container, false);
+        v = inflater.inflate(R.layout.fragment_yeu_thich, container, false);
 
         // Get all view from layout
         recyclerView = v.findViewById(R.id.rcvPhongYeuThich);

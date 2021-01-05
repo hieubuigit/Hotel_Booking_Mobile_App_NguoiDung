@@ -4,4 +4,28 @@
     <string name="titleToolbar">Yêu thích</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    
+    <!-- ================= Man hinh tai khoan nguoi dung =================== -->
+    <string name="tv_ten_day_du">Tên đầy đủ</string>
+    <string name="tv_quoc_tich">Quốc tịch</string>
+    <string name="hint_quoc_tich">Nhập quốc tịch...</string>
+    <string name="tv_email_nguoi_dung">Email</string>
+    <string name="hint_email_nguoi_dung">Nhập email...</string>
+    <string name="tv_so_dien_thoai">Số điện thoại</string>
+    <string name="hint_so_dien_thoai">Nhập số điện thoại...</string>
+    <string name="tv_ngay_sinh">Ngày sinh</string>
+    <string name="hint_them_ngay_sinh">Thêm ngày sinh...</string>
+    <string name="btn_cap_nhat">Cập nhật</string>
+    <string name="btn_dang_xuat">Đăng xuất</string>
+    <string name="tv_cac_phong_da_dat">Các phòng đã đặt</string>
+    
+    <!-- Dialog Chon ngay sinh -->
+    <string name="title_dialog_chon_ngay_sinh">Chọn ngày sinh</string>
+    <string name="btn_Thoi">Thôi</string>
+    <string name="btn_Them">Thêm</string>
+
+    <!-- ================= END - Man hinh tai khoan nguoi dung =================== -->
+    
+    
 </resources>

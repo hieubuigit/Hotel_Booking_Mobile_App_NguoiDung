@@ -8,9 +8,7 @@
     android:orientation="vertical"
     tools:context=".activities.YeuThichFragment">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar_yeu_thich" />
+    <include layout="@layout/toolbar_yeu_thich" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,5 +20,4 @@
             android:layout_height="match_parent" />
 
     </LinearLayout>
-
 </LinearLayout>
