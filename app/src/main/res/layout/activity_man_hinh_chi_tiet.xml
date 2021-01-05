@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/custombackground"
+    android:background="@drawable/custom_background"
     android:orientation="vertical"
     tools:context=".activities.ManHinhChiTiet">
 
@@ -117,12 +117,12 @@
                         style="@android:style/Widget.Holo.RatingBar"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
+                        android:isIndicator="true"
                         android:numStars="5"
                         android:progressTint="#ffff00"
                         android:scaleX="0.8"
                         android:scaleY="0.8"
-                        android:stepSize=".5"
-                        android:isIndicator="true"/>
+                        android:stepSize=".5" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -190,12 +190,12 @@
                         android:id="@+id/txtMota"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        android:background="@drawable/customdienvao"
+                        android:background="@drawable/custom_dien_vao"
                         android:fontFamily="@font/open_sans_regular"
                         android:gravity="top|left"
                         android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
                         android:paddingTop="10dp"
+                        android:paddingRight="10dp"
                         android:paddingBottom="10dp"
                         android:scrollbars="vertical"
                         android:text="Phòng sạch sẽ thoáng mát"
@@ -253,18 +253,17 @@
                     <TextView
                         style="@style/label"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
                         android:fontFamily="@font/open_sans_regular"
-                        android:text="Các dịch vụ:" />
+                        android:text="Các tiện nghi:" />
                 </LinearLayout>
 
             </LinearLayout>
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewpager2"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvTienNghi"
                 android:layout_width="match_parent"
-                android:layout_height="80dp">
-
-            </androidx.viewpager.widget.ViewPager>
+                android:layout_height="100dp" />
 
             <LinearLayout style="@style/LeanerLayout">
 
@@ -276,7 +275,8 @@
                     android:layout_marginTop="-30dp" />
             </LinearLayout>
 
-            <LinearLayout style="@style/LeanerLayout"
+            <LinearLayout
+                style="@style/LeanerLayout"
                 android:layout_height="50dp">
 
                 <LinearLayout
@@ -342,7 +342,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="4"
-                    android:background="@drawable/customdienvao"
+                    android:background="@drawable/custom_dien_vao"
                     android:fontFamily="@font/open_sans_regular"
                     android:gravity="top|left"
                     android:hint="Đánh giá nhận xét của bạn về phòng..."
@@ -364,7 +364,7 @@
                     android:layout_marginLeft="312dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/custombinhluan"
+                    android:background="@drawable/custom_danh_gia"
                     android:text="Bình Luận"
                     android:textAllCaps="false"
                     android:textSize="16sp" />
@@ -411,7 +411,8 @@
                 android:id="@+id/google_map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="400dp" />
+                android:layout_height="400dp"
+                android:layout_marginBottom="20dp" />
 
         </LinearLayout>
 

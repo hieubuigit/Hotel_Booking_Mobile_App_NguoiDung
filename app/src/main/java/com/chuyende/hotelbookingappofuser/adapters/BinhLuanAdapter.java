@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chuyende.hotelbookingappofuser.R;
 import com.chuyende.hotelbookingappofuser.data_models.BinhLuan;
+import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class BinhLuanAdapter extends RecyclerView.Adapter<BinhLuanAdapter.ViewHo
         //manguoidung -> du lieu nguoi dung lay duong dan anh
 //        holder.imgAvatar.setImageResource((binhluan.getHinhanhBL()));
         //picaso de gan hinh
+//        Picasso.get().load()
     }
 
     @Override

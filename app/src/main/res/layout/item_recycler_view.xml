@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:background="@drawable/customedittext"
+    android:background="@drawable/custom_edittext"
     android:orientation="horizontal"
     android:layout_marginTop="10dp" >
 
@@ -40,7 +40,7 @@
                 android:id="@+id/txtloibinhluan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/customedittext"
+                android:background="@drawable/custom_edittext"
                 android:focusable="false"
                 android:fontFamily="@font/open_sans_regular"
                 android:gravity="start|left"
@@ -70,7 +70,8 @@
                 android:layout_gravity="center"
                 android:scaleX="0.5"
                 android:scaleY="0.5"
-                android:text="5" />
+                android:text="5"
+                android:isIndicator="true"/>
         </LinearLayout>
     </LinearLayout>
 
