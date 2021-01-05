@@ -3,6 +3,9 @@ package com.chuyende.hotelbookingappofuser.data_models;
 public class DichVu {
     private int resourceId;
 
+    public DichVu() {
+    }
+
     public DichVu(int resourceId) {
         this.resourceId = resourceId;
     }

@@ -43,7 +43,9 @@ public class BinhLuanAdapter extends RecyclerView.Adapter<BinhLuanAdapter.ViewHo
         holder.txtloibinhluan.setText(binhluan.getNoidungBL());
         Locale locale = new Locale("vn", "VN");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
-        holder.imgAvatar.setImageResource((binhluan.getHinhanhBL()));
+        //manguoidung -> du lieu nguoi dung lay duong dan anh
+//        holder.imgAvatar.setImageResource((binhluan.getHinhanhBL()));
+        //picaso de gan hinh
     }
 
     @Override

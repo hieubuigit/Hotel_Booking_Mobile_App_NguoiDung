@@ -2,16 +2,20 @@ package com.chuyende.hotelbookingappofuser.adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.chuyende.hotelbookingappofuser.R;
+import com.chuyende.hotelbookingappofuser.activities.ManHinhChiTiet;
 import com.chuyende.hotelbookingappofuser.data_models.DichVu;
 
 import java.util.BitSet;
@@ -19,10 +23,14 @@ import java.util.List;
 
 public class DichVuAdapter extends PagerAdapter {
 
-    private Context dvContext;
-    private List<Bitmap> dvListDichVu;
 
-    public DichVuAdapter(Context dvContext, List<Bitmap> dvListDichVu) {
+    private Context dvContext;
+    private List<Uri> dvListDichVu;
+
+    public DichVuAdapter(ManHinhChiTiet mContext, List<String> dvListDichVu2) {
+    }
+
+    public DichVuAdapter(Context dvContext, List<Uri> dvListDichVu) {
         this.dvContext = dvContext;
         this.dvListDichVu = dvListDichVu;
     }
@@ -31,28 +39,30 @@ public class DichVuAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_dichvu, container, false);
-        ImageView imgLiveTV = view.findViewById(R.id.img_liveTV);
-        //ImageView imghandbail = view.findViewById(R.id.img_handbail);
-        //ImageView imgLocalCafe = view.findViewById(R.id.img_localCafe);
-        //ImageView imgrestaurant = view.findViewById(R.id.img_restaurant);
 
-        Bitmap dichvu = dvListDichVu.get(position);
-        if (dichvu != null) {
-            //Glide.with(dvContext).load(dichvu.getResourceId()).into(imgLiveTV);
-            //Glide.with(dvContext).load(dichvu.getResourceId()).into(imghandbail);
-            // Glide.with(dvContext).load(dichvu.getResourceId()).into(imgLocalCafe);
-            // Glide.with(dvContext).load(dichvu.getResourceId()).into(imgrestaurant);
+        ImageView imgDichvu = view.findViewById(R.id.img_Dichvu);
+        TextView  txtTenDV = view.findViewById(R.id.txtTenDV);
+
+        Uri uriDichvu = dvListDichVu.get(position);
+
+        if(!uriDichvu.toString().equals(" ")){
+            Glide.with(container).load(uriDichvu).into(imgDichvu);
+
+
         }
 
-        //chu ý Add to viewgroup
-        container.addView(view);
+
+        ViewPager viewPager = (ViewPager) container;
+        viewPager.addView(view);
 
         return view;
     }
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((View) object);
+        ViewPager viewPager = (ViewPager) container;
+        View view = (View) object;
+        viewPager.removeView(view);
     }
 
     @Override
