@@ -46,6 +46,7 @@
     <string name="btnFB">Đăng nhập với tài khoản Facebook</string>
     <string name="btnIns">Đăng nhập với tài khoản Instagram</string>
     <string name="btnDangNhap">Đăng nhập</string>
+    <string name="btnDangXuat">Đăng xuất</string>
     <string name="tvTitleDK">Chưa có tài khoản hãy</string>
     <string name="tvDK">đăng ký</string>
     <string name="tvQuenTaiKhoan">Quên tài khoản?</string>
@@ -71,8 +72,15 @@
     <string name="negative">Hủy</string>
     <!--    Dialog Kết thúc màn hình quên tài khoản-->
 
-    <!--    Màn hình quên kết quả tìm kiếm-->
-    <!--    Kết thúc màn hình kết quả tìm kiếm-->
+    <!--    Màn hình tài khoản người dùng-->
+    <string name="tv_TenNguoiDung_MHTK">Tên đầy đủ</string>
+    <string name="tv_QuocTich_MHTK">Quốc tịch</string>
+    <string name="tv_Email_MHTK">Email</string>
+    <string name="tv_SoDienThoai_MHTK">Số điện thoại</string>
+    <string name="tv_NgaySinh_MHTK">Ngày sinh</string>
+    <string name="tv_CapNhat_MHTK">Cập nhật</string>
+    <string name="tv_DangXuat_MHTK">Đăng xuất</string>
+    <!--    Kết thúc tài khoản người dùng-->
 
     <!--    Menu bottom navigation-->
     <string name="home">Tất cả phòng</string>
@@ -82,7 +90,4 @@
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
     <string name="facebook_app_id">139038610997148</string>
     <string name="fb_login_protocol_scheme">fb139038610997148</string>
-    <!-- Twitter consumer key and secret -->
-    <string name="twitter_consumer_key" translatable="false">YOUR_CONSUMER_KEY</string>
-    <string name="twitter_consumer_secret" translatable="false">YOUR_CONSUMER_SECRET</string>
 </resources>

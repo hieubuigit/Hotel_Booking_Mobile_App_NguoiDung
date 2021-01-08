@@ -62,6 +62,10 @@ public class DialogManHinhQuenTaiKhoan extends DialogFragment {
         String getKeyOTP = getArguments().getString("keyOTP"); // lấy mã OTP từ màn hình quên tài khoản
         String getKeyDocumentID = getArguments().getString("keyDocumentID");
 
+        String getabc = getArguments().getString("keyAccountUser");
+
+        Log.d("=>>>>>>>>", "Key Account: " + getabc);
+
         tvEmail.setText("Email: " + getKeyEmail);// hiện email người dùng ở dialog
         tvTenTaiKhoan.setText("Tên tài khoản: " + getKeyTenTK); // hiện tên tài khoản người dùng ở dialog
 

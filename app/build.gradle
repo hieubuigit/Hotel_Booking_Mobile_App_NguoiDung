@@ -48,8 +48,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.5.1'
 // FirebaseUI Storage only
     implementation 'com.firebaseui:firebase-ui-storage:6.4.0'
+
+//    // facebook
 //    implementation 'com.facebook.android:facebook-login:[8.1)'
 //    implementation 'com.facebook.android:facebook-android-sdk:4.x'
+    // Facebook Login only
+    implementation 'com.facebook.android:facebook-login:8.1.0'
+    implementation 'com.facebook.android:facebook-android-sdk:8.1.0'
 //    implementation 'com.twitter.sdk.android:twitter-core:3.x'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 

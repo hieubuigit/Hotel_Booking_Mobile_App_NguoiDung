@@ -46,10 +46,6 @@ public class ManHinhQuenTaiKhoan extends AppCompatActivity {
                                 txt_Nhap_Email.setError("Vui lòng nhập Email");
                                 return;
                             }
-//                            if (!txt_Nhap_Email.getText().toString().equals(robot.getEmail_TKNguoiDung())) {
-//                                txt_Nhap_Email.setError("Email không tồn tại");
-//                                return;
-//                            }
                             if (txt_Nhap_Email.getText().toString().equals(robot.getEmail_TKNguoiDung())) {
 
                                 sendEmail(); // sending email

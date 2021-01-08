@@ -11,7 +11,7 @@ import com.chuyende.hotelbookingappofuser.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class FragmentMain extends AppCompatActivity {
-    private BottomNavigationView bottomNavigationView;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,6 @@ public class FragmentMain extends AppCompatActivity {
                     fragment = new FragmentManHinhTaiKhoan();
                     break;
             }
-
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
             return true;
         }

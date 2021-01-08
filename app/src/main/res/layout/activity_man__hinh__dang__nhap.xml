@@ -52,9 +52,16 @@
 
 
     <Button
-        android:id="@+id/button_DangNhap_Facebook"
-        style="@style/ButtonDangNhap_others"
-        android:text="@string/btnFB"></Button>
+            android:id="@+id/button_DangNhap_Facebook"
+            style="@style/ButtonDangNhap_others"
+            android:text="@string/btnFB"></Button>
+
+<!--    <com.facebook.login.widget.LoginButton-->
+<!--        xmlns:fb="http://schemas.android.com/apk/res-auto"-->
+<!--        android:id="@+id/button_DangNhap_Facebook"-->
+<!--        fb:login_text="@string/btnFB"-->
+<!--        fb:logout_text="@string/btnDangXuat"-->
+<!--        style="@style/ButtonDangNhap_others" />-->
 
     <Button
         android:id="@+id/button_DangNhap_Twitter"

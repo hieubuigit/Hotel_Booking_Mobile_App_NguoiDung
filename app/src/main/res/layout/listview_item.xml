@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="260dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/border_xemphong"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@drawable/border_xemphong"
     android:paddingTop="10dp"
     android:paddingBottom="10dp">
 <!--    android:weightSum="4"-->
-
+<!--   -->
     <ImageView
         android:id="@+id/imageView_listitem"
         style="@style/imageView_ManHinhNha"></ImageView>

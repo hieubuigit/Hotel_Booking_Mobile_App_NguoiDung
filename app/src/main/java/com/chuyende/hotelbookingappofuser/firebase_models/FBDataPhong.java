@@ -23,6 +23,7 @@ public class FBDataPhong {
     public static String RATINGPHONG = "ratingPhong";
     public static final String GIATHUE = "giaThue";
     public static final String ANHDAIDIEN = "anhDaiDien";
+    public static final String MATRANGTHAIPHONG = "maTrangThaiPhong";
 
     public FBDataPhong() {
         db = FirebaseFirestore.getInstance();
@@ -47,6 +48,7 @@ public class FBDataPhong {
                                 phong.setTenPhong(document.getString(TENPHONG));
                                 phong.setRatingPhong(document.getDouble(RATINGPHONG));
                                 phong.setGiaThue(document.getDouble(GIATHUE));
+                                phong.setMaTrangThaiPhong(document.getString(MATRANGTHAIPHONG));
                                 phong.setMaLoaiPhong(document.getString("maLoaiPhong"));
                                 phong.setMaTinhThanhPho(document.getString("maTinhThanhPho"));
                                 arrlstPhong.add(phong);
@@ -76,6 +78,7 @@ public class FBDataPhong {
                                 phong.setTenPhong(document.getString(TENPHONG));
                                 phong.setRatingPhong(document.getDouble(RATINGPHONG));
                                 phong.setGiaThue(document.getDouble(GIATHUE));
+                                phong.setMaTrangThaiPhong(document.getString(MATRANGTHAIPHONG));
                                 phong.setMaLoaiPhong(document.getString("maLoaiPhong"));
                                 phong.setMaTinhThanhPho(document.getString("maTinhThanhPho"));
                                 arrlstPhong.add(phong);
@@ -105,6 +108,7 @@ public class FBDataPhong {
                                 phong.setTenPhong(document.getString(TENPHONG));
                                 phong.setRatingPhong(document.getDouble(RATINGPHONG));
                                 phong.setGiaThue(document.getDouble(GIATHUE));
+                                phong.setMaTrangThaiPhong(document.getString(MATRANGTHAIPHONG));
                                 phong.setMaLoaiPhong(document.getString("maLoaiPhong"));
                                 phong.setMaTinhThanhPho(document.getString("maTinhThanhPho"));
                                 arrlstPhong.add(phong);
