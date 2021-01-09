@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,30 +40,21 @@ public class ManHinhThanhToan extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
+    public static final String COLLECTION_PHONG = "Phong";
+    public static final String MA_PHONG = "KS010WBuLfIBmX55ssYoGq3U";
+    public static final String DUONG_DAN = "/media/phong/KS010WBuLfIBmX55ssYoGq3U/anhDaiDien/1ad8aa1d-8b8f-4a3e-a066-be4b58d86b2a.png";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_man_hinh_thanh_toan);
-        //ngayden-ngaydi
-        //onvaluetextchange thuc hien
-        //try catch
-        //tinh tong ngay new date()
-
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
 
         // lấy ảnh đại diện
         loadAnh();
-
-//        TongTien();
-
-        //tinh Tổng Tiền
-
-
         //firebase
         getdataTT();
-
         imgDatenDen = (ImageView) findViewById(R.id.img_Ngayden);
         ingDateNDi = (ImageView) findViewById(R.id.img_Ngaydi);
 
@@ -87,7 +77,6 @@ public class ManHinhThanhToan extends AppCompatActivity {
 
         setControl();
     }
-
 
     public void setControl() {
         edtDateNDen = findViewById(R.id.edit_Ngayden);
@@ -134,7 +123,7 @@ public class ManHinhThanhToan extends AppCompatActivity {
     }
 
     public void getdataTT() {
-        db.collection("Phong").document("KS010WBuLfIBmX55ssYoGq3U").get()
+        db.collection(COLLECTION_PHONG).document(MA_PHONG).get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -160,10 +149,9 @@ public class ManHinhThanhToan extends AppCompatActivity {
 
 
     public void loadAnh() {
-        StorageReference imageRefl = storageReference.child("/media/phong/KS010WBuLfIBmX55ssYoGq3U/anhDaiDien/1ad8aa1d-8b8f-4a3e-a066-be4b58d86b2a.png");
+        StorageReference imageRefl = storageReference.child(DUONG_DAN);
 
         long MAXBYTES = 1024 * 1024;
-
 
         imageRefl.getBytes(MAXBYTES).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
@@ -182,20 +170,5 @@ public class ManHinhThanhToan extends AppCompatActivity {
     }
 
 
-//    public void TongTien() {
-//        if (edtDateNDen == null && edtDatenDi == null) {
-//            Context context = getApplicationContext();
-//            CharSequence text = "vui long chon ngay den va ngay di";
-//            Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
-//            toast.show();
-//        } else {
-//            int nTongngay = (int) ((calendartwo.getTimeInMillis() - calendarone.getTimeInMillis()) / (1000 * 60 * 60 * 24));
-//            String stien = txtTamtinh.getText().toString();
-//            int a = Integer.parseInt(stien);
-//            int nTong = nTongngay * a;
-//            txtTongTien.setText(String.valueOf(nTong));
-//        }
-//
-//    }
 
 }

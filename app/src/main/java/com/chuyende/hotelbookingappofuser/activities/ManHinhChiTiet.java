@@ -3,11 +3,8 @@ package com.chuyende.hotelbookingappofuser.activities;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -22,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,10 +28,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.chuyende.hotelbookingappofuser.R;
 import com.chuyende.hotelbookingappofuser.adapters.BinhLuanAdapter;
-import com.chuyende.hotelbookingappofuser.adapters.DichVuAdapter;
 import com.chuyende.hotelbookingappofuser.adapters.PhotoAdapter;
 import com.chuyende.hotelbookingappofuser.adapters.TienNghiAdapter;
-import com.chuyende.hotelbookingappofuser.data_models.BinhLuan;
+import com.chuyende.hotelbookingappofuser.data_models.DanhGia;
 import com.chuyende.hotelbookingappofuser.data_models.Phong;
 import com.chuyende.hotelbookingappofuser.data_models.TienNghi;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -47,20 +44,22 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 
-import java.net.URL;
 import java.util.ArrayList;
 
-import java.util.HashMap;
 import java.util.Arrays;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -77,20 +76,16 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     ViewPager viewPagerBoSuuTap;
     PhotoAdapter photoAdapter;
     List<Uri> mListPhoto;
-
-    DichVuAdapter dichvuAdapter;
     List<Uri> dvListDichVu2;
-
-
     ImageButton ibHeart;
     CircleIndicator circleIndicator, circleIndicatordv;
     Timer mTimer;
     Boolean iconYeuThich = false;
 
-    TextView txtTenPhong, txtDiachi, txtGia, txtSoNguoi, txtMoTa;
+    TextView txtTenPhong, txtDiaChi, txtGia, txtSoNguoi, txtMoTa;
     RatingBar rtPhong, rtDanhGia, rtDedanhgia;
-    ImageView imgPhoto, imgBinhLuan, imgDichvu;
-    EditText edLoibinhluan;
+    ImageView imgPhoTo, imgBinhLuan, imgDichvu;
+    EditText edtLoiBinhLuan;
     Button btnBinhluan;
 
     TienNghiAdapter tienNghiAdapter;
@@ -98,8 +93,8 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     RecyclerView rcvTienNghi;
     RecyclerView.LayoutManager layoutManager;
 
-    RecyclerView recyclerView;
-    ArrayList<BinhLuan> listBinhLuan;
+    RecyclerView rcvBinhLuan;
+    ArrayList<DanhGia> listDanhGia;
     BinhLuanAdapter binhLuanAdapter;
     Button btnDatNgay;
     GoogleMap googleMap;
@@ -107,20 +102,25 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     // Firebase
     FirebaseFirestore db;
     FirebaseStorage storage;
-
     StorageReference storageReference;
+    CollectionReference DanhGiaRef;
 
     //Binh luan
+    public static final String NOI_DUNG_COMMENT = "noiDungComment";
+    public static final String RATING_NGUOI_DUNG = "ratingNguoiDung";
+    public static final String MA_NGUOI_DUNG_DG = "maNguoiDung";
+    public static final String MA_PHONG_DG = "maPhong";
+    public static final String COLLECTION_DANH_GIA = "DanhGia";
+    public static final String DANH_GIA = "DG02";
+
 
     // A room
     public static final String TAG = "ManHinhChiTiet";
     public static final String COLLECTION_PHONG = "Phong";
     public static final String MA_PHONG = "KS010WBuLfIBmX55ssYoGq3U";
     public static final String MA_NGUOI_DUNG = "ND01";
-    public  static  final String  Noi_Dung_Coment = "noiDungComment";
-    public  static  final String  ratingNguoidung = "ratingNguoiDung";
     public static String pathBoSuuTap = "";
-    public static String pathDicvu = "";
+
 
     // Config TienNghi
     public static final String COLLECTION_TIEN_NGHI = "TienNghi";
@@ -141,58 +141,28 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_man_hinh_chi_tiet);
-
         db = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
+        DanhGiaRef = db.collection("DanhGia");
         mListPhoto = new ArrayList<Uri>();
-
         dvListDichVu2 = new ArrayList<Uri>();
-
         mListTienNghis = new ArrayList<TienNghi>();
 
         // Find all view from layout
         setControl();
 
-
         // Read data a room from Firebase Firestore
         readDataOfARoom(COLLECTION_PHONG, MA_PHONG);
         readBoSuuTapAnh("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap");
-        readDichVu("/media/tienNghi/TN01");
-        // Viewpager contain photos of room
-//        mListPhoto = getphoto();
-        /*photoAdapter = new PhotoAdapter(this, mListPhoto);
-        viewPager.setAdapter(photoAdapter);*/
-
-
-        /*//View page
-        getImage();*/
-
-
         // Map
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLastLocation();
-
-
-
-
         circleIndicator.setViewPager(viewPagerBoSuuTap);
-//       photoAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
-
-
-        /* ----------------- Set images dich vu ----------------- */
-        //dvListDichVu = getDvListDichVu();
-        //dichvuAdapter = new DichVuAdapter(this, dvListDichVu);
-        //viewPagerDv.setAdapter(dichvuAdapter);
         circleIndicatordv.setViewPager(viewPagerDv);
-        //dichvuAdapter.registerDataSetObserver(circleIndicatordv.getDataSetObserver());
-
-
 
         //binh luan
-//        BinhLuan();
-
-
-        // Icon yêu thích
+        BinhLuan();
+        readDanhGia();
 
 
         /*------------------------ Icon yêu thích --------------------- */
@@ -211,11 +181,6 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
             }
         });
 
-
-        /*------------- Recycler View Binh Luan ---------------*/
-        listBinhLuan = new ArrayList<>();
-        binhLuanAdapter = new BinhLuanAdapter(getApplicationContext(), listBinhLuan);
-        recyclerView.setAdapter(binhLuanAdapter);
 
 
         // Chuyen sang man hinh dat phong
@@ -237,22 +202,17 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
         btnDatNgay = findViewById(R.id.btnDatngay);
         txtSoNguoi = findViewById(R.id.txtsonguoiTD);
         txtTenPhong = findViewById(R.id.txtTenphong);
-        txtDiachi = findViewById(R.id.txtDiachi);
+        txtDiaChi = findViewById(R.id.txtDiachi);
         txtGia = findViewById(R.id.txtGiaphong);
         rtPhong = findViewById(R.id.rbrating);
         txtMoTa = findViewById(R.id.txtMota);
-        imgPhoto = findViewById(R.id.img_photo);
-        imgDichvu = findViewById(R.id.img_Dichvu);
-
+        imgPhoTo = findViewById(R.id.img_photo);
         imgBinhLuan = findViewById(R.id.imgbinhluan);
-        edLoibinhluan = findViewById(R.id.txtloibinhluan);
+        edtLoiBinhLuan = findViewById(R.id.edtBinhLuan);
         rtDanhGia = findViewById(R.id.rbratingDG);
         rtDedanhgia = findViewById(R.id.rbDanhgia);
-        recyclerView = findViewById(R.id.recyclerview);
-
+        rcvBinhLuan = findViewById(R.id.recyclerview);
         btnBinhluan = findViewById(R.id.btnBinhluan);
-
-
         rcvTienNghi = findViewById(R.id.rcvTienNghi);
 
     }
@@ -268,39 +228,22 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
 
                     LatLng latLng = new LatLng(phong.getKinhDo(), phong.getViDo());
                     MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(phong.getTenPhong());
-
-//                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-//                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
-//                    googleMap.addMarker(markerOptions);
-
                     googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                     googleMap.addMarker(markerOptions);
-
-
                     // Set values to UI
                     txtTenPhong.setText(phong.getTenPhong());
-                    txtDiachi.setText(phong.getDiaChiPhong() + ", " + phong.getMaTinhThanhPho());
+                    txtDiaChi.setText(phong.getDiaChiPhong() + ", " + phong.getMaTinhThanhPho());
                     rtPhong.setRating((float) phong.getRatingPhong());
                     txtGia.setText(phong.getGiaThue() + " VND/đêm");
                     txtMoTa.setText(phong.getMoTaPhong().toString());
                     txtSoNguoi.setText(phong.getSoKhach() + " người");
-
                     // Bo Suu Tap anh cua phong
                     pathBoSuuTap = phong.getBoSuuTapAnh();
                     Log.d("PATH=>", pathBoSuuTap + " <!--");
                     if (!pathBoSuuTap.trim().equals("")) {
                         readBoSuuTapAnh(pathBoSuuTap);
                     }
-
-
-                    // Image cac tien nghi o day
-                    pathDicvu = phong.getMaTienNghi();
-                    Log.d("PATH=>", pathDicvu + " <!--");
-                    if (!pathDicvu.trim().equals("")) {
-                        readDichVu(pathDicvu);
-                    }
-
 
                     // Tien nghi cua phong
                     String maTienNghi = phong.getMaTienNghi();
@@ -332,8 +275,6 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
 
                     // Size of files in boSuuTap bucket
                     int sizeItems = listResult.getItems().size();
-
-
                     List<Uri> listUriBoSuuTap = new ArrayList<Uri>();
                     for (StorageReference item : listResult.getItems()) {
                         Log.d("PATH=> =>", item.getPath());
@@ -372,15 +313,15 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
                         });
                     }
 
-                    Log.i("SIZE=>", listUriBoSuuTap.size()+"");
+                    Log.i("SIZE=>", listUriBoSuuTap.size() + "");
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
 
 
-                    Log.d("ERR=>", e.getMessage()+"");
-                    Log.d("ERR=>", "Listen bo suu tap: " + e.getMessage()+"");
+                    Log.d("ERR=>", e.getMessage() + "");
+                    Log.d("ERR=>", "Listen bo suu tap: " + e.getMessage() + "");
 
 
                     Log.d("ERR=>", "Listen bo suu tap: " + e.getMessage() + "");
@@ -391,71 +332,7 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
             Log.d("ERR=>", "Listen boSuuTap is failed! Error: " + e.getMessage());
         }
     }
-    public void readDichVu(String linkDichVu) {
-        Log.d("RUN=>", "Function Dich vu running! PATH: " + linkDichVu);
-        try {
-            StorageReference listRef = storage.getReference().child(linkDichVu);
-            listRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
-                @Override
-                public void onSuccess(ListResult listResult) {
-                    Log.d("RESULT=>", listResult.getItems().size()+"");
 
-                    // Size of files in boSuuTap bucket
-                    int sizeItems = listResult.getItems().size();
-
-
-                    List<Uri> listDichVu = new ArrayList<Uri>();
-                    for (StorageReference item : listResult.getItems()) {
-                        Log.d("PATH=> =>", item.getPath());
-
-                        item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                Log.d("URI=?", "Link download: " + uri);
-                                listDichVu.add(uri);
-
-                                if (listDichVu.size() == sizeItems) {
-                                    Log.i("SIZE=>", "Size list = " + listDichVu.size()+"");
-                                    dvListDichVu2.addAll(listDichVu);
-
-                                    dichvuAdapter = new DichVuAdapter(getApplicationContext(), dvListDichVu2);
-                                    viewPagerDv.setAdapter(dichvuAdapter);
-                                    dichvuAdapter.notifyDataSetChanged();
-
-                                    circleIndicator.setViewPager(viewPagerDv);
-                                    dichvuAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
-
-
-                                }
-
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-
-                                Log.i("ERR=>", "Error read collection: " + e.getMessage());
-
-                                Log.i("ERR=>", "Exception Error: " + e.getMessage());
-
-                            }
-                        });
-                    }
-
-                    Log.i("SIZE=>", listDichVu.size()+"");
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                    Log.d("ERR=>", e.getMessage()+"");
-                    Log.d("ERR=>", "Listen Dich vu: " + e.getMessage()+"");
-
-                }
-            });
-        } catch (Exception e) {
-            Log.d("ERR=>", "Listen Dich vu is failed! Error: " + e.getMessage());
-        }
-    }
 
     // Get all convenient of room from Firestore
     private void readDataTienNghiARoomWithIdTienNghi(String maTienNghi) {
@@ -505,17 +382,49 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
             Log.i("ERR=>", "Listen TienNghi is failed! Error: " + e.getMessage());
         }
     }
-    private List<String> getphoto() {
-        List<String> listphoto = new ArrayList<>();
-        {
-            listphoto.add("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap/0b1d5374-6006-4d0e-a793-83ade34cd247.png");
-            listphoto.add("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap/0b32cf86-d103-4f6c-b925-9bd658b0bae3.png");
-            listphoto.add("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap/8bd94c2e-8f5e-4515-adeb-e9938626fd0a.png");
-            listphoto.add("/media/phong/KS010WBuLfIBmX55ssYoGq3U/boSuuTap/b022efcf-b3e1-4386-b407-4de9d800a6b4.png");
 
+    public void readDanhGia()
+    {
+        try {
+            db.collection(COLLECTION_DANH_GIA).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                @Override
+                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                    if(error != null)
+                    {
+                        Log.w("DG", "error" + error);
+                        return;
+                    }
+
+                    listDanhGia = new ArrayList<DanhGia>();
+                    for (QueryDocumentSnapshot doc : value)
+                    {
+                        String maPhong = doc.getString(MA_PHONG_DG);
+                        String maNguoiDung =  doc.getString(MA_NGUOI_DUNG_DG);
+                        String noiDungComment = doc.getString(NOI_DUNG_COMMENT);
+                        double ratingNguoiDung = Double.parseDouble(doc.get(RATING_NGUOI_DUNG).toString());
+                        DanhGia danhGia = new DanhGia(maNguoiDung, maPhong, noiDungComment, ratingNguoiDung);
+
+                        Log.d("DGNQ=>", "Mot tien nghi: " + danhGia.toString());
+                        listDanhGia.add(danhGia);
+                    }
+                    binhLuanAdapter = new BinhLuanAdapter(ManHinhChiTiet.this, listDanhGia);
+                    rcvBinhLuan.setAdapter(binhLuanAdapter);
+
+                    layoutManager = new LinearLayoutManager(getApplicationContext());
+                    rcvBinhLuan.setLayoutManager(layoutManager);
+
+
+                }
+            });
+        }
+        catch (Exception e)
+        {
+            Log.i("ERR=>", "Listen Danh Gia is failed! Error: " + e.getMessage());
         }
 
-        return listphoto;
+
+
+
     }
 
     // Function auto switch Image in ViewPager
@@ -598,46 +507,46 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     }
 
 
-
-
-
     public void BinhLuan() {
 
         btnBinhluan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String noiDungComment = edLoibinhluan.getText().toString().trim();
-                int ratingNguoiDung =  rtDedanhgia.getNumStars();
+                String noiDungComment = edtLoiBinhLuan.getText().toString();
+                int ratingNguoiDung = (int) rtDedanhgia.getRating();
                 String maPhong = MA_PHONG;
                 String maNguoiDung = MA_NGUOI_DUNG;
 
+                DanhGia danhGia = new DanhGia(maNguoiDung, maPhong, noiDungComment, ratingNguoiDung);
+
+                Log.d("quy", danhGia.toString());
 
 
-               BinhLuan binhLuan = new BinhLuan(maPhong, maNguoiDung, noiDungComment, ratingNguoiDung);
+                try {
+                    db.collection(COLLECTION_DANH_GIA).document(DANH_GIA).set(danhGia).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(ManHinhChiTiet.this, "thanh cong", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(ManHinhChiTiet.this, "Error", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, e.toString());
+                        }
+                    });
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(ManHinhChiTiet.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
 
-
-
-                db.collection("DanhGia").document("DG01").set(binhLuan).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(ManHinhChiTiet.this, "thanh cong", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ManHinhChiTiet.this, "Error", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, e.toString());
-                    }
-                });
 
             }
         });
 
 
-
     }
-
-
 
 
 
