@@ -33,10 +33,10 @@ public class FragmentMain extends AppCompatActivity {
                     fragment = new FragmentManHinhNha();
                     break;
                 case R.id.item_Favorite:
-                    fragment = new FragmentManHinhYeuThich();
+                    fragment = new YeuThichFragment();
                     break;
                 case R.id.item_Account:
-                    fragment = new FragmentManHinhTaiKhoan();
+                    fragment = new TaiKhoanNguoiDungFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();

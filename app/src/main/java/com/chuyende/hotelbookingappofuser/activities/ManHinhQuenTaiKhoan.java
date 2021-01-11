@@ -27,7 +27,7 @@ public class ManHinhQuenTaiKhoan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_man__hinh__quen__tai__khoan);
+        setContentView(R.layout.activity_man_hinh_quen_tai_khoan);
         setControl();
         setEvent();
     }

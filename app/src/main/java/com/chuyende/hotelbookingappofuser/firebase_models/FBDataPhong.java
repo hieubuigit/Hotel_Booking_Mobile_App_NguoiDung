@@ -44,13 +44,7 @@ public class FBDataPhong {
                             Phong phong;
                             for (QueryDocumentSnapshot document : value) {
                                 phong = new Phong();
-                                phong.setAnhDaiDien(document.getString(ANHDAIDIEN));
-                                phong.setTenPhong(document.getString(TENPHONG));
-                                phong.setRatingPhong(document.getDouble(RATINGPHONG));
-                                phong.setGiaThue(document.getDouble(GIATHUE));
-                                phong.setMaTrangThaiPhong(document.getString(MATRANGTHAIPHONG));
-                                phong.setMaLoaiPhong(document.getString("maLoaiPhong"));
-                                phong.setMaTinhThanhPho(document.getString("maTinhThanhPho"));
+                                phong = document.toObject(Phong.class);
                                 arrlstPhong.add(phong);
                             }
                             listPhong.interfaceListPhong(arrlstPhong);
@@ -74,13 +68,7 @@ public class FBDataPhong {
                             Phong phong;
                             for (QueryDocumentSnapshot document : value) {
                                 phong = new Phong();
-                                phong.setAnhDaiDien(document.getString(ANHDAIDIEN));
-                                phong.setTenPhong(document.getString(TENPHONG));
-                                phong.setRatingPhong(document.getDouble(RATINGPHONG));
-                                phong.setGiaThue(document.getDouble(GIATHUE));
-                                phong.setMaTrangThaiPhong(document.getString(MATRANGTHAIPHONG));
-                                phong.setMaLoaiPhong(document.getString("maLoaiPhong"));
-                                phong.setMaTinhThanhPho(document.getString("maTinhThanhPho"));
+                                phong = document.toObject(Phong.class);
                                 arrlstPhong.add(phong);
                             }
                             listPhong.interfaceListPhong(arrlstPhong);
@@ -104,13 +92,7 @@ public class FBDataPhong {
                             Phong phong;
                             for (QueryDocumentSnapshot document : value) {
                                 phong = new Phong();
-                                phong.setAnhDaiDien(document.getString(ANHDAIDIEN));
-                                phong.setTenPhong(document.getString(TENPHONG));
-                                phong.setRatingPhong(document.getDouble(RATINGPHONG));
-                                phong.setGiaThue(document.getDouble(GIATHUE));
-                                phong.setMaTrangThaiPhong(document.getString(MATRANGTHAIPHONG));
-                                phong.setMaLoaiPhong(document.getString("maLoaiPhong"));
-                                phong.setMaTinhThanhPho(document.getString("maTinhThanhPho"));
+                                phong = document.toObject(Phong.class);
                                 arrlstPhong.add(phong);
                             }
                             listPhong.interfaceListPhong(arrlstPhong);

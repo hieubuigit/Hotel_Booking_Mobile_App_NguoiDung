@@ -44,6 +44,7 @@ public class FragmentManHinhNha extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
 //        [START du lieu spinner Tinh thanh pho]
         fbDaTaTinhThanhPho.layDuLieuTinhThanhPho(new ListTinhThanhPho() {
             @Override
@@ -72,6 +73,7 @@ public class FragmentManHinhNha extends Fragment {
                 for (LoaiPhong robot : listLoaiPhong) {
                     arrlstLoaiPhong.add(robot.getLoaiphong());
                 }
+
                 ArrayAdapter arrAdtSpinner_LoaiPhong = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, arrlstLoaiPhong);
                 arrAdtSpinner_LoaiPhong.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 sp_LoaiPhong.setAdapter(arrAdtSpinner_LoaiPhong);
@@ -267,9 +269,9 @@ public class FragmentManHinhNha extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = null;
-        view = inflater.inflate(R.layout.fragment_man__hinh__nha, container, false);
+        view = inflater.inflate(R.layout.fragment_man_hinh_nha, container, false);
 
-//        [START Ánh xạ]
+//      [START Ánh xạ]
         // gridview full height
         adapterExpandableHeightGridView = view.findViewById(R.id.gridViewMain);
         // seachview

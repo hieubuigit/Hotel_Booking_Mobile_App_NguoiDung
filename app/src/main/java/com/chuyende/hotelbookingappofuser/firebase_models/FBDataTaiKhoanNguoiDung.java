@@ -38,6 +38,7 @@ public class FBDataTaiKhoanNguoiDung {
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                         if (error != null) {
                             Log.d("Error-DataTaiKhoanNguoiDung", " => " + error.getMessage());
+                            return;
                         }
                         if (value != null) {
                             ArrayList<TaiKhoanNguoiDung> arrlstTaiKhoanNguoiDung = new ArrayList<TaiKhoanNguoiDung>();

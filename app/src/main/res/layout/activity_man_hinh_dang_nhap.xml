@@ -13,12 +13,12 @@
         <TextView
             android:id="@+id/textViewTenTK_DangNhap"
             style="@style/TextView_Nhap"
-            android:text="@string/tvTenTK_DangNhap"></TextView>
+            android:text="@string/tvTenTK_DangNhap" />
 
         <EditText
             android:id="@+id/editTextTenTK_DangNhap"
             style="@style/EditText_Nhap"
-            android:hint="@string/hintNhapTenTK_DangNhap"></EditText>
+            android:hint="@string/hintNhapTenTK_DangNhap" />
     </LinearLayout>
 
     <LinearLayout style="@style/liner_hor">
@@ -26,58 +26,50 @@
         <TextView
             android:id="@+id/textViewMatKhau_DangNhap"
             style="@style/TextView_Nhap"
-            android:text="@string/tvMK_DangNhap"></TextView>
+            android:text="@string/tvMK_DangNhap" />
 
         <EditText
             android:id="@+id/editTextMatKhau_DangNhap"
             style="@style/EditText_Nhap"
             android:hint="@string/hintMK_DangNhap"
-            android:inputType="textPassword"></EditText>
+            android:inputType="textPassword" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView_MH_Dang_Nhap_Press_QTK"
         style="@style/TextView_DangNhap_QTK"
-        android:text="@string/tvQuenTaiKhoan"></TextView>
+        android:text="@string/tvQuenTaiKhoan" />
 
     <Button
         android:id="@+id/button_DangNhap"
         style="@style/ButtonDangNhap"
-        android:text="@string/btnDangNhap"></Button>
+        android:text="@string/btnDangNhap" />
 
     <Button
         android:id="@+id/button_DangNhap_Google"
         style="@style/ButtonDangNhap_others"
-        android:text="@string/btnGG"></Button>
-
+        android:text="@string/btnGG" />
 
     <Button
         android:id="@+id/button_DangNhap_Facebook"
         style="@style/ButtonDangNhap_others"
-        android:text="@string/btnFB"></Button>
-
-    <!--    <com.facebook.login.widget.LoginButton-->
-    <!--        xmlns:fb="http://schemas.android.com/apk/res-auto"-->
-    <!--        android:id="@+id/button_DangNhap_Facebook"-->
-    <!--        fb:login_text="@string/btnFB"-->
-    <!--        fb:logout_text="@string/btnDangXuat"-->
-    <!--        style="@style/ButtonDangNhap_others" />-->
+        android:text="@string/btnFB" />
 
     <Button
         android:id="@+id/button_DangNhap_Twitter"
         style="@style/ButtonDangNhap_others"
-        android:text="@string/btnIns"></Button>
+        android:text="@string/btnIns" />
 
     <LinearLayout style="@style/liner_hor">
 
         <TextView
             android:id="@+id/textView"
             style="@style/TextView_DangNhap_ChuaCoTK"
-            android:text="@string/tvTitleDK"></TextView>
+            android:text="@string/tvTitleDK" />
 
         <TextView
             android:id="@+id/textView_MH_Dang_Nhap_Press_Dang_Ky"
             style="@style/TextView_DangNhap_ChuaCoTK_dangky"
-            android:text="@string/tvDK"></TextView>
+            android:text="@string/tvDK" />
     </LinearLayout>
 </LinearLayout>

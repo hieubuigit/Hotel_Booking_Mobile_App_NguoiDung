@@ -31,6 +31,7 @@ public class FBDataLoaiPhong {
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error != null) {
                     Log.d("Error-DataLoaiPhong", " => " + error.getMessage());
+                    return;
                 }
                 if (value != null) {
                     ArrayList<LoaiPhong> arrlstLoaiPhong = new ArrayList<LoaiPhong>();

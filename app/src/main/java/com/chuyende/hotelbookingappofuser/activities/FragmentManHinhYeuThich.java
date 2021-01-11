@@ -11,7 +11,7 @@ public class FragmentManHinhYeuThich extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = null;
-        view = inflater.inflate(R.layout.fragment_man__hinh__yeu__thich, container, false);
+        view = inflater.inflate(R.layout.fragment_man_hinh_yeu_thich, container, false);
         return view;
     }
 }

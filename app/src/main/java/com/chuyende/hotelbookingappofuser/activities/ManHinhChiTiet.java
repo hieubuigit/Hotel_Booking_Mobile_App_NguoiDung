@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.chuyende.hotelbookingappofuser.R;
+import com.chuyende.hotelbookingappofuser.adapters.AdapterGridViewPhong;
 import com.chuyende.hotelbookingappofuser.adapters.BinhLuanAdapter;
 import com.chuyende.hotelbookingappofuser.adapters.PhotoAdapter;
 import com.chuyende.hotelbookingappofuser.adapters.TienNghiAdapter;
@@ -57,13 +58,14 @@ import java.util.TimerTask;
 import me.relex.circleindicator.CircleIndicator;
 
 public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallback {
-
     // Khai bao map
-    Location currentLocation;
+    SupportMapFragment supportMapFragment;
     FusedLocationProviderClient fusedLocationProviderClient;
+    Location currentLocation;
     public static final int REQUEST_CODE = 101;
+    double kinhDo, viDo;
 
-    // Viewpager
+    // Viewpager Bo suu tap
     ViewPager viewPagerBoSuuTap;
     PhotoAdapter photoAdapter;
     List<Uri> mListPhoto;
@@ -77,11 +79,13 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     RatingBar rtPhong;
     ImageView imgPhoto;
 
+    // RecyclerView TienNghi
     TienNghiAdapter tienNghiAdapter;
     List<TienNghi> mListTienNghis;
     RecyclerView rcvTienNghi;
     RecyclerView.LayoutManager layoutManager;
 
+    // RecyclerView BinhLuan
     RecyclerView recyclerView;
     ArrayList<BinhLuan> listBinhLuan;
     BinhLuanAdapter binhLuanAdapter;
@@ -94,7 +98,7 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
 
     // A room
     public static final String COLLECTION_PHONG = "Phong";
-    public static final String MA_PHONG = "KS010WBuLfIBmX55ssYoGq3U";
+    public static String MA_PHONG = "";
     public static String pathBoSuuTap = "";
 
     // Config TienNghi
@@ -102,6 +106,9 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
     public static final String FIELD_MA_TIEN_NGHI = "maTienNghi";
     public static final String FIELD_TIEN_NGHI = "tienNghi";
     public static final String FIELD_ICON_TIEN_NGHI = "iconTienNghi";
+
+    Bundle bundle;
+    Intent intent;
 
     @Override
     protected void onStart() {
@@ -124,9 +131,14 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
         // Find all view from layout
         setControl();
 
-        // Map
+        // Initialize data for Google Maps
+        supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        fetchLastLocation();
+
+        // Get data on Intent from FragmentManHinhNha
+        intent = getIntent();
+        MA_PHONG = intent.getStringExtra(AdapterGridViewPhong.KEY_MA_PHONG);
+        Log.d("MAPH=>", MA_PHONG);
 
         /*------------------------ Icon yêu thích --------------------- */
         ibHeart.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
@@ -187,11 +199,12 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
                     Phong phong = documentSnapshot.toObject(Phong.class);
                     Log.d("test", "onComplete: " + phong.toString());
 
-                    LatLng latLng = new LatLng(phong.getKinhDo(), phong.getViDo());
-                    MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(phong.getTenPhong());
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-                    googleMap.addMarker(markerOptions);
+                    kinhDo = phong.getKinhDo();
+                    viDo = phong.getViDo();
+                    if (kinhDo != 0 && viDo != 0) {
+                        fetchLastLocation();
+                    }
+                    Log.d("KDVD=>", String.valueOf(kinhDo + " -- " + viDo));
 
                     // Set values to UI
                     txtTenPhong.setText(phong.getTenPhong());
@@ -379,35 +392,42 @@ public class ManHinhChiTiet extends AppCompatActivity implements OnMapReadyCallb
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_CODE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    fetchLastLocation();
-                }
-                break;
+        if (requestCode == REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                fetchLastLocation();
+            }
         }
     }
 
+    // Initialize Google Maps
     private void fetchLastLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]
-                    {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
-            return;
-        }
 
-        Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    currentLocation = location;
-                    Toast.makeText(getApplicationContext(), currentLocation.getLatitude() + " " + currentLocation.getLongitude(), Toast.LENGTH_LONG).show();
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+        } else {
+            Task<Location> task = fusedLocationProviderClient.getLastLocation();
+            task.addOnSuccessListener(new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    if (location != null) {
+                        supportMapFragment.getMapAsync(new OnMapReadyCallback() {
+                            @Override
+                            public void onMapReady(GoogleMap googleMap) {
+                                LatLng latLng = new LatLng(kinhDo, viDo);
+                                MarkerOptions markerOptions = new MarkerOptions().position(latLng);
 
-                    SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map);
-                    supportMapFragment.getMapAsync(ManHinhChiTiet.this);
+                                // Zoom camera
+                                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                                googleMap.addMarker(markerOptions);
+                            }
+                        });
+
+                        // Test database
+                        Toast.makeText(getApplicationContext(), location.getLatitude() + " " + location.getLongitude(), Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 }

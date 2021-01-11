@@ -97,7 +97,7 @@ public class ManHinhDangNhap extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_man__hinh__dang__nhap);
+        setContentView(R.layout.activity_man_hinh_dang_nhap);
         setControl();
         setEvent();
     }

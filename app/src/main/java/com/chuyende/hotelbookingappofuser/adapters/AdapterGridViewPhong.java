@@ -21,13 +21,15 @@ import java.util.ArrayList;
 
 import static com.chuyende.hotelbookingappofuser.activities.FragmentManHinhNha.ALL;
 
-
 public class AdapterGridViewPhong extends BaseAdapter {
     private ArrayList<Phong> arrListPhong = new ArrayList<Phong>();
     private ArrayList<Phong> arrListPhongBackUp = new ArrayList<Phong>();
     private LayoutInflater layoutInflater;
     private Context context;
     int Resource;
+    Intent intent;
+
+    public static final String KEY_MA_PHONG = "maPhong";
 
     public AdapterGridViewPhong(Context constructorContext, int resource, ArrayList<Phong> arrListPhong) {
         this.context = constructorContext;
@@ -72,9 +74,10 @@ public class AdapterGridViewPhong extends BaseAdapter {
         } else {
             clsViewHolder = (ViewHolder) view.getTag();
         }
+
         Phong clsPhong = this.arrListPhong.get(i);
         String url = clsPhong.getAnhDaiDien();
-        Picasso.with(context).load(url).into(clsViewHolder.imgHinh);// hiện hình ảnh từ source sử dụng Picasso(add thư viện picasso)
+        Picasso.with(context).load(url).into(clsViewHolder.imgHinh);    // hiện hình ảnh từ source sử dụng Picasso(add thư viện picasso)
         clsViewHolder.tvTenPhong.setText(clsPhong.getTenPhong());
         clsViewHolder.rating.setRating((float) clsPhong.getRatingPhong());
         clsViewHolder.tvGiaPhong.setText(clsPhong.getGiaThue() + "VND/đêm");
@@ -82,20 +85,16 @@ public class AdapterGridViewPhong extends BaseAdapter {
         clsViewHolder.tvTenPhong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent((Activity) context, ManHinhChiTiet.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("key_tenPhong", clsPhong.getTenPhong());
-                intent.putExtras(bundle);
-                ((Activity) context).startActivity(intent);
+                intent = new Intent(view.getContext(), ManHinhChiTiet.class);
+                intent.putExtra(KEY_MA_PHONG, clsPhong.getMaPhong());
+                view.getContext().startActivity(intent);
             }
         });
-
-
 
         return view;
     }
 
-    // tìm và lọc
+    // Tìm và lọc
     public void timKiemVaLoc(String keySearch, String spItemKeyTinhThanhPho, String spItemKeyLoaiPhong, String spItemKeyTieuChi) {
         arrListPhong.clear();
         //         xem danh sach khi chưa lọc và chưa search

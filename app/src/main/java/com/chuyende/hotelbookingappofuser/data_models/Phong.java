@@ -101,7 +101,6 @@ public class Phong {
         this.soLuotHuy = soLuotHuy;
     }
 
-
     public String getMaPhong() {
         return maPhong;
     }

@@ -26,12 +26,12 @@ public class FBDaTaTinhThanhPho {
     }
 
     public void layDuLieuTinhThanhPho(ListTinhThanhPho listTinhThanhPho) {
-
         db.collection(COLLECTION_TINHTHANHPHO).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error != null) {
                     Log.d("Error-DataTinhThanhPho", " => " + error.getMessage());
+                    return;
                 }
                 if (value != null) {
                     ArrayList<TinhThanhPho> arrlstTinhThanhPho = new ArrayList<TinhThanhPho>();

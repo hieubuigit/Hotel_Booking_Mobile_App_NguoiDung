@@ -38,7 +38,7 @@ public class FragmentManHinhTaiKhoan extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_man__hinh__tai__khoan, container, false);
+        View view = inflater.inflate(R.layout.fragment_man_hinh_tai_khoan, container, false);
         btnDangXuat = (Button) view.findViewById(R.id.buttonDangXuat);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

@@ -13,7 +13,7 @@
     <TextView
         android:id="@+id/textViewCheckBox"
         style="@style/TextView_QTK_MoTa"
-        android:text="@string/tvQuenMatKhau"></TextView>
+        android:text="@string/tvQuenMatKhau" />
 
     <LinearLayout
         style="@style/liner_hor"
@@ -22,17 +22,17 @@
         <TextView
             android:id="@+id/textView"
             style="@style/TextView_Nhap"
-            android:text="@string/tvEmail_QTK"></TextView>
+            android:text="@string/tvEmail_QTK" />
 
         <EditText
             android:id="@+id/editText_Email_QMK"
             style="@style/EditText_Nhap"
-            android:hint="@string/hintNhapEmail_QTK"></EditText>
+            android:hint="@string/hintNhapEmail_QTK" />
     </LinearLayout>
 
     <Button
         android:id="@+id/button_DatLaiMatKhau_QMK"
         style="@style/ButtonQuenTaiKhoan"
-        android:text="@string/btnQuenMatKhau"></Button>
+        android:text="@string/btnQuenMatKhau" />
 
 </LinearLayout>

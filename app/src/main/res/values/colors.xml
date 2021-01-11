@@ -24,4 +24,8 @@
     <color name="white_color_rating">#FFFFFF</color>
     <color name="yellow_color_bdr_rating">#ffd724</color>
     <color name="black_color_bdr_rating">#000000</color>
+    <!--==================== Man hinh yeu thich ===================-->
+    <color name="startColor">#17EAD9</color>
+    <color name="endColor">#6078EA</color>
+    <!--==================== End man hinh yeu thich ===================-->
 </resources>
