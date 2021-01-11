@@ -1,42 +1,21 @@
 package com.chuyende.hotelbookingappofuser.dialogs;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import com.chuyende.hotelbookingappofuser.R;
-import com.chuyende.hotelbookingappofuser.activities.ManHinhChiTiet;
 import com.chuyende.hotelbookingappofuser.activities.ManHinhQuenTaiKhoan;
-import com.chuyende.hotelbookingappofuser.adapters.AdapterGridViewPhong;
-import com.chuyende.hotelbookingappofuser.data_models.Phong;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.EmailAuthCredential;
-import com.google.firebase.auth.EmailAuthProvider;
-import com.google.firebase.auth.FirebaseAuth;
 import com.chuyende.hotelbookingappofuser.firebase_models.FBDataTaiKhoanNguoiDung;
-import com.google.firebase.auth.PhoneAuthProvider;
-import com.squareup.picasso.Picasso;
-
-import java.util.Properties;
 
 public class DialogManHinhQuenTaiKhoan extends DialogFragment {
     private EditText txtInputOTP, txtInputNewPass;

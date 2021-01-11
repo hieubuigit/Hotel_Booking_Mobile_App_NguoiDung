@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import com.chuyende.hotelbookingappofuser.data_models.TaiKhoanNguoiDung;
 import com.chuyende.hotelbookingappofuser.interfaces.ListTaiKhoanNguoiDung;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -57,14 +56,15 @@ public class FBDataTaiKhoanNguoiDung {
                     }
                 });
     }
+
     // cập nhật mật khẩu
-    public void updateAccount (String passNeedToChange, String getDocumentById){
+    public void updateAccount(String passNeedToChange, String getDocumentById) {
         Map<String, Object> data = new HashMap<>();
         data.put(MATKHAUTAIKHOANNGUOIDUNG, passNeedToChange);
         db.collection(COLLECTION_TAIKHOANNGUOIDUNG).document(getDocumentById).update(data).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Log.d("Update Password","====thành công====");
+                Log.d("Update Password", "====thành công====");
             }
         });
     }

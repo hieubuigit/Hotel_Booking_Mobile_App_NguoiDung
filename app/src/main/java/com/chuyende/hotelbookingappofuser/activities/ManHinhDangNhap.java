@@ -1,13 +1,7 @@
 package com.chuyende.hotelbookingappofuser.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,23 +9,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.chuyende.hotelbookingappofuser.R;
 import com.chuyende.hotelbookingappofuser.data_models.TaiKhoanNguoiDung;
-import com.chuyende.hotelbookingappofuser.dialogs.DialogManHinhQuenTaiKhoan;
 import com.chuyende.hotelbookingappofuser.firebase_models.FBDataTaiKhoanNguoiDung;
 import com.chuyende.hotelbookingappofuser.interfaces.ListTaiKhoanNguoiDung;
 import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.LoginStatusCallback;
-import com.facebook.appevents.AppEventsLogger;
-import com.facebook.login.Login;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -43,14 +33,9 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -203,7 +188,7 @@ public class ManHinhDangNhap extends AppCompatActivity {
 
                     @Override
                     public void onCancel() {
-                        Intent intent = new Intent(getApplicationContext(),ManHinhDangNhap.class);
+                        Intent intent = new Intent(getApplicationContext(), ManHinhDangNhap.class);
                         startActivity(intent);
                     }
 
@@ -309,8 +294,9 @@ public class ManHinhDangNhap extends AppCompatActivity {
                     }
                 });
     }
+
     //    [END facebook]
-    private void logOut(){
+    private void logOut() {
         LoginManager.getInstance().logOut();
         FirebaseAuth.getInstance().signOut();
     }

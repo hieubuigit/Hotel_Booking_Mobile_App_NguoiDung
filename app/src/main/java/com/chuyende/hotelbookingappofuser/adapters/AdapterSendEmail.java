@@ -17,7 +17,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class AdapterSendEmail extends AsyncTask<Void,Void,Void> {
+public class AdapterSendEmail extends AsyncTask<Void, Void, Void> {
     //Declaring Variables
     private Context context;
     private Session session;
@@ -27,6 +27,7 @@ public class AdapterSendEmail extends AsyncTask<Void,Void,Void> {
     private String message;
     //Progressdialog to show while sending email
     private ProgressDialog progressDialog;
+
     //Class Constructor
     public AdapterSendEmail(Context context, String email, String subject, String message) {
         //Initializing variables
@@ -35,12 +36,14 @@ public class AdapterSendEmail extends AsyncTask<Void,Void,Void> {
         this.subject = subject;
         this.message = message;
     }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
         //Showing progress dialog while sending email
         progressDialog = ProgressDialog.show(context, "Sending message", "Please wait...", false, false);
     }
+
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
@@ -49,6 +52,7 @@ public class AdapterSendEmail extends AsyncTask<Void,Void,Void> {
         //Showing a success message
         Toast.makeText(context, "Message Sent", Toast.LENGTH_LONG).show();
     }
+
     @Override
     protected Void doInBackground(Void... params) {
         //Creating properties

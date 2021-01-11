@@ -7,7 +7,8 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@drawable/background_app</item>
     </style>
-<!-- <item name="android:weightSum">10</item>-->
+
+    <!-- <item name="android:weightSum">10</item>-->
     <style name="liner_hor">
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_weight">1</item>
@@ -38,7 +39,6 @@
     <!--    Đóng sử dụng chung-->
 
     <!--    Màn hình đăng nhập-->
-
     <style name="imageView_DangNhap">
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">300dp</item>
@@ -102,7 +102,6 @@
     </style>
     <!--    Kết thúc màn hình đăng nhập-->
 
-
     <!--    Màn hình đăng ký-->
     <style name="imageView_DangKy">
         <item name="android:layout_weight">1</item>
@@ -141,7 +140,6 @@
     </style>
     <!--    Kết thúc màn hình đăng ký-->
 
-
     <!--    Màn hình nhà-->
     <style name="liner_ver_MaHinhNha">
         <item name="android:orientation">vertical</item>
@@ -169,7 +167,6 @@
         <item name="android:background">@drawable/background_spinner</item>
     </style>
 
-
     <style name="EditText_ManHinhNha">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -194,14 +191,15 @@
 
     <style name="imageView_ManHinhNha">
         <item name="android:layout_width">200dp</item>
-                <item name="android:layout_height">90dp</item>
-<!--        <item name="android:layout_weight">2.5</item>-->
+        <item name="android:layout_height">90dp</item>
+        <!--        <item name="android:layout_weight">2.5</item>-->
         <item name="android:src">@drawable/phong</item>
     </style>
+
     <style name="TextView_GiaPhong">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">50dp</item>
-<!--        <item name="android:layout_weight">0.5</item>-->
+        <!--        <item name="android:layout_weight">0.5</item>-->
         <item name="fontFamily">@font/open_sans_regular</item>
         <item name="android:textSize">@dimen/font_size_textview</item>
         <item name="android:layout_gravity">center</item>
@@ -213,14 +211,13 @@
     <style name="ratingBar_ManHinhNha" parent="Widget.AppCompat.RatingBar.Indicator">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">40dp</item>
-<!--        <item name="android:layout_weight">0.5</item>-->
+        <!--        <item name="android:layout_weight">0.5</item>-->
         <item name="android:numStars">5</item>
         <item name="android:rating">4.5</item>
         <item name="android:theme">@style/color_ratingbar</item>
         <item name="android:layout_gravity">center</item>
     </style>
     <!--    Kết thúc màn hình nhà-->
-
 
     <!--    Màn hình quên tài khoản-->
     <style name="imageView_QuenTaiKhoan">
@@ -238,7 +235,7 @@
         <item name="fontFamily">@font/open_sans_regular</item>
         <item name="android:textSize">@dimen/font_size_textview</item>
         <item name="color">@color/black_color_textview</item>
-<!--        <item name="android:gravity">center</item>-->
+        <!--        <item name="android:gravity">center</item>-->
         <item name="android:layout_marginTop">20dp</item>
     </style>
 
@@ -258,14 +255,82 @@
     <!--    Màn hình kết quả tìm kiếm-->
     <!--    Kết thúc màn hình kết quả tìm kiếm-->
 
+    <!--    <style name="liner_hor_spinner">-->
+    <!--        <item name="android:orientation">horizontal</item>-->
+    <!--        <item name="android:layout_weight">0.5</item>-->
+    <!--        <item name="android:layout_width">150dp</item>-->
+    <!--        <item name="android:layout_height">wrap_content</item>-->
+    <!--        <item name="android:background">@drawable/border_edittext</item>-->
 
-<!--    <style name="liner_hor_spinner">-->
-<!--        <item name="android:orientation">horizontal</item>-->
-<!--        <item name="android:layout_weight">0.5</item>-->
-<!--        <item name="android:layout_width">150dp</item>-->
-<!--        <item name="android:layout_height">wrap_content</item>-->
-<!--        <item name="android:background">@drawable/border_edittext</item>-->
+    <!--    </style>-->
 
-<!--    </style>-->
+    <style name="image">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
+    <style name="tenkhachsan">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+    <style name="LeanerLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="LeanerLayoutbl">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/custom_linearlayout</item>
+    </style>
+
+    <style name="NameHotel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="framelayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:layout_marginLeft">10dp</item>
+
+    </style>
+
+    <style name="textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+
+
+    <!-- man hinh thanh toan -->
+    <style name="Linearlayouttt">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">200dp</item>
+
+    </style>
+
+    <style name="labellabeltt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_gravity">left</item>
+    </style>
 </resources>

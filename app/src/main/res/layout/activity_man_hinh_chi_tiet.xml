@@ -1,32 +1,429 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/custom_background"
     android:orientation="vertical"
     tools:context=".activities.ManHinhChiTiet">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Màn hình chi tiết"
-    android:gravity="center"
-    android:textSize="50dp"
-    tools:ignore="MissingConstraints"></TextView>
 
-    <com.chuyende.hotelbookingappofuser.adapters.AdapterExpandableHeightGridView
-        android:id="@+id/gridViewMain2"
-        android:layout_width="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp" />
+
+                <LinearLayout style="@style/LeanerLayout">
+
+                    <me.relex.circleindicator.CircleIndicator
+                        android:id="@+id/circle_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-50dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/ibHeart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="-55dp"
+                android:background="@null"
+                android:src="@drawable/ic_baseline_favorite_border_24" />
+
+            <TextView
+                android:id="@+id/txtTenphong"
+                style="@style/NameHotel"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Phòng 123" />
+
+            <LinearLayout
+                style="@style/LeanerLayout"
+                android:layout_height="50dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/label"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="Địa Chỉ:" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/txtDiachi"
+                        style="@style/textview"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="37 chương dương"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LeanerLayout">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/label"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="Rating:"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <RatingBar
+                        android:id="@+id/rbrating"
+                        style="@android:style/Widget.Holo.RatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:progressTint="#ffff00"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:stepSize=".5" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LeanerLayout"
+                android:layout_height="50dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/label"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="Giá: " />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtGiaphong"
+                        style="@style/textview"
+                        android:text="1.200.000 VND/đêm"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LeanerLayout"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/label"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="Mô Tả: "
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="5"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/txtMota"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="@drawable/custom_dien_vao"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:gravity="top|left"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        android:scrollbars="vertical"
+                        android:text="Phòng sạch sẽ thoáng mát"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LeanerLayout"
+                android:layout_height="50dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="Số người tối đa: "
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtsonguoiTD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="2 người lớn"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/LeanerLayout">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/label"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="Các tiện nghi:" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvTienNghi"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
+            <LinearLayout style="@style/LeanerLayout">
+
+                <me.relex.circleindicator.CircleIndicator
+                    android:id="@+id/circle_indicator2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="-30dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LeanerLayout"
+                android:layout_height="50dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/label"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="Đánh Giá: "
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center">
+
+                    <RatingBar
+                        android:id="@+id/rbDanhgia"
+                        style="@android:style/Widget.Holo.RatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:numStars="5"
+                        android:progressTint="#ffff00"
+                        android:scaleX=".8"
+                        android:scaleY=".8"
+                        android:stepSize=".5" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LeanerLayout"
+                android:layout_height="30dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        style="@style/label"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="Bình Luận:" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LeanerLayoutbl"
+                android:weightSum="10">
+
+                <EditText
+                    android:id="@+id/txtBinhluan"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="4"
+                    android:background="@drawable/custom_dien_vao"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:gravity="top|left"
+                    android:hint="Đánh giá nhận xét của bạn về phòng..."
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:maxLines="15"
+                    android:minLines="5"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:scrollbars="vertical"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnBinhluan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="312dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_danh_gia"
+                    android:text="Bình Luận"
+                    android:textAllCaps="false"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="4"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_recycler_view" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtxemthem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:text="xem thêm đánh giá"
+                    android:textColor="#00FFEA"
+                    android:textSize="16dp">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/label"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Vị trí trên bản đồ:"
+                android:textSize="16dp" />
+
+            <fragment
+                android:id="@+id/google_map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginBottom="20dp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/btnDatngay"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:horizontalSpacing="10dp"
-        android:isScrollContainer="false"
-        android:numColumns="2"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="10dp"
-        tools:ignore="MissingConstraints">
+        android:layout_marginTop="-50dp"
+        android:background="@drawable/maubutton"
+        android:text="Đặt ngay" />
 
-    </com.chuyende.hotelbookingappofuser.adapters.AdapterExpandableHeightGridView>
 </LinearLayout>

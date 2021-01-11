@@ -5,7 +5,6 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.chuyende.hotelbookingappofuser.data_models.LoaiPhong;
-import com.chuyende.hotelbookingappofuser.data_models.Phong;
 import com.chuyende.hotelbookingappofuser.interfaces.ListLoaiPhong;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,17 +25,17 @@ public class FBDataLoaiPhong {
         db = FirebaseFirestore.getInstance();
     }
 
-    public void layDuLieuLoaiPhong(ListLoaiPhong listLoaiPhong){
+    public void layDuLieuLoaiPhong(ListLoaiPhong listLoaiPhong) {
         db.collection(COLLECTION_LOAIPHONG).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if (error != null){
+                if (error != null) {
                     Log.d("Error-DataLoaiPhong", " => " + error.getMessage());
                 }
-                if (value != null){
+                if (value != null) {
                     ArrayList<LoaiPhong> arrlstLoaiPhong = new ArrayList<LoaiPhong>();
                     LoaiPhong loaiPhong;
-                    for (QueryDocumentSnapshot document : value){
+                    for (QueryDocumentSnapshot document : value) {
                         loaiPhong = new LoaiPhong(document.getString(MALOAIPHONG), document.getString(LOAIPHONG));
                         arrlstLoaiPhong.add(loaiPhong);
                     }

@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-<!--    Màu chuyên đề-->
+    <!--    Màu chuyên đề-->
     <color name="black_color_textview">#000000</color>
     <color name="color_textview_quenTaiKhoan">#17ead9</color>
 
@@ -24,8 +24,4 @@
     <color name="white_color_rating">#FFFFFF</color>
     <color name="yellow_color_bdr_rating">#ffd724</color>
     <color name="black_color_bdr_rating">#000000</color>
-
-
-
-
 </resources>

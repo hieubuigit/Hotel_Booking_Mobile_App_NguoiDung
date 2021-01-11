@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,18 +15,11 @@ import android.widget.TextView;
 import com.chuyende.hotelbookingappofuser.R;
 import com.chuyende.hotelbookingappofuser.activities.ManHinhChiTiet;
 import com.chuyende.hotelbookingappofuser.data_models.Phong;
-import com.chuyende.hotelbookingappofuser.firebase_models.FBDataPhong;
-import com.chuyende.hotelbookingappofuser.firebase_models.FBDataTaiKhoanNguoiDung;
-import com.chuyende.hotelbookingappofuser.interfaces.ListPhong;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 import static com.chuyende.hotelbookingappofuser.activities.FragmentManHinhNha.ALL;
-import static com.chuyende.hotelbookingappofuser.firebase_models.FBDataPhong.RATINGPHONG;
 
 
 public class AdapterGridViewPhong extends BaseAdapter {
@@ -86,6 +78,7 @@ public class AdapterGridViewPhong extends BaseAdapter {
         clsViewHolder.tvTenPhong.setText(clsPhong.getTenPhong());
         clsViewHolder.rating.setRating((float) clsPhong.getRatingPhong());
         clsViewHolder.tvGiaPhong.setText(clsPhong.getGiaThue() + "VND/đêm");
+
         clsViewHolder.tvTenPhong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,6 +89,9 @@ public class AdapterGridViewPhong extends BaseAdapter {
                 ((Activity) context).startActivity(intent);
             }
         });
+
+
+
         return view;
     }
 
@@ -178,5 +174,4 @@ public class AdapterGridViewPhong extends BaseAdapter {
 
         notifyDataSetChanged();
     }
-
 }

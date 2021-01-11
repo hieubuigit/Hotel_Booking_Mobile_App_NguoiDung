@@ -4,13 +4,8 @@
     <!-- màu và độ rộng của đường viền -->
     <stroke
         android:width="5dp"
-        android:color="#D3CFCF" >
-    </stroke>
-    <solid
-        android:color="#D3CFCF">
-    </solid>
+        android:color="#D3CFCF"></stroke>
+    <solid android:color="#D3CFCF"></solid>
     <!-- bán kính đường tròn ở 4 góc -->
-    <corners
-        android:radius="10dp" >
-    </corners>
+    <corners android:radius="10dp"></corners>
 </shape>

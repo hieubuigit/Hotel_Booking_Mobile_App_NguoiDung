@@ -4,17 +4,30 @@
     package="com.chuyende.hotelbookingappofuser">
 
     <uses-permission android:name="android.permission.INTERNET" />
-<!--    đăng nhập nhanh facebook-->
-    <queries> <package android:name="com.facebook.katana" /> </queries>
+    <!--    đăng nhập nhanh facebook-->
+    <queries>
+        <package android:name="com.facebook.katana" />
+    </queries>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HotelBookingAppOfUser">
-        <activity android:name=".activities.ManHinhChiTiet" />
-        <activity android:name=".MainActivity" />
+
+        <activity android:name=".activities.ManHinhChiTiet">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activities.ManHinhQuenTaiKhoan" />
         <activity android:name=".activities.ManHinhDangKy" />
         <activity
@@ -30,14 +43,28 @@
         <activity
             android:name=".activities.FragmentMain"
             tools:ignore="DuplicateActivity" />
+
         <activity android:name=".activities.ManHinhDangNhap">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_api_key" />
+
+        <activity android:name=".activities.ManHinhThanhToan"></activity>
+
+        <!--<activity android:name=".activities.ManHinhChiTiet">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity>-->
 
-        <!--        facebook login-->
+        <!-- facebook login-->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"
@@ -58,7 +85,5 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
     </application>
-
 </manifest>

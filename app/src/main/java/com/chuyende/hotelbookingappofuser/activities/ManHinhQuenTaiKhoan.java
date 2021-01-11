@@ -1,12 +1,12 @@
 package com.chuyende.hotelbookingappofuser.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.chuyende.hotelbookingappofuser.R;
 import com.chuyende.hotelbookingappofuser.adapters.AdapterSendEmail;
@@ -14,7 +14,6 @@ import com.chuyende.hotelbookingappofuser.data_models.TaiKhoanNguoiDung;
 import com.chuyende.hotelbookingappofuser.dialogs.DialogManHinhQuenTaiKhoan;
 import com.chuyende.hotelbookingappofuser.firebase_models.FBDataTaiKhoanNguoiDung;
 import com.chuyende.hotelbookingappofuser.interfaces.ListTaiKhoanNguoiDung;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 import java.util.Random;

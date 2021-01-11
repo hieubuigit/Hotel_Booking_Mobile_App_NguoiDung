@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:weightSum="5"
     android:layout_height="300dp"
-    android:padding="10dp">
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:weightSum="5">
 
     <TextView
         android:id="@+id/textView_Dialog_QTK_Email"
@@ -12,56 +12,62 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="@font/open_sans_bold"
-        android:textSize="@dimen/font_size_textview"
-        android:text="@string/tv_Dialog_Email"/>
+        android:text="@string/tv_Dialog_Email"
+        android:textSize="@dimen/font_size_textview" />
+
     <TextView
         android:id="@+id/textView_Dialog_QTK_TenTK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="@font/open_sans_bold"
-        android:textSize="@dimen/font_size_textview"
-        android:hint="@string/tv_Dialog_TenTK" />
+        android:hint="@string/tv_Dialog_TenTK"
+        android:textSize="@dimen/font_size_textview" />
+
     <EditText
         android:id="@+id/editText_Dialog_OTP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="@font/open_sans_regular"
-        android:textSize="@dimen/font_size_edittext"
-        android:hint="@string/txt_Dialog_OTP"/>
+        android:hint="@string/txt_Dialog_OTP"
+        android:textSize="@dimen/font_size_edittext" />
+
     <EditText
         android:id="@+id/editText_Dialog_MK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="@font/open_sans_regular"
-        android:textSize="@dimen/font_size_edittext"
-        android:hint="@string/txt_Dialog_MatKhau"/>
+        android:hint="@string/txt_Dialog_MatKhau"
+        android:textSize="@dimen/font_size_edittext" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:weightSum="2"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="2">
+
         <TextView
             android:id="@+id/textView_Dialog_QTK_Huy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/open_sans_bold"
-            android:textSize="@dimen/font_size_textview"
+            android:text="Hủy"
             android:textColor="@color/color_textview_quenTaiKhoan"
-            android:text="Hủy" />
+            android:textSize="@dimen/font_size_textview" />
+
         <TextView
             android:id="@+id/textView_Dialog_QTK_XacNhan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/open_sans_bold"
-            android:textSize="@dimen/font_size_textview"
             android:gravity="right"
+            android:text="Xác nhận"
             android:textColor="@color/color_textview_quenTaiKhoan"
-            android:text="Xác nhận" />
+            android:textSize="@dimen/font_size_textview" />
     </LinearLayout>
 </LinearLayout>

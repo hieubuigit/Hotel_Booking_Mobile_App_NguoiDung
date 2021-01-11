@@ -3,14 +3,14 @@
     <item
         android:id="@+id/item_Home"
         android:icon="@drawable/home"
-        android:title="@string/home"></item>
+        android:title="@string/home" />
     <item
         android:id="@+id/item_Favorite"
         android:icon="@drawable/favorite"
-        android:title="@string/favorite"></item>
+        android:title="@string/favorite" />
     <item
         android:id="@+id/item_Account"
         android:icon="@drawable/account"
-        android:title="@string/account"></item>
+        android:title="@string/account" />
 
 </menu>

@@ -57,8 +57,8 @@
     <string name="tvEmail_QTK">Email</string>
     <string name="hintNhapEmail_QTK">Nhập email.....</string>
     <string name="btnQuenMatKhau">Đặt lại mật khẩu</string>
-    <string name="tvQuenMatKhau">Bạn đang gặp sự cố về tài khoản? Hãy nhập tài khoản email đăng ký để được đặt lại mật khẩu.<br/><br/>
-        Lưu ý: Để thuận tiện trong việc xác nhận tài khoản. Vui lòng bật quyền truy cập: <br/><br/>
+    <string name="tvQuenMatKhau">Bạn đang gặp sự cố về tài khoản? Hãy nhập tài khoản email đăng ký để được đặt lại mật khẩu.<br /><br />
+        Lưu ý: Để thuận tiện trong việc xác nhận tài khoản. Vui lòng bật quyền truy cập: <br /><br />
         https://myaccount.google.com/security -> Quyền truy cập của ứng dụng kém an toàn -> bật quyền truy cập
      </string>
     <!--    Kết thúc màn hình quên tài khoản-->
@@ -90,4 +90,5 @@
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
     <string name="facebook_app_id">139038610997148</string>
     <string name="fb_login_protocol_scheme">fb139038610997148</string>
+    <string name="map_api_key" translatable="false"> AIzaSyC-qATUbRx_LgZfpPesW-QWe37K8aYes2k</string>
 </resources>

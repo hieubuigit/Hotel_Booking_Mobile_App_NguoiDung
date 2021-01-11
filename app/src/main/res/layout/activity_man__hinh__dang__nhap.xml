@@ -31,8 +31,8 @@
         <EditText
             android:id="@+id/editTextMatKhau_DangNhap"
             style="@style/EditText_Nhap"
-            android:inputType="textPassword"
-            android:hint="@string/hintMK_DangNhap"></EditText>
+            android:hint="@string/hintMK_DangNhap"
+            android:inputType="textPassword"></EditText>
     </LinearLayout>
 
     <TextView
@@ -52,16 +52,16 @@
 
 
     <Button
-            android:id="@+id/button_DangNhap_Facebook"
-            style="@style/ButtonDangNhap_others"
-            android:text="@string/btnFB"></Button>
+        android:id="@+id/button_DangNhap_Facebook"
+        style="@style/ButtonDangNhap_others"
+        android:text="@string/btnFB"></Button>
 
-<!--    <com.facebook.login.widget.LoginButton-->
-<!--        xmlns:fb="http://schemas.android.com/apk/res-auto"-->
-<!--        android:id="@+id/button_DangNhap_Facebook"-->
-<!--        fb:login_text="@string/btnFB"-->
-<!--        fb:logout_text="@string/btnDangXuat"-->
-<!--        style="@style/ButtonDangNhap_others" />-->
+    <!--    <com.facebook.login.widget.LoginButton-->
+    <!--        xmlns:fb="http://schemas.android.com/apk/res-auto"-->
+    <!--        android:id="@+id/button_DangNhap_Facebook"-->
+    <!--        fb:login_text="@string/btnFB"-->
+    <!--        fb:logout_text="@string/btnDangXuat"-->
+    <!--        style="@style/ButtonDangNhap_others" />-->
 
     <Button
         android:id="@+id/button_DangNhap_Twitter"

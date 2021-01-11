@@ -1,9 +1,5 @@
 package com.chuyende.hotelbookingappofuser.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +10,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.chuyende.hotelbookingappofuser.R;
 import com.chuyende.hotelbookingappofuser.data_models.TaiKhoanNguoiDung;
@@ -181,13 +181,12 @@ public class ManHinhDangKy extends AppCompatActivity {
             }
         });
         // đăng ký tài khoản google
-        fbAuth.createUserWithEmailAndPassword(txt_Email_DK.getText().toString().trim(),txt_MatKhau_DK.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        fbAuth.createUserWithEmailAndPassword(txt_Email_DK.getText().toString().trim(), txt_MatKhau_DK.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Email registered", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                if (task.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "Email registered", Toast.LENGTH_SHORT).show();
+                } else {
                     Log.d("Error register email", " => " + task.getException());
                 }
             }

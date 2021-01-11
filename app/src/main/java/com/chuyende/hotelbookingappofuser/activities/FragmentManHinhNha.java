@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 
@@ -27,7 +25,6 @@ import com.chuyende.hotelbookingappofuser.firebase_models.FBDataPhong;
 import com.chuyende.hotelbookingappofuser.interfaces.ListLoaiPhong;
 import com.chuyende.hotelbookingappofuser.interfaces.ListPhong;
 import com.chuyende.hotelbookingappofuser.interfaces.ListTinhThanhPho;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;

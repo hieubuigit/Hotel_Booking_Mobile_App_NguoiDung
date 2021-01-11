@@ -1,7 +1,9 @@
 package com.chuyende.hotelbookingappofuser.data_models;
 
 public class TienNghi {
-    private String maTienNghi, iconTienNghi, tienNghi;
+    private String maTienNghi;
+    private String iconTienNghi;
+    private String tienNghi;
 
     public TienNghi() {
     }
@@ -40,8 +42,8 @@ public class TienNghi {
     public String toString() {
         return "TienNghi{" +
                 "maTienNghi='" + maTienNghi + '\'' +
-                ", iconTienNghi='" + iconTienNghi + '\'' +
-                ", tienNghi='" + tienNghi + '\'' +
+                " -- iconTienNghi='" + iconTienNghi + '\'' +
+                " -- tienNghi='" + tienNghi + '\'' +
                 '}';
     }
 }

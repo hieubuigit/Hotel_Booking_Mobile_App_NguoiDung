@@ -26,6 +26,7 @@ public class TinhThanhPho {
     public void setTinhThanhPho(String tinhThanhPho) {
         this.tinhThanhPho = tinhThanhPho;
     }
+
     @Override
     public String toString() {
         return "TinhThanhPho{" +

@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/imageViewDangKy"
-        android:layout_weight="1"
-        style="@style/imageView_QuenTaiKhoan" />
+        style="@style/imageView_QuenTaiKhoan"
+        android:layout_weight="1" />
 
     <TextView
         android:id="@+id/textViewCheckBox"
