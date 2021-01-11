@@ -31,7 +31,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/open_sans_regular"
             android:text="phòng nguyễn quý"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -87,14 +87,14 @@
                         android:layout_marginTop="5dp"
                         android:background="@drawable/custom_dien_vao"
                         android:fontFamily="@font/open_sans_regular"
+                        android:hint="dd/mm/yyyyy"
                         android:inputType="text" />
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/img_Ngayden"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_date_range_24" />
-
                 </LinearLayout>
             </LinearLayout>
 
@@ -123,12 +123,15 @@
                         android:layout_marginTop="5dp"
                         android:background="@drawable/custom_dien_vao"
                         android:fontFamily="@font/open_sans_regular"
+                        android:hint="dd/mm/yyyyy"
                         android:inputType="text" />
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/img_Ngaydi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
                         android:src="@drawable/ic_baseline_date_range_24" />
 
                 </LinearLayout>
@@ -182,7 +185,6 @@
                 android:fontFamily="@font/open_sans_regular"
                 android:gravity="center"
                 android:text="12$/Đêm" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -206,8 +208,7 @@
                 android:layout_weight="8"
                 android:fontFamily="@font/open_sans_regular"
                 android:gravity="center"
-                android:text="12$/Đêm" />
-
+                android:text="0 VND/Đêm" />
         </LinearLayout>
 
         <LinearLayout
@@ -224,28 +225,16 @@
                 android:paddingTop="10dp"
                 android:text="Giảm Giá:" />
 
-            <EditText
+            <TextView
                 android:id="@+id/txtmagiamgia"
                 style="@style/label"
                 android:layout_marginLeft="70dp"
                 android:layout_weight="8"
-                android:background="@drawable/custom_dien_vao"
                 android:fontFamily="@font/open_sans_regular"
                 android:gravity="center"
-                android:hint="DSH551"
                 android:inputType="text"
-                android:paddingTop="10dp" />
-
-            <!--<TextView
-                android:id="@+id/txtmagiamgia"
-                style="@style/label"
-                android:layout_marginLeft="70dp"
-                android:layout_weight="8"
-                android:fontFamily="@font/open_sans_regular"
-                android:gravity="center"
-                android:paddingTop="10dp"
-                android:text="10%"/>-->
-
+                android:paddingTop="15dp"
+                android:text="0%" />
         </LinearLayout>
 
         <LinearLayout
@@ -268,8 +257,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/open_sans_regular"
                 android:gravity="center"
-                android:text="5425000 VND" />
-
+                android:text="0 VND/Đêm" />
         </LinearLayout>
 
         <TextView
@@ -277,11 +265,11 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/open_sans_regular"
-            android:text="Thanh Toán: " />
+            android:text="Hướng dẫn thanh Toán: " />
 
         <TextView
             android:layout_width="400dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
@@ -289,7 +277,8 @@
             android:background="@drawable/custom_edittext"
             android:fontFamily="@font/open_sans_regular"
             android:gravity="center"
-            android:text="Quý khách vui lòng thanh toán trước 15%"
+            android:padding="10dp"
+            android:text="Quý khách vui lòng thanh toán trước 30%, trong vòng 12 tiếng"
             android:textColor="#E91E63"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -302,7 +291,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/custom_linearlayout"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 style="@style/label"
@@ -393,12 +383,12 @@
                 style="@style/label"
                 android:layout_gravity="center"
                 android:fontFamily="@font/open_sans_regular"
-                android:text="Đang chờ thanh toán..."
+                android:text="Đang chờ thanh Toán"
                 android:textColor="#E91E63" />
-
         </LinearLayout>
 
         <Button
+            android:id="@+id/btnDongYDatPhong"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_gravity="center"

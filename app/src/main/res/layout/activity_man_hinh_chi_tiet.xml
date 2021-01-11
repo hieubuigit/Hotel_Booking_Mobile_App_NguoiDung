@@ -307,10 +307,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:numStars="5"
+
                         android:progressTint="#ffff00"
                         android:scaleX=".8"
                         android:scaleY=".8"
-                        android:stepSize=".5" />
+                        android:stepSize="0.5" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -337,7 +338,7 @@
                 android:weightSum="10">
 
                 <EditText
-                    android:id="@+id/txtBinhluan"
+                    android:id="@+id/edtBinhLuan"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_marginLeft="10dp"

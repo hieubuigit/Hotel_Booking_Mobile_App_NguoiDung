@@ -5,13 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chuyende.hotelbookingappofuser.R;
-import com.chuyende.hotelbookingappofuser.data_models.BinhLuan;
+import com.chuyende.hotelbookingappofuser.data_models.DanhGia;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -21,11 +22,11 @@ public class BinhLuanAdapter extends RecyclerView.Adapter<BinhLuanAdapter.ViewHo
     private static final int HEADER = 0;
     private static final int CONTENT = 1;
     Context context;
-    ArrayList<BinhLuan> listBinhLuan;
+    ArrayList<DanhGia> listDanhGia;
 
-    public BinhLuanAdapter(Context context, ArrayList<BinhLuan> listBinhLuan) {
+    public BinhLuanAdapter(Context context, ArrayList<DanhGia> listDanhGia) {
         this.context = context;
-        this.listBinhLuan = listBinhLuan;
+        this.listDanhGia = listDanhGia;
     }
 
     @NonNull
@@ -39,27 +40,31 @@ public class BinhLuanAdapter extends RecyclerView.Adapter<BinhLuanAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Gán dữ liêu
-        BinhLuan binhluan = listBinhLuan.get(position);
-        holder.txtloibinhluan.setText(binhluan.getNoidungBL());
+        DanhGia danhgia = listDanhGia.get(position);
+        holder.txtLoiBinhLuan.setText(danhgia.getNoiDungComment());
+        holder.rtbBinhLuan.setRating((int) danhgia.getRatingNguoiDung());
         Locale locale = new Locale("vn", "VN");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
-        holder.imgAvatar.setImageResource(binhluan.getHinhanhBL());
+        holder.imgAvatar.setImageResource(R.drawable.ic_avatar_default);
     }
 
     @Override
     public int getItemCount() {
-        return listBinhLuan.size(); // trả item tại vị trí postion
+        return listDanhGia.size(); // trả item tại vị trí postion
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgAvatar;
-        TextView txtloibinhluan;
+        TextView txtLoiBinhLuan;
+        RatingBar rtbBinhLuan;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // Ánh xạ view
             imgAvatar = itemView.findViewById(R.id.imgbinhluan);
-            txtloibinhluan = itemView.findViewById(R.id.txtloibinhluan);
+            txtLoiBinhLuan = itemView.findViewById(R.id.edtBinhLuan);
+            rtbBinhLuan = itemView.findViewById(R.id.rbratingDG);
+
         }
     }
 

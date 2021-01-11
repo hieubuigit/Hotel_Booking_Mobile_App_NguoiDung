@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.chuyende.hotelbookingappofuser.R;
+import com.chuyende.hotelbookingappofuser.activities.ManHinhChiTiet;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class PhotoAdapter extends PagerAdapter {
     private Context mContext;
     private List<Uri> mListUrisOfPhoto;
 
-    public PhotoAdapter() {
+    public PhotoAdapter(ManHinhChiTiet mContext, List<String> mListPhoto) {
     }
 
     public PhotoAdapter(Context mContext, List<Uri> mListUrisOfPhoto) {

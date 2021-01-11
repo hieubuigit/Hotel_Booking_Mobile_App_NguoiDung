@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.chuyende.hotelbookingappofuser"
-        minSdkVersion 24
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -99,4 +99,7 @@ dependencies {
 
     // Custom recyclerview
     implementation 'com.android.support:design:29.1.0'
+
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

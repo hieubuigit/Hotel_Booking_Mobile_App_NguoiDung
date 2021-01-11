@@ -1,27 +1,19 @@
 package com.chuyende.hotelbookingappofuser.data_models;
 
 public class NguoiDung {
-    private String maNguoiDung;
-    private String tenNguoiDung;
-    private String gioiTinhNguoiDung;
-    private String ngaySinhNguoiDung;
-    private String anhDaiDienNguoiDung;
-    private String quocTichNguoiDung;
-    private String maTaiKhoanNguoiDung;
+    String maNguoiDung, tenNguoiDung, gioiTinh, ngaySinh, anhDaiDien, quocTich, tenTaiKhoan;
 
     public NguoiDung() {
     }
 
-    public NguoiDung(String maNguoiDung, String tenNguoiDung, String gioiTinhNguoiDung,
-                     String ngaySinhNguoiDung, String anhDaiDienNguoiDung,
-                     String quocTichNguoiDung, String maTaiKhoanNguoiDung) {
+    public NguoiDung(String maNguoiDung, String tenNguoiDung, String gioiTinh, String ngaySinh, String anhDaiDien, String quocTich, String tenTaiKhoan) {
         this.maNguoiDung = maNguoiDung;
         this.tenNguoiDung = tenNguoiDung;
-        this.gioiTinhNguoiDung = gioiTinhNguoiDung;
-        this.ngaySinhNguoiDung = ngaySinhNguoiDung;
-        this.anhDaiDienNguoiDung = anhDaiDienNguoiDung;
-        this.quocTichNguoiDung = quocTichNguoiDung;
-        this.maTaiKhoanNguoiDung = maTaiKhoanNguoiDung;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.anhDaiDien = anhDaiDien;
+        this.quocTich = quocTich;
+        this.tenTaiKhoan = tenTaiKhoan;
     }
 
     public String getMaNguoiDung() {
@@ -40,44 +32,43 @@ public class NguoiDung {
         this.tenNguoiDung = tenNguoiDung;
     }
 
-    public String getGioiTinhNguoiDung() {
-        return gioiTinhNguoiDung;
+    public String getGioiTinh() {
+        return gioiTinh;
     }
 
-    public void setGioiTinhNguoiDung(String gioiTinhNguoiDung) {
-        this.gioiTinhNguoiDung = gioiTinhNguoiDung;
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 
-    public String getNgaySinhNguoiDung() {
-        return ngaySinhNguoiDung;
+    public String getNgaySinh() {
+        return ngaySinh;
     }
 
-    public void setNgaySinhNguoiDung(String ngaySinhNguoiDung) {
-        this.ngaySinhNguoiDung = ngaySinhNguoiDung;
+    public void setNgaySinh(String ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
 
-    public String getAnhDaiDienNguoiDung() {
-        return anhDaiDienNguoiDung;
+    public String getAnhDaiDien() {
+        return anhDaiDien;
     }
 
-    public void setAnhDaiDienNguoiDung(String anhDaiDienNguoiDung) {
-        this.anhDaiDienNguoiDung = anhDaiDienNguoiDung;
+    public void setAnhDaiDien(String anhDaiDien) {
+        this.anhDaiDien = anhDaiDien;
     }
 
-
-    public String getQuocTichNguoiDung() {
-        return quocTichNguoiDung;
+    public String getQuocTich() {
+        return quocTich;
     }
 
-    public void setQuocTichNguoiDung(String quocTichNguoiDung) {
-        this.quocTichNguoiDung = quocTichNguoiDung;
+    public void setQuocTich(String quocTich) {
+        this.quocTich = quocTich;
     }
 
-    public String getMaTaiKhoanNguoiDung() {
-        return maTaiKhoanNguoiDung;
+    public String getTenTaiKhoan() {
+        return tenTaiKhoan;
     }
 
-    public void setMaTaiKhoanNguoiDung(String maTaiKhoanNguoiDung) {
-        this.maTaiKhoanNguoiDung = maTaiKhoanNguoiDung;
+    public void setTenTaiKhoan(String tenTaiKhoan) {
+        this.tenTaiKhoan = tenTaiKhoan;
     }
 }

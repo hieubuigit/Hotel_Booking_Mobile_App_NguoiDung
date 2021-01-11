@@ -1,9 +1,7 @@
 package com.chuyende.hotelbookingappofuser.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chuyende.hotelbookingappofuser.R;
 import com.chuyende.hotelbookingappofuser.activities.ManHinhChiTiet;
 import com.chuyende.hotelbookingappofuser.data_models.Phong;
@@ -77,7 +76,8 @@ public class AdapterGridViewPhong extends BaseAdapter {
 
         Phong clsPhong = this.arrListPhong.get(i);
         String url = clsPhong.getAnhDaiDien();
-        Picasso.with(context).load(url).into(clsViewHolder.imgHinh);    // hiện hình ảnh từ source sử dụng Picasso(add thư viện picasso)
+        Glide.with(context).load(url).into(clsViewHolder.imgHinh);
+        //Picasso.with(context).load(url).into(clsViewHolder.imgHinh);    // hiện hình ảnh từ source sử dụng Picasso(add thư viện picasso)
         clsViewHolder.tvTenPhong.setText(clsPhong.getTenPhong());
         clsViewHolder.rating.setRating((float) clsPhong.getRatingPhong());
         clsViewHolder.tvGiaPhong.setText(clsPhong.getGiaThue() + "VND/đêm");
