@@ -1,6 +1,7 @@
 package com.chuyende.hotelbookingappofuser.activities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.chuyende.hotelbookingappofuser.R;
+import com.chuyende.hotelbookingappofuser.adapters.AdapterGridViewPhong;
 import com.chuyende.hotelbookingappofuser.data_models.DaDat;
 import com.chuyende.hotelbookingappofuser.data_models.NguoiDung;
 import com.chuyende.hotelbookingappofuser.data_models.Phong;
@@ -39,6 +41,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import static com.chuyende.hotelbookingappofuser.activities.FragmentMain.TENTKND;
+import static com.chuyende.hotelbookingappofuser.activities.ManHinhChiTiet.MA_PHONG;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -63,14 +67,9 @@ public class ManHinhThanhToan extends AppCompatActivity {
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
 
-    public static final String COLLECTION_PHONG = "Phong";
-    public static final String MA_PHONG = "KS010WBuLfIBmX55ssYoGq3U";
     public static final String DUONG_DAN = "/media/phong/KS010WBuLfIBmX55ssYoGq3U/anhDaiDien/1ad8aa1d-8b8f-4a3e-a066-be4b58d86b2a.png";
 
-    public static String MAPHONG = "KS010WBuLfIBmX55ssYoGq3U";
-    public static String MATAIKHOANNGUOIDUNG = "TKND03";
     public static String DADAT = "DaDat";
-    public static String TAIKHOANNGUOIDUNG = "TaiKhoanNguoiDung";
     public static String TENTAIKHOAN = "tenTaiKhoan";
     public static String MANGUOIDUNG = "maNguoiDung";
     public static String NGUOIDUNG = "NguoiDung";
@@ -142,72 +141,57 @@ public class ManHinhThanhToan extends AppCompatActivity {
                         if (kiemTraNgayDi(edtDateNDen.getText().toString(), edtDatenDi.getText().toString()) == false) {
                             setToastMessageFailure("Vui lòng chọn lại ngày đi. Ngày đến phải nhỏ hơn ngày đi");
                         } else {
-                            db.collection(TAIKHOANNGUOIDUNG).document(MATAIKHOANNGUOIDUNG)
-                                    .addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                        @Override
-                                        public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                                            if (error != null) {
-                                                Log.w(TAG, error);
-                                                return;
-                                            }
-                                            if (value != null) {
-                                                String tenTaiKhoan = value.getString(TENTAIKHOAN);
-
-                                                //Lay ma nguoi dung tu ten tai khoan
-                                                db.collection(NGUOIDUNG).whereEqualTo(TENTAIKHOAN, tenTaiKhoan).addSnapshotListener(new EventListener<QuerySnapshot>() {
-                                                    @Override
-                                                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                                                        if (error != null) {
-                                                            Log.w(TAG, error);
-                                                            return;
-                                                        }
-                                                        if (value != null) {
-                                                            ArrayList<String> maNguoiDungList = new ArrayList<>();
-                                                            for (DocumentSnapshot doc : value) {
-                                                                maNguoiDungList.add(doc.getString(MANGUOIDUNG));
-                                                            }
-
-                                                            //Lay ma khach san tu ma phong
-                                                            db.collection(PHONG).document(MAPHONG).addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                                @Override
-                                                                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                                                                    if (error != null) {
-                                                                        Log.w(TAG, error);
-                                                                        return;
-                                                                    }
-                                                                    if (value != null) {
-                                                                        Phong phong = value.toObject(Phong.class);
-                                                                        DaDat daDat = new DaDat();
-                                                                        daDat.setMaDat(DD + createRandomAString());
-                                                                        daDat.setMaKhachSan(phong.getMaKhachSan());
-                                                                        daDat.setMaNguoiDung(maNguoiDungList.get(0));
-                                                                        daDat.setMaPhong(MAPHONG);
-                                                                        daDat.setNgayDatPhong(getDateTime());
-                                                                        daDat.setNgayDen(edtDateNDen.getText().toString());
-                                                                        daDat.setNgayDi(edtDatenDi.getText().toString());
-                                                                        daDat.setTongThanhToan(Integer.parseInt(txtTongTien.getText().toString().substring(0, txtTongTien.length() - 8)));
-                                                                        //Them thong tin dat vao bang da dat
-                                                                        db.collection(DADAT).document(daDat.getMaDat()).set(daDat).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                            @Override
-                                                                            public void onSuccess(Void aVoid) {
-                                                                                Log.d(TAG, "Them thanh cong");
-                                                                                setToastMessageSuccess("Đặt phòng thành công");
-                                                                            }
-                                                                        }).addOnFailureListener(new OnFailureListener() {
-                                                                            @Override
-                                                                            public void onFailure(@NonNull Exception e) {
-                                                                                Log.d(TAG, "Them that bai " + e);
-                                                                            }
-                                                                        });
-                                                                    }
-                                                                }
-                                                            });
-                                                        }
-                                                    }
-                                                });
-                                            }
+                            db.collection(NGUOIDUNG).whereEqualTo(TENTAIKHOAN, TENTKND).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @Override
+                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                    if (error != null) {
+                                        Log.w(TAG, error);
+                                        return;
+                                    }
+                                    if (value != null) {
+                                        ArrayList<String> maNguoiDungList = new ArrayList<>();
+                                        for (DocumentSnapshot doc : value) {
+                                            maNguoiDungList.add(doc.getString(MANGUOIDUNG));
                                         }
-                                    });
+
+                                        //Lay ma khach san tu ma phong
+                                        db.collection(PHONG).document(MA_PHONG).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                                                if (error != null) {
+                                                    Log.w(TAG, error);
+                                                    return;
+                                                }
+                                                if (value != null) {
+                                                    Phong phong = value.toObject(Phong.class);
+                                                    DaDat daDat = new DaDat();
+                                                    daDat.setMaDat(DD + createRandomAString());
+                                                    daDat.setMaKhachSan(phong.getMaKhachSan());
+                                                    daDat.setMaNguoiDung(maNguoiDungList.get(0));
+                                                    daDat.setMaPhong(MA_PHONG);
+                                                    daDat.setNgayDatPhong(getDateTime());
+                                                    daDat.setNgayDen(edtDateNDen.getText().toString());
+                                                    daDat.setNgayDi(edtDatenDi.getText().toString());
+                                                    daDat.setTongThanhToan(Integer.parseInt(txtTongTien.getText().toString().substring(0, txtTongTien.length() - 8)));
+                                                    //Them thong tin dat vao bang da dat
+                                                    db.collection(DADAT).document(daDat.getMaDat()).set(daDat).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Log.d(TAG, "Them thanh cong");
+                                                            setToastMessageSuccess("Đặt phòng thành công");
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Log.d(TAG, "Them that bai " + e);
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            });
                         }
                     }
                 }
@@ -357,7 +341,7 @@ public class ManHinhThanhToan extends AppCompatActivity {
 
     public void getdataTT() {
         try {
-            db.collection(PHONG).document(MAPHONG).get()
+            db.collection(PHONG).document(MA_PHONG).get()
                     .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -380,22 +364,6 @@ public class ManHinhThanhToan extends AppCompatActivity {
             Log.d(TAG, "Lỗi " + e);
         }
     }
-
-//    public void TongTien() {
-//        if (edtDateNDen == null && edtDatenDi == null) {
-//            Context context = getApplicationContext();
-//            CharSequence text = "vui long chon ngay den va ngay di";
-//            Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
-//            toast.show();
-//        } else {
-//            int nTongngay = (int) ((calendartwo.getTimeInMillis() - calendarone.getTimeInMillis()) / (1000 * 60 * 60 * 24));
-//            String stien = txtTamtinh.getText().toString();
-//            int a = Integer.parseInt(stien);
-//            int nTong = nTongngay * a;
-//            txtTongTien.setText(String.valueOf(nTong));
-//        }
-//
-//    }
 
     //Tinh tong tien ma nguoi dung phai tra theo so ngay dat
     private int tinhTongPhiThanhToan(String ngayDen, String ngayDi, double giathue) {

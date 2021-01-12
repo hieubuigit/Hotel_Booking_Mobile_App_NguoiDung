@@ -10,13 +10,20 @@ import android.view.MenuItem;
 import com.chuyende.hotelbookingappofuser.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import static com.chuyende.hotelbookingappofuser.activities.ManHinhDangNhap.TENTK;
+
 public class FragmentMain extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    public static String TENTKND = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_fragment);
+
+        // Get data on Intent from ManHinhDangNhap
+        Bundle bundle = getIntent().getExtras();
+        TENTKND = bundle.getString(TENTK);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(selectItem);

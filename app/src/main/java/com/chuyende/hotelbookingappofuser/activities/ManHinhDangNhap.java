@@ -44,6 +44,8 @@ public class ManHinhDangNhap extends AppCompatActivity {
     EditText txt_Ten_TK_DN, txt_Mat_Khau_DN;
     TextView tv_NextTo_Dang_Ky, tv_NextTo_QTK;
 
+    public static final String TENTK = "tenTK";
+
     //firebase
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth mAuth;
@@ -141,6 +143,9 @@ public class ManHinhDangNhap extends AppCompatActivity {
                             if (robot.getTen_TKNguoiDung().equals(txt_Ten_TK_DN.getText().toString().trim())
                                     && robot.getMatKhau_TKNguoiDung().equals(txt_Mat_Khau_DN.getText().toString().trim())) {
                                 Intent intent = new Intent(ManHinhDangNhap.this, FragmentMain.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString(TENTK, txt_Ten_TK_DN.getText().toString());
+                                intent.putExtras(bundle);
                                 startActivity(intent);
                                 Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                                 break;
